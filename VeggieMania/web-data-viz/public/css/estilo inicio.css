@@ -235,10 +235,11 @@ button {
 
 .palavrasT button {
   background: #E6B631;
-  font-size: 28px;
+  font-size: 25px;
   border-radius: 30px;
   width: 90%;
   border: none;
+  font-family: Poppins;
 }
 
 
@@ -262,6 +263,7 @@ button {
   width: 90%;
   border: none;
   background-color: #1F920D;
+  font-family: Poppins;
 }
 
 .meioou{
@@ -285,6 +287,7 @@ button {
   width: 90%;
   border: none;
   background-color: #1A7C6F;
+  font-family: Poppins;
 }
 
 
@@ -302,7 +305,7 @@ button {
 
 .influencias {
   height: 100vh;
-  background-color: #EBE4AE;
+  background-image: url("img/fundofiguras.png");
   display: flex;
   flex-direction: column;
 
@@ -317,7 +320,7 @@ button {
 }
 
 .tituloinflu{
-  height: 15%;
+  height: 13%;
   width: 100%;
   text-align: center;
   font-size: 32px;
@@ -333,6 +336,14 @@ button {
   text-align: center;
 }
 
+.quadro p{
+ font-weight: bold;
+ font-size: 16px;
+ border: 1px solid black;
+ text-align: center;
+}
+
+
 .quadrantee{
   height: 100%;
   width: 50%;
@@ -341,6 +352,7 @@ button {
   justify-content: center;
   text-align: center;
 }
+
 
 .quadranted{
   height: 100%;
@@ -389,23 +401,23 @@ button {
 }
 
 .imgq{
-  height: 99%;
+  height: 95%;
   width: 48%;
   display: flex;
   flex-direction: row;
   justify-content: center;
   text-align: center;
-  background-color: hsl(229, 100%, 45%);
+  margin-top: 3%;
 }
 
 .text{
   height: 100%;
-  width: 50%;
+  width: 52%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
-  text-align: center;
-  background-color: hsl(302, 100%, 45%);
+  text-align: start;
+  margin: 0 2% 0 2%;
 }
 
 /* MISSÃO VISÃO VALORES */
