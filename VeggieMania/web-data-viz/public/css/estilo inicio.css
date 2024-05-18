@@ -23,7 +23,7 @@ body {
 
 .inicio {
   height: 100vh;
-  background-image: url(img/FundoHomePlanta.png);
+  background-image: url(img/Home-fundo.png);
   display: flex;
   flex-direction: column;
   background-size: cover;
@@ -308,15 +308,105 @@ button {
 
 }
 
-.tituloinflu{
-  height: 15%;
+.influencia {
+  height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
 
 }
 
+.tituloinflu{
+  height: 15%;
+  width: 100%;
+  text-align: center;
+  font-size: 32px;
+  font-weight:bold;
+}
 
+.quadro{
+  height: 85%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+}
+
+.quadrantee{
+  height: 100%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.quadranted{
+  height: 100%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.quadrante1{
+  height: 50%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+}
+
+.quadrante2{
+  height: 50%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+}
+
+
+.quadrante3{
+  height: 50%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+}
+
+.quadrante4{
+  height: 50%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+}
+
+.imgq{
+  height: 99%;
+  width: 48%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+  background-color: hsl(229, 100%, 45%);
+}
+
+.text{
+  height: 100%;
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+  background-color: hsl(302, 100%, 45%);
+}
 
 /* MISSÃO VISÃO VALORES */
 
