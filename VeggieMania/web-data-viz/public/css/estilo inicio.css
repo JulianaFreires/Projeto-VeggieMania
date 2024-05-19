@@ -252,12 +252,12 @@ button {
   margin-top: 1%;
 }
 
-.esquerda{
+.esquerda {
   width: 20%;
   height: 20%;
 }
 
-.esquerda button{
+.esquerda button {
   font-size: 24px;
   border-radius: 30px;
   width: 90%;
@@ -266,7 +266,7 @@ button {
   font-family: Poppins;
 }
 
-.meioou{
+.meioou {
   width: 10%;
   height: 20%;
   display: flex;
@@ -276,12 +276,12 @@ button {
 
 }
 
-.direita{
+.direita {
   width: 20%;
   height: 20%;
 }
 
-.direita button{
+.direita button {
   font-size: 24px;
   border-radius: 30px;
   width: 90%;
@@ -319,15 +319,15 @@ button {
 
 }
 
-.tituloinflu{
+.tituloinflu {
   height: 13%;
   width: 100%;
   text-align: center;
   font-size: 32px;
-  font-weight:bold;
+  font-weight: bold;
 }
 
-.quadro{
+.quadro {
   height: 85%;
   width: 100%;
   display: flex;
@@ -336,15 +336,15 @@ button {
   text-align: center;
 }
 
-.quadro p{
- font-weight: bold;
- font-size: 16px;
- border: 1px solid black;
- text-align: center;
+.quadro p {
+  font-weight: bold;
+  font-size: 16px;
+  border: 1px solid black;
+  text-align: center;
 }
 
 
-.quadrantee{
+.quadrantee {
   height: 100%;
   width: 50%;
   display: flex;
@@ -354,7 +354,7 @@ button {
 }
 
 
-.quadranted{
+.quadranted {
   height: 100%;
   width: 50%;
   display: flex;
@@ -363,7 +363,7 @@ button {
   text-align: center;
 }
 
-.quadrante1{
+.quadrante1 {
   height: 50%;
   width: 100%;
   display: flex;
@@ -372,7 +372,7 @@ button {
   text-align: center;
 }
 
-.quadrante2{
+.quadrante2 {
   height: 50%;
   width: 100%;
   display: flex;
@@ -382,7 +382,7 @@ button {
 }
 
 
-.quadrante3{
+.quadrante3 {
   height: 50%;
   width: 100%;
   display: flex;
@@ -391,7 +391,7 @@ button {
   text-align: center;
 }
 
-.quadrante4{
+.quadrante4 {
   height: 50%;
   width: 100%;
   display: flex;
@@ -400,7 +400,7 @@ button {
   text-align: center;
 }
 
-.imgq{
+.imgq {
   height: 95%;
   width: 48%;
   display: flex;
@@ -410,7 +410,7 @@ button {
   margin-top: 3%;
 }
 
-.text{
+.text {
   height: 100%;
   width: 52%;
   display: flex;
@@ -419,6 +419,154 @@ button {
   text-align: start;
   margin: 0 2% 0 2%;
 }
+
+
+
+
+.saude {
+  height: 100vh;
+  background-image: url(img/fundosaude.png);
+}
+
+.caixasaude {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.caixah1 {
+  height: 2%;
+  width: 100%;
+  text-align: center;
+  font-size: 29px;
+  font-weight: bold;
+  margin-bottom: 1%;
+}
+
+.caixah12 {
+  height: 6%;
+  width: 24%;
+  display: flex;
+  align-self: flex-end;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.caixah2 {
+  height: 37%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 2%;
+}
+
+.textcaixa2 {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text2 {
+  height: 100%;
+  width: 85%;
+  text-align: start;
+  font-size: 19px;
+}
+
+.imgcaixa2 {
+  height: 8%;
+  width: 32%;
+}
+
+.caixah3 {
+  height: 8%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 1%;
+}
+
+
+.caixah4 {
+  height: 40%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.caixah4 .caixa41 {
+  height: 100%;
+  width: 47%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.tituloc1{
+  height: 12%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 21px;
+  font-weight: bold;
+}
+.imgc1{
+  height: 50%;
+  width: 10%;
+  display: flex;
+  align-items: center;
+  margin-left: 1%;
+}
+
+
+
+.caixah4 .caixa42 {
+  height: 100%;
+  width: 47%;
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+}
+
+.caixa42 .tituloc2{
+  height: 12%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 21px;
+  font-weight: bold;
+}
+
+.imgc2{
+  height: 50%;
+  width: 10%;
+  display: flex;;
+  align-items: center;
+  margin-left: 1%;
+}
+
+
+.saude2 {
+  height: 100vh;
+  background-color: #DBFFC1;
+}
+
 
 /* MISSÃO VISÃO VALORES */
 
@@ -452,6 +600,7 @@ button {
   flex-direction: column;
   align-items: center;
 }
+
 
 
 /* FOOTER */
