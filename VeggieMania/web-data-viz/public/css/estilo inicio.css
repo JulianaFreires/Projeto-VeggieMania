@@ -433,6 +433,7 @@ button {
   width: 100%;
   display: flex;
   flex-direction: column;
+  color: #e5e5e5;
 }
 
 .caixah1 {
@@ -442,6 +443,7 @@ button {
   font-size: 29px;
   font-weight: bold;
   margin-bottom: 1%;
+  color: #000000;
 }
 
 .caixah12 {
@@ -453,6 +455,7 @@ button {
   align-items: center;
   font-size: 16px;
   font-weight: bold;
+  color: #000000;
 }
 
 .caixah2 {
@@ -469,6 +472,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #000000;
 }
 
 .text2 {
@@ -510,20 +514,9 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: 18px;
+  font-size: 16px;
 }
 
-.tituloc1{
-  height: 12%;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  font-size: 21px;
-  font-weight: bold;
-}
 .imgc1{
   height: 50%;
   width: 10%;
@@ -539,10 +532,76 @@ button {
   width: 47%;
   display: flex;
   flex-direction: column;
-  font-size: 18px;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
 }
 
-.caixa42 .tituloc2{
+
+.saude2 {
+  height: 100vh;
+  background-color: #8ABC67;
+  color: #e5e5e5;
+}
+
+.caixasaude2 {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.caixa5 {
+  height: 60%;
+  width: 33%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.caixa6 {
+  height: 60%;
+  width: 33%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.caixa7 {
+  height: 60%;
+  width: 33%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.caixa51 {
+  height: 90%;
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+}
+
+.caixa61 {
+  height: 90%;
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+}
+
+.caixa71 {
+  height: 90%;
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+}
+
+.tituloc{
   height: 12%;
   width: 100%;
   display: flex;
@@ -553,18 +612,16 @@ button {
   font-weight: bold;
 }
 
-.imgc2{
-  height: 50%;
-  width: 10%;
-  display: flex;;
+.titulocc{
+  height: 12%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
   align-items: center;
-  margin-left: 1%;
-}
-
-
-.saude2 {
-  height: 100vh;
-  background-color: #DBFFC1;
+  justify-content: center;
+  font-size: 21px;
+  font-weight: bold;
+  margin-top: 6%;
 }
 
 
