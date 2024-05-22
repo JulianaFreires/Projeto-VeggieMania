@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Selecione a carne:
+    <select id="select_carne" type="text">
+        <option>#</option>
+        <option value="1">Carne Bovina</option>
+        <option value="2">Frango</option>
+        <option value="3">Carne de porco</option>
+        <option value="4">Atum Fresco</option>
+        <option value="5">Bacalhau</option>
+        <option value="6">Salsicha</option>
+        <option value="7">Camarão</option>
+    </select>
+
+    Escolha a gramatura:
+    <input id="input_grama" type="number">
+
+    <button onclick="calcular()">Converter</button>
+
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    function calcular() {
+        var grama = input_grama.value
+        var carne = select_carne.value
+        var CarneB = 0.26
+        var Frango = 0.27
+        var CarneP = 0.27
+        var Atum = 0.3855
+        var Bacalhau = 0.24
+        var Salsicha = 0.12
+        var Camarao = 0.24
+
+        var kCarneB = 2.50
+        var kFrango = 2.39
+        var kCarneP = 2.42
+        var kAtum = 1.66
+        var kBacalhau = 1.40
+        var kSalsicha = 3.01
+        var kCamarao = 0.99
+
+        var qtd = 0
+        var kcal = 0
+
+        if (carne == "#" || grama == "e" || grama <= 0) {
+            alert("Preencha todos os campos com valores válidos!")
+
+        } else {
+
+            if (carne == 1) {
+                qtd = CarneB * grama
+                kcal = kCarneB * grama
+
+            } else if (carne == 2) {
+                qtd = Frango * grama
+                kcal = kFrango * grama
+
+            } else if (carne == 3) {
+                qtd = CarneP * grama
+                kcal = kCarneP * grama
+
+            } else if (carne == 4) {
+                qtd = Atum * grama
+                kcal = kAtum * grama
+
+            } else if (carne == 5) {
+                qtd = Bacalhau * grama
+                kcal = kBacalhau * grama
+
+            } else if (carne == 6) {
+                qtd = Salsicha * grama
+                kcal = kSalsicha * grama
+
+            } else if (carne == 7) {
+                qtd = Camarao * grama
+                kcal = kCamarao * grama
+            }
+
+
+                div_mensagem.innerHTML = `${qtd}`
+
+
+
+
+            }
+
+        }
+
+
+</script>

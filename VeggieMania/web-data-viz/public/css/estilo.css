@@ -1,18 +1,124 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@font-face {
+  font-family: Opens;
+  src: url(fonte/OpenSans-Regular.ttf)
+}
+
+@font-face {
+  font-family: Railey;
+  src: url(fonte/Railey-PersonalUse.ttf)
+}
+
+@font-face {
+  font-family: Poppins;
+  src: url(fonte/Poppins-Regular.ttf)
+}
 
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  scroll-behavior: smooth;
+  font-family: Poppins;
   background-color: black;
 }
 
-:root {
-  --tamanho-header: 80px;
-  --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
-  --tamanho-simulador: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
-  --tamanho-login: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
-  --tamanho-footer: 65px;
+.inicio {
+  height: 100vh;
+  background-image: url(img/log.png);
+  display: flex;
+  flex-direction: column;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.header {
+  height: 16%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+}
+
+.header a {
+  text-decoration: none;
+  color: #000000;
+  font-family: Opens;
+  font-size: 23px;
+}
+
+.agora {
+  font-weight: 800;
+}
+
+.acessos ul li.agora {
+  color: #44BB3F;
+}
+
+.containerH {
+  width: 96%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: #89C063;
+  border-radius: 0 0 5vh 5vh;
+}
+
+.caixaH {
+  width: 97%;
+  height: 95%;
+
+}
+
+.navbar {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  color: #000000;
+}
+
+.logo {
+  width: 20%;
+  height: 100%;
+}
+
+.foto {
+  width: 50%;
+  height: 100%;
+  background-image: url(img/logo2.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.acessos {
+  display: flex;
+  width: 70%;
+  height: 100%;
+  justify-content: right;
+  font-size: 20px;
+
+  font-family: OpenSans;
+}
+
+.acessos ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+}
+
+.acessos li {
+  padding-right: 20px;
+
+}
+
+
+.home {
+  flex-grow: 1;
+  /* p-oucpa o resto da div pai */
+  display: flex;
+  flex-direction: row;
 }
 
 .container {
@@ -21,128 +127,13 @@ body {
   margin: auto;
 }
 
-.header {
-  height: var(--tamanho-header);
-  border-bottom: 2px solid #32b9cd;
-}
-
-.header .container {
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
-}
-
-.header a {
-  text-decoration: none;
-  color: #e3b062;
-}
-
-.agora {
-  font-weight: 800;
-}
-
-.navbar {
-  width: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  list-style: none;
-  color: #e3b062;
-}
-
-.titulo {
-  color: #32b9cd;
-  width: fit-content;
-  font-weight: 500;
-}
-
-.header h1 {
-  margin: 0;
-}
-
-/* BANNER */
-
-.banner {
-  height: var(--tamanho-banner);
-  color: white;
-  background-image: url('../assets/imgs/bg-jelly-fish-para-home.png');
-  background-size: cover;
-}
-
-.banner .container {
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
-.banner .container p {
-  width: 50%;
-  margin: 0;
-  padding: 0;
-  font-size: 36px;
-}
-
-.banner .container span {
-  font-weight: 800;
-}
-
-/* MISSÃO VISÃO VALORES */
-
-.social {
-  background-color: #e5e5e5;
-  display: flex;
-}
-
-.social .container {
-  justify-content: center;
-}
-
-.box img {
-  width: 170px;
-}
-
-.social .container .boxes {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  padding: 30px 0;
-}
-
-.social p {
-  text-align: center;
-}
-
-.box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 /* FOOTER */
 
-.footer {
-  background-color: #32b9cd;
-  height: 150px;
-  color: #fff;
-  display: flex;
-  font-size: 15px;
-}
-
-.footer .container {
-  justify-content: center;
-  text-align: center;
-}
-
-.footer .container .version {
-  font-size: 12px;
-}
 
 /* LOGIN */
 
 .login {
   height: var(--tamanho-login);
-  background-image: url('../assets/imgs/bg-jelly-fish-para-home.png');
-  background-size: cover;
 }
 
 .login .container {
@@ -308,11 +299,7 @@ input {
   color: white;
 }
 
-.simulador .container {
-  flex-direction: column;
-  overflow: scroll; 
-  height: var(--tamanho-simulador);
-}
+
 
 /* ALERTA */
 

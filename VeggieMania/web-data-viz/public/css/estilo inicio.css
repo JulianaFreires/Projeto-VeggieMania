@@ -323,7 +323,7 @@ button {
   height: 13%;
   width: 100%;
   text-align: center;
-  font-size: 32px;
+  font-size: 30px;
   font-weight: bold;
 }
 
@@ -337,10 +337,13 @@ button {
 }
 
 .quadro p {
+  height: 80%;
   font-weight: bold;
   font-size: 16px;
-  border: 1px solid black;
+  background-color: white;
   text-align: center;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
 
@@ -364,40 +367,45 @@ button {
 }
 
 .quadrante1 {
-  height: 50%;
+  height: 49%;
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
   text-align: center;
+  margin-bottom: 2%;
+  
 }
 
 .quadrante2 {
-  height: 50%;
+  height: 49%;
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
   text-align: center;
+  margin-bottom: 2%;
 }
 
 
 .quadrante3 {
-  height: 50%;
+  height: 49%;
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
   text-align: center;
+  margin-bottom: 2%;
 }
 
 .quadrante4 {
-  height: 50%;
+  height: 49%;
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
   text-align: center;
+  margin-bottom: 2%;
 }
 
 .imgq {
@@ -418,6 +426,8 @@ button {
   justify-content: center;
   text-align: start;
   margin: 0 2% 0 2%;
+  border: 1px solid black;
+  
 }
 
 
@@ -601,7 +611,7 @@ button {
   flex-direction: column;
 }
 
-.tituloc{
+.tituloc5{
   height: 12%;
   width: 100%;
   display: flex;
@@ -610,10 +620,50 @@ button {
   justify-content: center;
   font-size: 21px;
   font-weight: bold;
-  background-color: #9dce7a;
+  background-color: #ffa735;
+  border-radius: 10px;
+}
+.tituloc4{
+  height: 12%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 21px;
+  font-weight: bold;
+  background-color: #ff3c35;
+  border-radius: 10px;
+  
+}
+.tituloc3{
+  height: 12%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 21px;
+  font-weight: bold;
+  background-color: #e2c626;
+  border-radius: 10px;
+  
+}
+.tituloc2{
+  height: 12%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 21px;
+  font-weight: bold;
+  background-color: rgb(157, 90, 157);
+  border-radius: 10px;
+
 }
 
-.titulocc{
+.tituloc1{
   height: 12%;
   width: 100%;
   display: flex;
@@ -622,7 +672,8 @@ button {
   justify-content: center;
   font-size: 21px;
   font-weight: bold;
-  background-color: #9dce7a;
+  background-color: #66a7ec;
+  border-radius: 10px;
   margin-top: 6%;
 }
 
@@ -660,26 +711,6 @@ button {
   align-items: center;
 }
 
-
-
-/* FOOTER */
-
-.footer {
-  background-color: #32b9cd;
-  height: 150px;
-  color: #fff;
-  display: flex;
-  font-size: 15px;
-}
-
-.footer .container {
-  justify-content: center;
-  text-align: center;
-}
-
-.footer .container .version {
-  font-size: 12px;
-}
 
 /* LOGIN */
 
