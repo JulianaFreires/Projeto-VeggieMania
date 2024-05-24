@@ -312,7 +312,7 @@ button {
 }
 
 .influencia {
-  height: 100%;
+  height: 90%;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -320,7 +320,7 @@ button {
 }
 
 .tituloinflu {
-  height: 13%;
+  height: 19%;
   width: 100%;
   text-align: center;
   font-size: 30px;
@@ -328,7 +328,7 @@ button {
 }
 
 .quadro {
-  height: 85%;
+  height: 89%;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -337,9 +337,9 @@ button {
 }
 
 .quadro p {
-  height: 80%;
+  height: 100%;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 15px;
   background-color: white;
   text-align: center;
   border-top: 1px solid black;
@@ -349,7 +349,7 @@ button {
 
 .quadrantee {
   height: 100%;
-  width: 50%;
+  width: 55%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -373,7 +373,7 @@ button {
   flex-direction: row;
   justify-content: center;
   text-align: center;
-  margin-bottom: 2%;
+  margin-bottom: 3%;
   
 }
 
@@ -384,7 +384,7 @@ button {
   flex-direction: row;
   justify-content: center;
   text-align: center;
-  margin-bottom: 2%;
+  margin-bottom: 3%;
 }
 
 
@@ -395,7 +395,7 @@ button {
   flex-direction: row;
   justify-content: center;
   text-align: center;
-  margin-bottom: 2%;
+  margin-bottom: 3%;
 }
 
 .quadrante4 {
@@ -405,7 +405,7 @@ button {
   flex-direction: row;
   justify-content: center;
   text-align: center;
-  margin-bottom: 2%;
+  margin-bottom: 3%;
 }
 
 .imgq {
@@ -437,11 +437,15 @@ button {
 .saude {
   height: 100vh;
   background-image: url(img/fundosaude.png);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }
 
 .caixasaude {
   height: 100%;
-  width: 100%;
+  width: 93%;
   display: flex;
   flex-direction: column;
   color: #e5e5e5;
@@ -490,7 +494,7 @@ button {
   height: 100%;
   width: 85%;
   text-align: start;
-  font-size: 19px;
+  font-size: 18px;
 }
 
 .imgcaixa2 {
@@ -553,14 +557,18 @@ button {
   height: 100vh;
   background-color: #8ABC67;
   color: #e5e5e5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .caixasaude2 {
   height: 100%;
-  width: 100%;
+  width: 93%;
   display: flex;
   flex-direction: row;
   justify-content: center;
+  margin-top: 3%;
 }
 
 .caixa5 {

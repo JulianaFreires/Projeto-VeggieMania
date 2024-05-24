@@ -24,7 +24,7 @@ body {
 
 .inicio {
   height: 100vh;
-  background-image: url(img/login.png);
+  background-image: url(img/1opcaolog.png);
   display: flex;
   flex-direction: column;
   background-size: cover;
@@ -154,21 +154,8 @@ body {
   height: 100%;
 }
 
-.inicio .card {
-  width: 50%;
-  background-color: #e5e5e5;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  color: palevioletred;
-  font-family: Opens;
-  flex-direction: column;
-  height: fit-content;
-  padding: 20px 0;
-}
 
-.inicio3 .card {
+.card {
   width: 50%;
   background-color: #ffffffa4;
   border-radius: 10px;
@@ -228,23 +215,8 @@ body {
   padding: 5px 0;
 }
 
-.inicio .botao {
-  cursor: pointer;
-  font-family: Opens;
-  border: 0;
-  border-radius: 5px;
-  font-weight: 600;
-  font-size: 18px;
-  color: #fff;
-  background-color:  #e6005a;
-  border: 1px solid black;
-  width: 120px;
-  height: 30px;
-  align-self: center;
-  margin-top: 20px;
-}
 
-.inicio3 .botao {
+ .botao {
   cursor: pointer;
   font-family: Opens;
   border: 0;
