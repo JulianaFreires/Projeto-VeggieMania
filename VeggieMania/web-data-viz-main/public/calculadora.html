@@ -30,11 +30,79 @@
 
 </html>
 <script>
-    listav = ["Lentinha", "Grão de bico", "Soja", "Ervilha", "Ovo", "Tofu", "Quinoa", "Amendoim","Castanha-do-pará", "Castanha de caju", "Pistache", "Feijão preto", "Feijão fradinho", "Feijão branco", "Feijão carioca","Queijo prato","Queijo mussarela","Parmesão", "Cheedar", "Amêndoas","Fava", "Chia", "Linhaça", "teste"]
 
-    listakcal = [0.93, 1.64, 4.46, 0.81, 1.43, 0.64, 1.2, 6.0, 6.43, 5.73, 5.62, 1.32, 0.77, 0.78, 0.64, 0.76, 3.60, 3.30, 4.53, 4.0, 5.76, 1.1, 4.4, 5.3, 3.89]
+const alimentos = [
+    // Cereais (crus)
+    "Aveia em flocos",
+    "Quinua em grãos",
+    "Milho",
+    "Arroz integral",
 
-    listap = [0.06, 0.08, 0.36, 0.05, 0.13, 0.08, 0.04, 0.22, 0.14, 0.10, 0.20, 0.08, 0.04, 0.05, 0.06, 0.48, 0.27, 0.22, 0.35, 0.24, 0.21, 0.07, 0.16, 0.18, 0.17 ]
+    // Leguminosas (cruas)
+    "Ervilha",
+    "Feijão branco",
+    "Lentilha",
+    "Grão-de-bico",
+    "Feijão preto",
+    "Feijão carioca",
+    "Tofu (com sulfato de cálcio)",
+
+    // Oleaginosas
+    "Amêndoa",
+    "Castanha de caju",
+    "Amendoim",
+    "Noz pecã",
+    "Gergelim",
+    "Girassol",
+
+    // Verduras (cruas)
+    "Brócolis",
+    "Agrião",
+    "Mostarda",
+    "Rúcula",
+    "Couve",
+    "Alface lisa",
+    "Escarola",
+
+    // Legumes (crus)
+    "Palmito",
+    "Abobrinha",
+    "Berinjela",
+    "Cenoura",
+    "Chuchu",
+
+    // Frutas (cruas)
+    "Maçã fuji",
+    "Banana prata",
+    "Mamão formosa",
+
+    // Carnes
+    "Sardinhas",
+    "Pescada",
+    "Coxão mole bovino (sem gordura, cozido)",
+    "Músculo bovino (sem gordura, cozido)",
+    "Contra-filé bovino (sem gordura, cru)",
+    "Peito de frango (sem osso, cru)",
+    "Coxa de frango (sem osso, crua)",
+
+    // Leite
+    "Leite de vaca (semidesnatado)",
+    "Leite de vaca (integral)",
+
+    // Queijo
+    "Queijo Prato",
+    "Queijo Mozzarella",
+    "Ricota"
+];
+
+console.log(alimentos);
+
+    
+    listav = []
+
+    listakcal = []
+
+    listap = []
 
     function calcular() {
         div_mensagem.innerHTML = ""
