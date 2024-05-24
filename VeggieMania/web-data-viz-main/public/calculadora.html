@@ -11,13 +11,13 @@
     Selecione a carne:
     <select id="select_carne" type="text">
         <option>#</option>
-        <option value="1">Carne Bovina</option>
-        <option value="2">Frango</option>
-        <option value="3">Carne de porco</option>
-        <option value="4">Atum Fresco</option>
-        <option value="5">Bacalhau</option>
-        <option value="6">Salsicha</option>
-        <option value="7">Camarão</option>
+        <option>Carne Bovina</option>
+        <option>Frango</option>
+        <option>Carne de Porco</option>
+        <option>Atum Fresco</option>
+        <option>Bacalhau</option>
+        <option>Salsicha</option>
+        <option>Camarão</option>
     </select>
 
     Escolha a gramatura:
@@ -30,9 +30,15 @@
 
 </html>
 <script>
-    
+    listav = ["Lentinha", "Grão de bico", "Soja", "Ervilha", "Ovo", "Tofu", "Quinoa", "Amendoim","Castanha-do-pará", "Castanha de caju", "Pistache", "Feijão preto", "Feijão fradinho", "Feijão branco", "Feijão carioca","Queijo prato","Queijo mussarela","Parmesão", "Cheedar", "Amêndoas","Fava", "Chia", "Linhaça", "teste"]
+
+    listakcal = [0.93, 1.64, 4.46, 0.81, 1.43, 0.64, 1.2, 6.0, 6.43, 5.73, 5.62, 1.32, 0.77, 0.78, 0.64, 0.76, 3.60, 3.30, 4.53, 4.0, 5.76, 1.1, 4.4, 5.3, 3.89]
+
+    listap = [0.06, 0.08, 0.36, 0.05, 0.13, 0.08, 0.04, 0.22, 0.14, 0.10, 0.20, 0.08, 0.04, 0.05, 0.06, 0.48, 0.27, 0.22, 0.35, 0.24, 0.21, 0.07, 0.16, 0.18, 0.17 ]
+
     function calcular() {
-        var grama = input_grama.value
+        div_mensagem.innerHTML = ""
+        var grama = Number(input_grama.value)
         var carne = select_carne.value
         var CarneB = 0.26
         var Frango = 0.27
@@ -58,44 +64,69 @@
 
         } else {
 
-            if (carne == 1) {
+            if (carne == "Carne Bovina") {
                 qtd = CarneB * grama
                 kcal = kCarneB * grama
+                pck = qtd/ kcal
 
-            } else if (carne == 2) {
+            } else if (carne == "Frango") {
                 qtd = Frango * grama
                 kcal = kFrango * grama
+                pck = qtd/ kcal
 
-            } else if (carne == 3) {
+            } else if (carne == "Carne de porco") {
                 qtd = CarneP * grama
                 kcal = kCarneP * grama
+                pck = qtd/ kcal
 
-            } else if (carne == 4) {
+            } else if (carne == "Atum Fresco") {
                 qtd = Atum * grama
                 kcal = kAtum * grama
+                pck = qtd/ kcal
 
-            } else if (carne == 5) {
+            } else if (carne == "Bacalhau") {
                 qtd = Bacalhau * grama
                 kcal = kBacalhau * grama
+                pck = qtd/ kcal
 
-            } else if (carne == 6) {
+            } else if (carne == "Salsicha") {
                 qtd = Salsicha * grama
                 kcal = kSalsicha * grama
+                pck = qtd/ kcal
 
-            } else if (carne == 7) {
+            } else if (carne == "Camarão") {
                 qtd = Camarao * grama
                 kcal = kCamarao * grama
+                pck = qtd/ kcal
             }
 
+            div_mensagem.innerHTML += `${grama}g de ${carne} possui ${qtd}g de proteina e ${kcal}kcal - ${pck.toFixed(2)}g de Proteina por kcal<br> <br> Comparando as proteinas com as proteinas dos demais alimentos:<br>`
 
-                div_mensagem.innerHTML = `${qtd}`
+            for(var cont = 0; cont <= listav.length; cont ++){
+
+                var verduras = listav[cont]
+
+                var proteina = listap[cont] * grama
+
+                var kcalv = listakcal[cont] * grama
+
+                var pk = proteina/ kcal
 
 
+                div_mensagem.innerHTML += `${verduras} - Proteina: ${proteina.toFixed(2)} g - Kcal: ${kcalv.toFixed(2)} - ${pk.toFixed(2)}g de Proteina por kcal<br>`
 
+            if(pk > pck){
+                div_mensagem.innerHTML += `Possui mais proteina por por kcal`
+                console.log(pk)
+                console.log(pck)
+
+            }
 
             }
 
         }
+
+    }
 
 
 </script>
