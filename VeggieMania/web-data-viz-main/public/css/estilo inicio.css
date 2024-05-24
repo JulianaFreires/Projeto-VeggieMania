@@ -511,8 +511,15 @@ button {
   align-items: center;
   font-size: 30px;
   font-weight: bold;
-  margin-bottom: 1%;
+  margin-top: 2%;
+  color: white; /* Cor do texto */
+  text-shadow:
+      -1px -1px 1px #424a1c,  
+       1px -1px 1px #424a1c,
+      -1px  1px 1px #424a1c,
+       1px  1px 1px #424a1c;
 }
+
 
 
 .caixah4 {
@@ -568,7 +575,7 @@ button {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-top: 3%;
+  margin-top: 5%;
 }
 
 .caixa5 {

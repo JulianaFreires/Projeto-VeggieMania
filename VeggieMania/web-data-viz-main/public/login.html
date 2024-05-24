@@ -18,65 +18,72 @@
 
     <!--Header-->
 
-    <div class="inicio">
+    <div class="iniciolog">
         <div class="header">
-          <div class="containerH">
-            <div class="caixaH">
-              <div class="navbar">
-                <div class="logo">
-                  <div class="foto">
-                  </div>
+            <div class="containerH">
+                <div class="caixaH">
+                    <div class="navbar">
+                        <div class="logo">
+                            <div class="foto">
+                            </div>
+                        </div>
+                        <div class="acessos">
+                            <ul>
+                                <li><a href="index.html">INICIO</a></li>
+                                <li>|</li>
+                                <li><a href="simulador.html">CALCULADORA</a></li>
+                                <li>|</li>
+                                <li class="agora"><a href="login.html">LOGIN</a></li>
+                                <li>|</li>
+                                <li><a href="cadastro.html">CADASTRO</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div class="acessos">
-                  <ul>
-                    <li><a href="index.html">INICIO</a></li>
-                    <li>|</li>
-                    <li><a href="simulador.html">CALCULADORA</a></li>
-                    <li>|</li>
-                    <li class="agora"><a href="login.html">LOGIN</a></li>
-                    <li>|</li>
-                    <li><a href="cadastro.html">CADASTRO</a></li>
-                  </ul>
-                </div>
-              </div>
             </div>
-          </div>
         </div> <!--header acaba aqui-->
 
 
-    <div class="home">
-        <div class="alerta_erro">
-            <div class="card_erro" id="cardErro">
-                <span id="mensagem_erro"></span>
+        <div class="homelog">
+            <div class="alerta_erro">
+                <div class="card_erro" id="cardErro">
+                    <span id="mensagem_erro"></span>
+                </div>
+            </div>
+            <div class="containerfull">
+                <div class="imglog">
+                </div>
+                <div class="log">
+                    <div class="container">
+                        <div class="card card-login">
+                            <h2>Acesse a sua conta</h2>
+                            <div class="formulario">
+                                <div class="campo">
+                                    <span>E-mail:</span>
+                                    <input id="email_input" type="text" placeholder="Login">
+                                </div>
+                                <div class="campo">
+                                    <span>Senha:</span>
+                                    <input id="senha_input" type="password" placeholder="******">
+                                </div>
+                                <button class="botao" onclick="entrar()">Entrar</button>
+                            </div>
+
+                            <div id="div_aguardar" class="loading-div">
+                                <img src="./assets/circle-loading.gif" id="loading-gif">
+                            </div>
+
+                            <div id="div_erros_login"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="container">
-            <div class="card card-login">
-                <h2>Acesse a sua conta</h2>
-                <div class="formulario">
-                    <div class="campo">
-                        <span>E-mail:</span>
-                        <input id="email_input" type="text" placeholder="Login">
-                    </div>
-                    <div class="campo">
-                        <span>Senha:</span>
-                        <input id="senha_input" type="password" placeholder="******">
-                    </div>
-                    <button class="botao" onclick="entrar()">Entrar</button>
-                </div>
 
-                <div id="div_aguardar" class="loading-div">
-                    <img src="./assets/circle-loading.gif" id="loading-gif">
-                </div>
 
-                <div id="div_erros_login"></div>
-            </div>
-        </div>
-    </div>
+        <!--footer inicio-->
 
-    <!--footer inicio-->
-
-    <!--footer fim-->
+        <!--footer fim-->
 
 </body>
 
