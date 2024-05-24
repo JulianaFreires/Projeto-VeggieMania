@@ -24,7 +24,16 @@ body {
 
 .inicio {
   height: 100vh;
-  background-image: url(img/Captura\ de\ tela\ 2024-05-23\ 151527.png);
+  background-image: url(img/login.png);
+  display: flex;
+  flex-direction: column;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.inicio3 {
+  height: 100vh;
+  background-image: url(img/cadastro.png);
   display: flex;
   flex-direction: column;
   background-size: cover;
@@ -145,7 +154,7 @@ body {
   height: 100%;
 }
 
-.card {
+.inicio .card {
   width: 50%;
   background-color: #e5e5e5;
   border-radius: 10px;
@@ -153,6 +162,22 @@ body {
   align-items: center;
   justify-content: space-evenly;
   color: palevioletred;
+  font-family: Opens;
+  flex-direction: column;
+  height: fit-content;
+  padding: 20px 0;
+}
+
+.inicio3 .card {
+  width: 50%;
+  background-color: #ffffffa4;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-family: Opens;
+  color:  #9ce660;
+  border: 1px solid #89C063;
   flex-direction: column;
   height: fit-content;
   padding: 20px 0;
@@ -180,14 +205,14 @@ body {
 }
 
 .formulario input {
-  border: 2px solid #32b9cd;
+  border: 2px solid #89C063;
   text-align: center;
   border-radius: 10px;
   margin: 0;
 }
 
 .formulario select {
-  border: 2px solid #32b9cd;
+  border: 2px solid #9ce660;
   background-color: white;
   color: gray;
   height: 36px;
@@ -203,15 +228,32 @@ body {
   padding: 5px 0;
 }
 
-.botao {
+.inicio .botao {
   cursor: pointer;
-  font-family: "Barlow", sans-serif;
+  font-family: Opens;
   border: 0;
   border-radius: 5px;
   font-weight: 600;
   font-size: 18px;
   color: #fff;
-  background-color: #e6005a;
+  background-color:  #e6005a;
+  border: 1px solid black;
+  width: 120px;
+  height: 30px;
+  align-self: center;
+  margin-top: 20px;
+}
+
+.inicio3 .botao {
+  cursor: pointer;
+  font-family: Opens;
+  border: 0;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 18px;
+  color: #fff;
+  background-color: #9ce660;
+  border: 1px solid black;
   width: 120px;
   height: 30px;
   align-self: center;
@@ -237,6 +279,10 @@ body {
 .alerta_erro{
   display: flex;
   justify-content: flex-end;
+}
+
+.card-cadastro{
+  margin-top: 3%;
 }
 
 .card_erro {
