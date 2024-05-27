@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Selecione a carne:
+    <select id="select_carne" type="text">
+        <option>#</option>
+      
+    </select>
+
+    Escolha a gramatura:
+    <input id="input_grama" type="number">
+
+    <button onclick="calcular()">Converter</button>
+
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+        var caloria = [3.94, 3.74, 3.65, 3.59];
+
+    var proteina = [0.14, 0.131, 0.0942, 0.080];
+
+    var ferro = [0.0472, 0.0925, 0.0271, 0.01];
+
+    var calcio = [0.54, 0.60, 0.07, 0.07];
+
+    var zinco = [0.0397, 0.033, 0.0221, 0.013];
+    //Cereais
+
+    var nome = ["Aveia em flocos", "Quinoa em grãos", "Milho", "Arroz integral", "Ervilha", "Feijão branco", "Lentilha", "Grão-de-bico", "Feijão preto", "Feijão carioca", "Tofu (com sulfato de cálcio)","Amêndoa", "Castanha de caju", "Amendoim", "Noz pecã", "Gergelim", "Girassol","Brócolis", "Agrião", "Mostarda", "Rúcula", "Couve", "Alface lisa", "Escarola","Palmito", "Abobrinha", "Berinjela", "Cenoura", "Chuchu","Sardinhas", "Pescada", "Coxão mole bovino (sem gordura, cozido)", "Músculo bovino (sem gordura, cozido)", "Contra-filé bovino (sem gordura, cru)", "Peito de frango (sem osso, cru)", "Coxa de frango (sem osso, crua)","Queijo Prato", "Queijo Mozzarella", "Ricota"];
+
+    var caloria = [3.94, 3.74, 3.65, 3.59,3.41, 3.33, 3.47, 3.87, 3.31, 3.36, 0.76,5.78, 5.74, 5.67, 6.91, 5.67, 5.70,0.25, 0.17, 0.26, 0.25, 0.30, 0.14, 0.23,0.285, 0.19, 0.20, 0.34, 0.17, 1.14, 1.11, 2.19, 1.94, 1.57, 1.18, 1.20,3.52, 3.52, 1.74];
+
+    var proteina = [0.14, 0.131, 0.0942, 0.080, 0.2454, 0.2336, 0.23, 0.2238, 0.21, 0.20, 0.08, 0.2126, 0.1531, 0.257, 0.0917, 0.1829, 0.2278, 0.04, 0.03, 0.027, 0.0258, 0.0245, 0.02, 0.017, 0.028, 0.01, 0.01, 0.01, 0.01, 0.21, 0.16, 0.32, 0.31, 0.24, 0.22, 0.18,0.2378, 0.2378, 0.1126];
+
+    var ferro = [0.0472, 0.0925, 0.0271, 0.01, 0.0443, 0.1044, 0.07, 0.0686, 0.065, 0.08, 0.0536, 0.043, 0.060, 0.0458, 0.0253, 0.0778, 0.0673, 0.006, 0.031, 0.014, 0.0146, 0.0019, 0.006, 0.009,0.0313, 0.002, 0.002, 0.002, 0.002, 0.013, 0.002, 0.026, 0.024, 0.024, 0.004, 0.008,0.0043, 0.0044, 0.0038];
+
+    var calcio = [0.54, 0.60, 0.07, 0.07, 0.55, 2.40, 0.54, 1.05, 1.11, 1.23, 3.50, 2.48, 0.45, 0.92, 0.70, 1.31, 1.16,0.86, 1.33, 1.03, 1.60, 1.45, 0.28, 1.00,0.58, 0.15, 0.09, 0.23, 0.12, 1.67, 0.14, 0.04, 0.05, 0.04, 0.07, 0.08, 6.50, 5.05, 2.07];
+
+    var zinco = [0.0397, 0.033, 0.0221, 0.013, 0.0301, 0.0367, 0.035, 0.0281, 0.029, 0.029, 0.008, 0.0336, 0.056, 0.0327, 0.0453, 0.1023, 0.0506, 0.005, 0.007, 0.0022, 0.0047, 0.0013, 0.003, 0.0042, 0.0115, 0.002, 0.001, 0.002, 0.001, 0.013, 0.003, 0.047, 0.064, 0.032, 0.007, 0.022, 0.026, 0.0292, 0.0116];
+
+
+
+
+//  // Leguminosas (cruas)
+
+
+//  var nomeLe = ["Ervilha", "Feijão branco", "Lentilha", "Grão-de-bico", "Feijão preto", "Feijão carioca", "Tofu (com sulfato de cálcio)"];
+
+// var caloriaLe = [3.41, 3.33, 3.47, 3.87, 3.31, 3.36, 0.76];
+
+// var proteinaLe = [0.2454, 0.2336, 0.23, 0.2238, 0.21, 0.20, 0.08];
+
+// var ferroLe = [0.0443, 0.1044, 0.07, 0.0686, 0.065, 0.08, 0.0536];
+
+// var calcioLe = [0.55, 2.40, 0.54, 1.05, 1.11, 1.23, 3.50];
+
+// var zincoLe = [0.0301, 0.0367, 0.035, 0.0281, 0.029, 0.029, 0.008];
+
+
+// // Oleaginosas
+
+// var nomeO = ["Amêndoa", "Castanha de caju", "Amendoim", "Noz pecã", "Gergelim", "Girassol"];
+
+// var caloriaO = [5.78, 5.74, 5.67, 6.91, 5.67, 5.70];
+
+// var proteinaO = [0.2126, 0.1531, 0.257, 0.0917, 0.1829, 0.2278];
+
+// var ferroO = [0.043, 0.060, 0.0458, 0.0253, 0.0778, 0.0673];
+
+// var calcioO = [2.48, 0.45, 0.92, 0.70, 1.31, 1.16];
+
+// var zincoO = [0.0336, 0.056, 0.0327, 0.0453, 0.1023, 0.0506];
+
+
+
+// // Verduras (cruas)
+
+// var nomeV = ["Brócolis", "Agrião", "Mostarda", "Rúcula", "Couve", "Alface lisa", "Escarola"];
+
+// var caloriaV = [0.25, 0.17, 0.26, 0.25, 0.30, 0.14, 0.23];
+
+// var proteinaV = [0.04, 0.03, 0.027, 0.0258, 0.0245, 0.02, 0.017];
+
+// var ferroV = [0.006, 0.031, 0.014, 0.0146, 0.0019, 0.006, 0.009];
+
+// var calcioV = [0.86, 1.33, 1.03, 1.60, 1.45, 0.28, 1.00];
+
+// var zincoV = [0.005, 0.007, 0.0022, 0.0047, 0.0013, 0.003, 0.0042];
+
+
+
+// // Legumes (crus)
+
+// var nome = ["Palmito", "Abobrinha", "Berinjela", "Cenoura", "Chuchu"];
+
+// var caloria = [0.285, 0.19, 0.20, 0.34, 0.17];
+
+// var proteina = [0.028, 0.01, 0.01, 0.01, 0.01];
+
+// var ferro = [0.0313, 0.002, 0.002, 0.002, 0.002];
+
+// var calcio = [0.58, 0.15, 0.09, 0.23, 0.12];
+
+// var zinco = [0.0115, 0.002, 0.001, 0.002, 0.001];
+
+
+// // Carnes
+
+
+// var nomeC = ["Sardinhas", "Pescada", "Coxão mole bovino (sem gordura, cozido)", "Músculo bovino (sem gordura, cozido)", "Contra-filé bovino (sem gordura, cru)", "Peito de frango (sem osso, cru)", "Coxa de frango (sem osso, crua)"];
+
+// var caloriaC = [1.14, 1.11, 2.19, 1.94, 1.57, 1.18, 1.20];
+
+// var proteinaC = [0.21, 0.16, 0.32, 0.31, 0.24, 0.22, 0.18];
+
+// var ferroC = [0.013, 0.002, 0.026, 0.024, 0.024, 0.004, 0.008];
+
+// var calcioC = [1.67, 0.14, 0.04, 0.05, 0.04, 0.07, 0.08];
+
+// var zincoC = [0.013, 0.003, 0.047, 0.064, 0.032, 0.007, 0.022];
+
+
+
+// // Queijo
+
+// var nomeQ = ["Queijo Prato", "Queijo Mozzarella", "Ricota"];
+
+// var caloriaQ = [3.52, 3.52, 1.74];
+
+// var proteinaQ = [0.2378, 0.2378, 0.1126];
+
+// var ferroQ = [0.0043, 0.0044, 0.0038];
+
+// var calcioQ = [6.50, 5.05, 2.07];
+
+// var zincoQ = [0.026, 0.0292, 0.0116];
+
+// // Leite - Bebida
+
+// var nomeB = ["Leite de vaca (semidesnatado)", "Leite de vaca (integral)"];
+
+// var caloriasB = [0.50, 0.64];
+
+// var proteinaB = [0.033, 0.0328];
+
+// var ferroB = [0.0003, 0.0005];
+
+// var calcioB = [1.17, 1.19];
+
+// var zincoB = [0.0043, 0.0038];
+
+
+
+    function calcular() {
+     
+     
+
+        if (carne == "#" || grama == "e" || grama <= 0) {
+            alert("Preencha todos os campos com valores válidos!")
+
+        } else {
+
+            if (carne == "Carne Bovina") {
+                qtd = CarneB * grama
+                kcal = kCarneB * grama
+                pck = qtd / kcal
+
+            } else if (carne == "Frango") {
+                qtd = Frango * grama
+                kcal = kFrango * grama
+                pck = qtd / kcal
+
+            } else if (carne == "Carne de porco") {
+                qtd = CarneP * grama
+                kcal = kCarneP * grama
+                pck = qtd / kcal
+
+            } else if (carne == "Atum Fresco") {
+                qtd = Atum * grama
+                kcal = kAtum * grama
+                pck = qtd / kcal
+
+            } else if (carne == "Bacalhau") {
+                qtd = Bacalhau * grama
+                kcal = kBacalhau * grama
+                pck = qtd / kcal
+
+            } else if (carne == "Salsicha") {
+                qtd = Salsicha * grama
+                kcal = kSalsicha * grama
+                pck = qtd / kcal
+
+            } else if (carne == "Camarão") {
+                qtd = Camarao * grama
+                kcal = kCamarao * grama
+                pck = qtd / kcal
+            }
+
+            div_mensagem.innerHTML += `${grama}g de ${carne} possui ${qtd}g de proteina e ${kcal}kcal - ${pck.toFixed(2)}g de Proteina por kcal<br> <br> Comparando as proteinas com as proteinas dos demais alimentos:<br>`
+
+            for (var cont = 0; cont <= listav.length; cont++) {
+
+                var verduras = listav[cont]
+
+                var proteina = listap[cont] * grama
+
+                var kcalv = listakcal[cont] * grama
+
+                var pk = proteina / kcal
+
+
+                div_mensagem.innerHTML += `${verduras} - Proteina: ${proteina.toFixed(2)} g - Kcal: ${kcalv.toFixed(2)} - ${pk.toFixed(2)}g de Proteina por kcal<br>`
+
+                if (pk > pck) {
+                    div_mensagem.innerHTML += `Possui mais proteina por por kcal`
+                    console.log(pk)
+                    console.log(pck)
+
+                }
+
+            }
+
+        }
+
+    }
+
+
+</script>
