@@ -1,8 +1,7 @@
 var avisoModel = require("../models/avisoModel");
 
 function listar(req, res) {
-    var idCategoria = req.params.idCategoria;
-    avisoModel.listar(idCategoria).then(function (resultado) {
+    avisoModel.listar().then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {

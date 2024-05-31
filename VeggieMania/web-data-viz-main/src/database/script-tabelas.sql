@@ -20,20 +20,27 @@ CREATE TABLE usuario (
 
 );
 
+CREATE TABLE mural (
+idMural INT PRIMARY KEY,
+categoria VARCHAR(45)
+);
+
+
 CREATE TABLE aviso (
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	titulo VARCHAR(100),
 	descricao VARCHAR(150),
 	fk_usuario INT,
-	FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
+    fk_mural INT,
+	FOREIGN KEY (fk_usuario) REFERENCES usuario(id),
+    FOREIGN KEY (fk_mural) REFERENCES mural(idMural)
 );
+
 
 create table aquario (
 /* em nossa regra de negócio, um aquario tem apenas um sensor */
 	id INT PRIMARY KEY AUTO_INCREMENT,
-	descricao VARCHAR(300),
-
-
+	descricao VARCHAR(300)
 );
 
 /* esta tabela deve estar de acordo com o que está em INSERT de sua API do arduino - dat-acqu-ino */
@@ -49,3 +56,9 @@ create table medida (
 	fk_aquario INT,
 	FOREIGN KEY (fk_aquario) REFERENCES aquario(id)
 );
+
+INSERT INTO mural VALUES
+(1, "restaurante"),
+(2, "receita"),
+(3, "moda"),
+(4, "cosmetico");
