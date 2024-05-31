@@ -1,7 +1,8 @@
 var avisoModel = require("../models/avisoModel");
 
 function listar(req, res) {
-    avisoModel.listar().then(function (resultado) {
+
+    avisoModel.listar(1).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -64,6 +65,7 @@ function publicar(req, res) {
     var titulo = req.body.titulo;
     var descricao = req.body.descricao;
     var idUsuario = req.params.idUsuario;
+    var mural = req.body.mural;
 
     if (titulo == undefined) {
         res.status(400).send("O título está indefinido!");
@@ -71,8 +73,10 @@ function publicar(req, res) {
         res.status(400).send("A descrição está indefinido!");
     } else if (idUsuario == undefined) {
         res.status(403).send("O id do usuário está indefinido!");
+    } else if (mural == undefined) {
+        res.status(403).send("O mural está indefinido!");
     } else {
-        avisoModel.publicar(titulo, descricao, idUsuario)
+        avisoModel.publicar(titulo, descricao, idUsuario, mural)
             .then(
                 function (resultado) {
                     res.json(resultado);

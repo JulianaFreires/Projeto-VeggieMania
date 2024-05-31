@@ -149,12 +149,14 @@ function cat1(){
         document.getElementById("form_postagem").reset();
     }
 
-    function publicar() {
+    function publicar(mural) {
         var idUsuario = sessionStorage.ID_USUARIO;
-
+        var mural = 1;
+      
         var corpo = {
             titulo: form_postagem.titulo.value,
-            descricao: form_postagem.descricao.value
+            descricao: form_postagem.descricao.value,
+            mural: mural
         }
 
         fetch(`/avisos/publicar/${idUsuario}`, {
