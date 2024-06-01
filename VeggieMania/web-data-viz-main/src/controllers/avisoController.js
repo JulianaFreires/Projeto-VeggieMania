@@ -15,6 +15,50 @@ function listar(req, res) {
     });
 }
 
+function listar2(req, res) {
+
+    avisoModel.listar2(2).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar os avisos: ", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+function listar3(req, res) {
+
+    avisoModel.listar3(3).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar os avisos: ", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
+
+function listar4(req, res) {
+
+    avisoModel.listar4(4).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar os avisos: ", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
 function listarPorUsuario(req, res) {
     var idUsuario = req.params.idUsuario;
 
@@ -132,6 +176,9 @@ function deletar(req, res) {
 
 module.exports = {
     listar,
+    listar2,
+    listar3,
+    listar4,
     listarPorUsuario,
     pesquisarDescricao,
     publicar,
