@@ -168,6 +168,11 @@
     <div id="div_mensagem"></div>
 
     <script>
+        let totalCalorias = 0;
+        let totalProteinas = 0;
+        let totalFerro = 0;
+        let totalCalcio = 0;
+        let totalZinco = 0;
 
 
         var nome = ["Aveia em flocos", "Quinoa em grãos", "Milho", "Arroz integral", "Ervilha", "Feijão branco", "Lentilha", "Grão-de-bico", "Feijão preto", "Feijão carioca", "Tofu (com sulfato de cálcio)", "Amêndoa", "Castanha de caju", "Amendoim", "Noz pecã", "Gergelim", "Girassol", "Brócolis", "Agrião", "Mostarda", "Rúcula", "Couve", "Alface lisa", "Escarola", "Palmito", "Abobrinha", "Berinjela", "Cenoura", "Chuchu", "Sardinhas", "Pescada", "Coxão mole bovino (sem gordura, cozido)", "Músculo bovino (sem gordura, cozido)", "Contra-filé bovino (sem gordura, cru)", "Peito de frango (sem osso, cru)", "Coxa de frango (sem osso, crua)", "Queijo Prato", "Queijo Mozzarella", "Ricota"];
@@ -183,7 +188,32 @@
         var zinco = [0.0397, 0.033, 0.0221, 0.013, 0.0301, 0.0367, 0.035, 0.0281, 0.029, 0.029, 0.008, 0.0336, 0.056, 0.0327, 0.0453, 0.1023, 0.0506, 0.005, 0.007, 0.0022, 0.0047, 0.0013, 0.003, 0.0042, 0.0115, 0.002, 0.001, 0.002, 0.001, 0.013, 0.003, 0.047, 0.064, 0.032, 0.007, 0.022, 0.026, 0.0292, 0.0116];
 
 
+        window.onload = function() {
+            let checkboxes = document.querySelectorAll('.caixa');
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    criarInput(this);
+                });
+            });
+        };
 
+        function criarInput(checkbox) {
+            if (checkbox.checked) {
+                // Cria um input text com o mesmo id da checkbox
+                let input = document.createElement('input');
+                input.type = 'Number';
+                input.id = 'input_' + checkbox.id;
+                input.placeholder = 'Quantidade em gramas';
+                checkbox.parentElement.appendChild(input);
+               
+            } else {
+                // Remove o input correspondente se a checkbox for desmarcada
+                let input = document.getElementById('input_' + checkbox.id);
+                if (input) {
+                    checkbox.parentElement.removeChild(input);
+                }
+            }
+        }
 
         function calcular() {
             // Seleciona todas as checkboxes com a classe "caixa"
@@ -191,8 +221,7 @@
             let checkboxes = document.querySelectorAll('.caixa');
             let selecionados = [];
             var texto = ""
-            var nomet = nome.length
-
+        
 
             // Itera sobre todas as checkboxes usando um loop for e verifica se estão marcadas
             for (let i = 0; i < checkboxes.length; i++) {
@@ -205,21 +234,45 @@
                     ferrol = ferro[checkboxes[i].value-1]
                     calciol = calcio[checkboxes[i].value-1]
                     zincol = zinco[checkboxes[i].value-1]
+                
+
+                    let quantidade = document.getElementById('input_' + checkboxes[i].id).value;
+
+                    if (quantidade >= 1) {
+                        let idx = checkboxes[i].value - 1;
+
+                        let nomel = nome[idx];
+                        let calorial = (caloria[idx] * quantidade).toFixed(2);
+                        let proteinal = (proteina[idx] * quantidade).toFixed(2);
+                        let ferrol = (ferro[idx] * quantidade).toFixed(2);
+                        let calciol = (calcio[idx] * quantidade).toFixed(2);
+                        let zincol = (zinco[idx] * quantidade).toFixed(2);
+
+
+                        totalCalorias += caloria[idx] * quantidade;
+                        totalProteinas += proteina[idx] * quantidade;
+                        totalFerro += ferro[idx] * quantidade;
+                        totalCalcio += calcio[idx] * quantidade;
+                        totalZinco += zinco[idx] * quantidade;
                    
-                    texto += `${nomel} - Calorias:${calorial} - Proteinas:${proteinal} - Ferro:${ferrol} - Zinco:${zincol}<br>`
+                    texto += `${nomel} - Calorias:${calorial} | Proteinas:${proteinal} | Ferro:${ferrol} | Zinco:${zincol}<br>`
+
+                    }else{
+                        alert(`Selecione valores validos`)
+                    }
                 }
             }
 
-            // Exibe os valores das checkboxes selecionadas
-            if (selecionados.length > 0) {
-                alert('Checkboxes selecionadas com valores: ' + selecionados.join(', '));
 
-            } else {
+            if (selecionados.length <= 0) {
                 alert('Nenhuma checkbox foi selecionada.');
             }
+
          
-            div_mensagem.innerHTML += `${texto}<br>`
+            div_mensagem.innerHTML += `${texto}<br> O prato contém no total: Calorias: ${totalCalorias} - Proteina: ${totalProteinas} - Ferro: ${totalFerro} - Zinco:${totalZinco}`
         }
+
+        
     </script>
 </body>
 
