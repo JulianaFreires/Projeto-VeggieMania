@@ -248,7 +248,7 @@
                         totalCalcio += Number(calciol);
                         totalZinco += Number(zincol);
 
-                        texto += `${nomel} - Calorias:${calorial} | Proteinas:${proteinal} | Ferro:${ferrol} | Zinco:${zincol}<br>`
+                        texto += `${nomel} - Calorias:${calorial} | Proteinas:${proteinal} | Ferro:${ferrol} | Calcio: ${calciol} | Zinco:${zincol}<br>`
 
                     } else {
                         alert(`${nome[checkboxes[i].id]} - Selecione um valor válido na gramatura`)
@@ -268,7 +268,7 @@
             totalZincoFixed = Number(totalZinco).toFixed(2);
 
 
-            div_mensagem.innerHTML += `${texto}<br> O prato contém no total: Calorias: ${totalCaloriasFixed} - Proteina: ${totalProteinasFixed} - Ferro: ${totalFerroFixed} - Zinco:${totalZincoFixed}`
+            div_mensagem.innerHTML += `${texto}<br> O prato contém no total: Calorias: ${totalCaloriasFixed} - Proteina: ${totalProteinasFixed} - Ferro: ${totalFerroFixed} - Calcio: ${calciol}- Zinco:${totalZincoFixed}`
         }
 
 

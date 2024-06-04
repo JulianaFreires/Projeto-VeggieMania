@@ -66,11 +66,11 @@ function calcular() {
             if (quantidade >= 1) {
 
                 nomel = nome[checkboxes[i].id]
-                calorial = Number(caloria[checkboxes[i].id] * quantidade).toFixed(2);
-                proteinal = Number(proteina[checkboxes[i].id] * quantidade).toFixed(2);
-                ferrol = Number(ferro[checkboxes[i].id] * quantidade).toFixed(2);
-                calciol = Number(calcio[checkboxes[i].id] * quantidade).toFixed(2);
-                zincol = Number(zinco[checkboxes[i].id] * quantidade).toFixed(2);
+                calorial = Number(caloria[checkboxes[i].id] * quantidade);
+                proteinal = Number(proteina[checkboxes[i].id] * quantidade);
+                ferrol = Number(ferro[checkboxes[i].id] * quantidade);
+                calciol = Number(calcio[checkboxes[i].id] * quantidade);
+                zincol = Number(zinco[checkboxes[i].id] * quantidade);
 
 
                 totalCalorias += Number(calorial);
@@ -82,7 +82,7 @@ function calcular() {
                 document.querySelector('.resposta').style.display = 'flex';
                 document.getElementById('resul').scrollIntoView({ behavior: 'smooth' });
 
-                texto += `<span>${nomel} - Calorias: ${calorial} | Proteinas: ${proteinal} | Ferro: ${ferrol} | Zinco: ${zincol}<br></span>`
+                texto += `<span>${nomel} - Calorias: ${calorial} | Proteinas: ${proteinal} | Cálcio: ${calciol} | Ferro: ${ferrol} | Zinco: ${zincol}<br></span>`
 
             } else {
                 alert(`${nome[checkboxes[i].id]} - Selecione um valor válido na gramatura`)
@@ -102,5 +102,5 @@ function calcular() {
     totalZincoFixed = Number(totalZinco).toFixed(2);
 
 
-    div_mensagem.innerHTML += `<p>${texto}<br> O prato contém no total: Calorias: ${totalCaloriasFixed} | Proteina: ${totalProteinasFixed} | Ferro: ${totalFerroFixed} | Zinco:${totalZincoFixed}</p>`
+    div_mensagem.innerHTML += `<p>${texto}<br> O prato contém no total: Calorias: ${totalCaloriasFixed} | Proteina: ${totalProteinasFixed} | Cálcio: ${totalCalcioFixed} | Ferro: ${totalFerroFixed} | Zinco:${totalZincoFixed}</p>`
 }
