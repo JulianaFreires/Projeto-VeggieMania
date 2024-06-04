@@ -45,17 +45,17 @@
 
 
         <div class="homelog">
-            <div class="alerta_erro">
-                <div class="card_erro" id="cardErro">
-                    <span id="mensagem_erro"></span>
-                </div>
-            </div>
             <div class="containerfull">
                 <div class="imglog">
                 </div>
                 <div class="log">
                     <div class="container">
                         <div class="card card-login">
+                            <div class="alerta_erro">
+                                <div class="card_erro" id="cardErro">
+                                    <span id="mensagem_erro"></span>
+                                </div>
+                            </div>
                             <h2>Acesse a sua conta</h2>
                             <div class="formulario">
                                 <div class="campo">
@@ -70,7 +70,7 @@
                             </div>
 
                             <div id="div_aguardar" class="loading-div">
-                                <img src="./assets/circle-loading.gif" id="loading-gif">
+                                <img src="css/img/loading-load.gif" id="loading-gif">
                             </div>
 
                             <div id="div_erros_login"></div>
@@ -97,15 +97,32 @@
 
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
+        var indiceEmail = emailVar.indexOf('@');
+        var indiceEmail2 = emailVar.indexOf('.com');
 
         if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
+            cardErro.style.display = "flex"
             mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            setInterval(sumirMensagem, 5000)
             finalizarAguardar();
             return false;
         }
         else {
-            setInterval(sumirMensagem, 5000)
+        }
+
+        
+        temErro = false;
+        
+
+        if (senhaVar == "" || emailVar == "") {
+            buildCardMensagem("block", "erro", "Preencha os campos corretamente", true)
+        }
+        else if (indiceEmail < 0) {
+            buildCardMensagem("block", "erro", "Preencha o email corretamente", true)
+        }
+
+        else if (indiceEmail2 < 0) {
+            buildCardMensagem("block", "erro", "Preencha o email corretamente", true)
         }
 
         console.log("FORM LOGIN: ", emailVar);
