@@ -9,81 +9,74 @@
 
 <body>
     <div id="tudo">
-        <div id="cereais">
-            <h2>Cereais</h2>
+        <div id="frutas">
+            <h2>Frutas</h2>
             <form id="calcForm">
                 <label>
-                    <p><input type="checkbox" class="caixa" value="1" id="0">Aveia em flocos </p>
+                    <p><input type="checkbox" class="caixa" value="1" id="0">Abacate</p>
                 </label>
                 <label>
-                    <p><input type="checkbox" class="caixa" value="2" id="1">Quinoa em grãos</p>
+                    <p><input type="checkbox" class="caixa" value="2" id="1">Abacaxi</p>
                 </label>
                 <label>
-                    <p><input type="checkbox" class="caixa" value="3" id="2">Milho</p>
+                    <p><input type="checkbox" class="caixa" value="3" id="2">Açaí</p>
                 </label>
                 <label>
-                    <p><input type="checkbox" class="caixa" value="4" id="3">Arroz integral</p>
+                    <p><input type="checkbox" class="caixa" value="4" id="3">Banana</p>
+                </label>
+                <label>
+                    <p><input type="checkbox" class="caixa" value="5" id="4">Goiaba</p>
+                </label>
+                <label>
+                    <p><input type="checkbox" class="caixa" value="6" id="5">Kiwi</p>
+                </label>
+                <label>
+                    <p><input type="checkbox" class="caixa" value="7" id="6">Laranja</p>
+                </label>
+                <label>
+                    <p><input type="checkbox" class="caixa" value="8" id="7">Limão</p>
+                </label>
+                <label>
+                    <p><input type="checkbox" class="caixa" value="9" id="8">Maçã</p>
+                </label>
+                <label>
+                    <p><input type="checkbox" class="caixa" value="10" id="9">Mamão</p>
+                </label>
+                <label>
+                    <p><input type="checkbox" class="caixa" value="11" id="10">Manga</p>
+                </label>
+                <label>
+                    <p><input type="checkbox" class="caixa" value="12" id="11">Maracujá</p>
+                </label>
+                <label>
+                    <p><input type="checkbox" class="caixa" value="13" id="12">Melancia</p>
+                </label>
+                <label>
+                    <p><input type="checkbox" class="caixa" value="14" id="13">Melão</p>
+                </label>
+                <label>
+                    <p><input type="checkbox" class="caixa" value="15" id="14">Morango</p>
+                </label>
+                <label>
+                    <p><input type="checkbox" class="caixa" value="16" id="15">Pêra</p>
+                </label>
+                <label>
+                    <p><input type="checkbox" class="caixa" value="17" id="16">Pêssego</p>
+                </label>
+                <label>
+                    <p><input type="checkbox" class="caixa" value="18" id="17">Tangerina</p>
+                </label>
+                <label>
+                    <p><input type="checkbox" class="caixa" value="19" id="18">Uva</p>
                 </label>
             </form>
-        </div>
-        <div id="leguminosas">
-            <h2>Leguminosas</h2>
-            <form id="calcForm">
-                <label>
-                    <p><input type="checkbox" class="caixa" value="5" id="4">Ervilha</p>
-                </label>
-                <label>
-                    <p><input type="checkbox" class="caixa" value="6" id="5">Feijão branco</p>
-                </label>
-                <label>
-                    <p><input type="checkbox" class="caixa" value="7" id="6">Lentilha</p>
-                </label>
-                <label>
-                    <p><input type="checkbox" class="caixa" value="8" id="7">Grão-de-bico</p>
-                </label>
-                <label>
-                    <p><input type="checkbox" class="caixa" value="9" id="8"> Feijão preto</p>
-                </label>
-                <label>
-                    <p><input type="checkbox" class="caixa" value="10" id="9">Feijão carioca</p>
-                </label>
-                <label>
-                    <p><input type="checkbox" class="caixa" value="11" id="10">Tofu (com sulfato de cálcio)</p>
-                </label>
-            </form>
-        </div>
-        <div id="oleaginosas">
-            <h2>Oleaginosas</h2>
-            <form id="calcForm">
-                <label>
-                    <p><input type="checkbox" class="caixa" value="12" id="11">Amêndoa</p>
-                </label>
-                <label>
-                    <p><input type="checkbox" class="caixa" value="13" id="12">Castanha de caju</p>
-                </label>
-                <label>
-                    <p><input type="checkbox" class="caixa" value="14" id="13">Amendoim</p>
-                </label>
-                <label>
-                    <p><input type="checkbox" class="caixa" value="15" id="14">Noz pecã</p>
-                </label>
-                <label>
-                    <p><input type="checkbox" class="caixa" value="16" id="15">Gergelim</p>
-                </label>
-                <label>
-                    <p><input type="checkbox" class="caixa" value="17" id="16">Girassol</p>
-                </label>
-            </form>
+            
+
         </div>
         <div id="verduras">
             <h2>Verduras</h2>
             <form id="calcForm">
-                <label>
-                    <p><input type="checkbox" class="caixa" value="18" id="17">Brócolis</p>
-                </label>
-                <label>
-                    <p><input type="checkbox" class="caixa" value="19" id="18">Agrião</p>
-                </label>
+                
                 <label>
                     <p><input type="checkbox" class="caixa" value="20" id="19">Mostarda</p>
                 </label>
@@ -169,19 +162,61 @@
     <div id="div_mensagem"></div>
 
     <script>
+        let totalCalorias = 0;
+        let totalProteinas = 0;
+        let totalFerro = 0;
+        let totalCalcio = 0;
+        let totalZinco = 0;
 
-        var nome = ["Aveia em flocos", "Quinoa em grãos", "Milho", "Arroz integral", "Ervilha", "Feijão branco", "Lentilha", "Grão-de-bico", "Feijão preto", "Feijão carioca", "Tofu (com sulfato de cálcio)", "Amêndoa", "Castanha de caju", "Amendoim", "Noz pecã", "Gergelim", "Girassol", "Brócolis", "Agrião", "Mostarda", "Rúcula", "Couve", "Alface lisa", "Escarola", "Palmito", "Abobrinha", "Berinjela", "Cenoura", "Chuchu", "Sardinhas", "Pescada", "Coxão mole bovino (sem gordura, cozido)", "Músculo bovino (sem gordura, cozido)", "Contra-filé bovino (sem gordura, cru)", "Peito de frango (sem osso, cru)", "Coxa de frango (sem osso, crua)", "Queijo Prato", "Queijo Mozzarella", "Ricota"];
+       
 
-        var caloria = [3.94, 3.74, 3.65, 3.59, 3.41, 3.33, 3.47, 3.87, 3.31, 3.36, 0.76, 5.78, 5.74, 5.67, 6.91, 5.67, 5.70, 0.25, 0.17, 0.26, 0.25, 0.30, 0.14, 0.23, 0.285, 0.19, 0.20, 0.34, 0.17, 1.14, 1.11, 2.19, 1.94, 1.57, 1.18, 1.20, 3.52, 3.52, 1.74];
 
-        var proteina = [0.14, 0.131, 0.0942, 0.080, 0.2454, 0.2336, 0.23, 0.2238, 0.21, 0.20, 0.08, 0.2126, 0.1531, 0.257, 0.0917, 0.1829, 0.2278, 0.04, 0.03, 0.027, 0.0258, 0.0245, 0.02, 0.017, 0.028, 0.01, 0.01, 0.01, 0.01, 0.21, 0.16, 0.32, 0.31, 0.24, 0.22, 0.18, 0.2378, 0.2378, 0.1126];
+        var frutas = [
+            "Abacate", "Abacaxi", "Açaí", "Banana", "Goiaba", "Kiwi",
+            "Laranja", "Limão", "Maçã", "Mamão", "Manga", "Maracujá",
+            "Melancia", "Melão", "Morango", "Pêra", "Pêssego", "Tangerina", "Uva"
+        ];
 
-        var ferro = [0.0472, 0.0925, 0.0271, 0.01, 0.0443, 0.1044, 0.07, 0.0686, 0.065, 0.08, 0.0536, 0.043, 0.060, 0.0458, 0.0253, 0.0778, 0.0673, 0.006, 0.031, 0.014, 0.0146, 0.0019, 0.006, 0.009, 0.0313, 0.002, 0.002, 0.002, 0.002, 0.013, 0.002, 0.026, 0.024, 0.024, 0.004, 0.008, 0.0043, 0.0044, 0.0038];
+        var calorias = [
+            0.76, 0.5, 0.68, 1.09, 0.5, 0.59, 0.45, 0.22, 0.64, 0.44, 0.64, 0.74, 0.29, 0.24, 0.3, 0.54, 0.42, 0.4, 0.57
+        ];
 
-        var calcio = [0.54, 0.60, 0.07, 0.07, 0.55, 2.40, 0.54, 1.05, 1.11, 1.23, 3.50, 2.48, 0.45, 0.92, 0.70, 1.31, 1.16, 0.86, 1.33, 1.03, 1.60, 1.45, 0.28, 1.00, 0.58, 0.15, 0.09, 0.23, 0.12, 1.67, 0.14, 0.04, 0.05, 0.04, 0.07, 0.08, 6.50, 5.05, 2.07];
+        var carboidrato = [
+            0.0584, 0.116, 0.0766, 0.267, 0.134, 0.127, 0.108, 0.0525, 0.157, 0.107, 0.16, 0.123, 0.0652, 0.057, 0.0654, 0.14, 0.101, 0.0954, 0.137
+        ];
 
-        var zinco = [0.0397, 0.033, 0.0221, 0.013, 0.0301, 0.0367, 0.035, 0.0281, 0.029, 0.029, 0.008, 0.0336, 0.056, 0.0327, 0.0453, 0.1023, 0.0506, 0.005, 0.007, 0.0022, 0.0047, 0.0013, 0.003, 0.0042, 0.0115, 0.002, 0.001, 0.002, 0.001, 0.013, 0.003, 0.047, 0.064, 0.032, 0.007, 0.022, 0.026, 0.0292, 0.0116];
+        var fibraAlimentar = [
+            0.0403, 0.0112, 0.0589, 0.0224, 0.0578, 0.0292, 0.0202, "tr", 0.0207, 0.0183, 0.0214, 0.0114, 0.0013, 0.0122, 0.0167, 0.03, 0.0189, 0.0094, 0.0093
+        ];
 
+        var vitaminaA = [
+            0.0621, 0.02, 0.286, 0.256, 1.06, 0.0542, 0.0296, 0.314, 0.07, 1.15, 2.88, 1.08, 0.61, 0.0167, 0.0893, "tr", 0.47, 0.493, 0.0533
+        ];
+
+        var vitaminaC = [
+            0.0732, 0.331, 0.42, 0.112, 0.899, 0.708, 0.473, 0.328, 0.0195, 0.804, 0.303, 0.198, 0.0494, 0.0697, 0.698, 0.026, 0.0355, 0.488, 0.0258
+        ];
+
+        var magnesio = [
+            0.0765, 0.166, 0.209, 0.31, 0.0875, 0.112, 0.109, 0.0886, 0.153, 0.166, 0.0872, 0.223, 0.0806, 0.0493, 0.11, 0.0595, 0.0697, 0.0773, 0.0604
+        ];
+
+        var fosforo = [
+            0.0834, 0.105, 0.202, 0.23, 0.159, 0.364, 0.202, 0.111, 0.21, 0.108, 0.124, 0.507, 0.0979, 0.0814, 0.288, 0.117, 0.168, 0.125, 0.175
+        ];
+
+        var potassio = [
+            1.74, 1.37, 1.1, 3.46, 2.08, 2.95, 1.59, 1.19, 4.18, 1.73, 1.7, 3.38, 0.836, 1.73, 1.02, 1.09, 1.34, 1.31, 1.6
+        ];
+        console.log(calorias.length)
+        console.log(frutas.length)
+        console.log(potassio.length)
+        console.log(vitaminaA.length)
+        console.log(magnesio.length)
+        console.log(vitaminaC.length)
+        console.log(fosforo.length)
+        console.log(fibraAlimentar.length)
+        console.log(carboidrato)
 
         window.onload = function () {
             let checkboxes = document.querySelectorAll('.caixa');
@@ -195,16 +230,15 @@
         function criarInput(checkbox) {
             if (checkbox.checked) {
                 // Cria um input text com o mesmo id da checkbox
-                var input = document.createElement('input');
+                let input = document.createElement('input');
                 input.type = 'Number';
                 input.id = 'input_' + checkbox.id;
                 input.placeholder = 'Quantidade em gramas';
                 checkbox.parentElement.appendChild(input);
 
-
             } else {
                 // Remove o input correspondente se a checkbox for desmarcada
-                var input = document.getElementById('input_' + checkbox.id);
+                let input = document.getElementById('input_' + checkbox.id);
                 if (input) {
                     checkbox.parentElement.removeChild(input);
                 }
@@ -214,44 +248,46 @@
         function calcular() {
             // Seleciona todas as checkboxes com a classe "caixa"
             div_mensagem.innerHTML = ""
-            var checkboxes = document.querySelectorAll('.caixa');
-            var selecionados = [];
+            let checkboxes = document.querySelectorAll('.caixa');
+            let selecionados = [];
             var texto = ""
-            var totalCalorias = 0;
-            var totalProteinas = 0;
-            var totalFerro = 0;
-            var totalCalcio = 0;
-            var totalZinco = 0;
-
 
             // Itera sobre todas as checkboxes usando um loop for e verifica se estão marcadas
             for (let i = 0; i < checkboxes.length; i++) {
                 if (checkboxes[i].checked) {
+                    selecionados.push(checkboxes[i].value);
 
-                    selecionados.push(checkboxes[i].id);
+                    nomel = nome[checkboxes[i].value - 1]
+                    calorial = caloria[checkboxes[i].value - 1]
+                    proteinal = proteina[checkboxes[i].value - 1]
+                    ferrol = ferro[checkboxes[i].value - 1]
+                    calciol = calcio[checkboxes[i].value - 1]
+                    zincol = zinco[checkboxes[i].value - 1]
 
-                    var quantidade = document.getElementById('input_' + checkboxes[i].id).value;
+
+                    let quantidade = document.getElementById('input_' + checkboxes[i].id).value;
 
                     if (quantidade >= 1) {
+                        let idx = checkboxes[i].value - 1;
 
-                        nomel = nome[checkboxes[i].id]
-                        calorial = Number(caloria[checkboxes[i].id] * quantidade).toFixed(2);
-                        proteinal = Number(proteina[checkboxes[i].id] * quantidade).toFixed(2);
-                        ferrol = Number(ferro[checkboxes[i].id] * quantidade).toFixed(2);
-                        calciol = Number(calcio[checkboxes[i].id] * quantidade).toFixed(2);
-                        zincol = Number(zinco[checkboxes[i].id] * quantidade).toFixed(2);
+                        let nomel = nome[idx];
+                        let calorial = (caloria[idx] * quantidade).toFixed(2);
+                        let proteinal = (proteina[idx] * quantidade).toFixed(2);
+                        let ferrol = (ferro[idx] * quantidade).toFixed(2);
+                        let calciol = (calcio[idx] * quantidade).toFixed(2);
+                        let zincol = (zinco[idx] * quantidade).toFixed(2);
 
 
-                        totalCalorias += Number(calorial);
-                        totalProteinas += Number(proteinal);
-                        totalFerro += Number(ferrol);
-                        totalCalcio += Number(calciol);
-                        totalZinco += Number(zincol);
+                        totalCalorias += caloria[idx] * quantidade;
+                        totalProteinas += proteina[idx] * quantidade;
+                        totalFerro += ferro[idx] * quantidade;
+                        totalCalcio += calcio[idx] * quantidade;
+                        totalZinco += zinco[idx] * quantidade;
 
                         texto += `${nomel} - Calorias:${calorial} | Proteinas:${proteinal} | Ferro:${ferrol} | Zinco:${zincol}<br>`
 
                     } else {
-                        alert(`${nome[checkboxes[i].id]} - Selecione um valor válido na gramatura`)
+                        alert(`Selecione valores validos`)
                     }
                 }
             }
@@ -261,11 +297,11 @@
                 alert('Nenhuma checkbox foi selecionada.');
             }
 
-            totalCaloriasFixed = Number(totalCalorias).toFixed(2);
-            totalProteinasFixed = Number(totalProteinas).toFixed(2);
-            totalFerroFixed = Number(totalFerro).toFixed(2);
-            totalCalcioFixed = Number(totalCalcio).toFixed(2);
-            totalZincoFixed = Number(totalZinco).toFixed(2);
+            var totalCaloriasFixed = totalCalorias.toFixed(2);
+            var totalProteinasFixed = totalProteinas.toFixed(2);
+            var totalFerroFixed = totalFerro.toFixed(2);
+            var totalCalcioFixed = totalCalcio.toFixed(2);
+            var totalZincoFixed = totalZinco.toFixed(2);
 
 
             div_mensagem.innerHTML += `${texto}<br> O prato contém no total: Calorias: ${totalCaloriasFixed} - Proteina: ${totalProteinasFixed} - Ferro: ${totalFerroFixed} - Zinco:${totalZincoFixed}`
