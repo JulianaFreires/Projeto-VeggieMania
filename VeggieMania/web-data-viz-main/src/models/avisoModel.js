@@ -3,20 +3,20 @@ var database = require("../database/config");
 function listar(mural) {
     console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
     var instrucaoSql = `
-        SELECT 
+SELECT 
             a.id AS idAviso,
             a.titulo,
             a.descricao,
-            a.fk_usuario,
             a.fk_mural,
-            u.id AS idUsuario,
+            count(c.fk_aviso) as qtdCurtidas,
+            u.id as idUsuario,
             u.nome,
             u.email,
             u.senha
         FROM aviso a
-            INNER JOIN usuario u
-                ON a.fk_usuario = u.id
-                WHERE a.fk_mural = ${mural};
+             left join curtida c on a.id = c.fk_aviso join usuario u on a.fk_usuario = u.id group by a.id
+             where a.fk_mural = ${mural};
+
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -25,20 +25,20 @@ function listar(mural) {
 function listar2(mural) {
     console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
     var instrucaoSql = `
-        SELECT 
+SELECT 
             a.id AS idAviso,
             a.titulo,
             a.descricao,
-            a.fk_usuario,
             a.fk_mural,
-            u.id AS idUsuario,
+            count(c.fk_aviso) as qtdCurtidas,
+            u.id as idUsuario,
             u.nome,
             u.email,
             u.senha
         FROM aviso a
-            INNER JOIN usuario u
-                ON a.fk_usuario = u.id
-                WHERE a.fk_mural = ${mural};
+             left join curtida c on a.id = c.fk_aviso join usuario u on a.fk_usuario = u.id group by a.id
+             where a.fk_mural = ${mural};
+
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -47,20 +47,20 @@ function listar2(mural) {
 function listar3(mural) {
     console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
     var instrucaoSql = `
-        SELECT 
+SELECT 
             a.id AS idAviso,
             a.titulo,
             a.descricao,
-            a.fk_usuario,
             a.fk_mural,
-            u.id AS idUsuario,
+            count(c.fk_aviso) as qtdCurtidas,
+            u.id as idUsuario,
             u.nome,
             u.email,
             u.senha
         FROM aviso a
-            INNER JOIN usuario u
-                ON a.fk_usuario = u.id
-                WHERE a.fk_mural = ${mural};
+             left join curtida c on a.id = c.fk_aviso join usuario u on a.fk_usuario = u.id group by a.id
+             where a.fk_mural = ${mural};
+
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -69,20 +69,20 @@ function listar3(mural) {
 function listar4(mural) {
     console.log("ACESSEI O AVISO  MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function listar()");
     var instrucaoSql = `
-        SELECT 
+SELECT 
             a.id AS idAviso,
             a.titulo,
             a.descricao,
-            a.fk_usuario,
             a.fk_mural,
-            u.id AS idUsuario,
+            count(c.fk_aviso) as qtdCurtidas,
+            u.id as idUsuario,
             u.nome,
             u.email,
             u.senha
         FROM aviso a
-            INNER JOIN usuario u
-                ON a.fk_usuario = u.id
-                WHERE a.fk_mural = ${mural};
+             left join curtida c on a.id = c.fk_aviso join usuario u on a.fk_usuario = u.id group by a.id
+             where a.fk_mural = ${mural};
+
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -95,7 +95,7 @@ function pesquisarDescricao(texto) {
             a.id AS idAviso,
             a.titulo,
             a.descricao,
-            a.fk_usuario,
+            a.fk_usuario as idUsuario,
             a.fk_mural,
             u.id AS idUsuario,
             u.nome,
@@ -117,7 +117,7 @@ function listarPorUsuario(idUsuario) {
             a.id AS idAviso,
             a.titulo,
             a.descricao,
-            a.fk_usuario,
+            a.fk_usuario as idUsuario,
             a.fk_mural,
             u.id AS idUsuario,
             u.nome,
@@ -159,6 +159,23 @@ function deletar(idAviso) {
     return database.executar(instrucaoSql);
 }
 
+function verificarCurtida(idAviso, idMural, idUsuario) {
+    var instrucaoSql = `SELECT fk_usuario from curtida where fk_aviso = ${idAviso} and fk_mural = ${idMural} and fk_usuario = ${idUsuario};`
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+function curtir(idAviso, idMural, idUsuario, curtido) {
+    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function editar(): ", idAviso, idMural, idUsuario);
+    if (curtido == 0) {
+        var instrucaoSql = `insert into curtida values (${idUsuario}, ${idMural}, ${idAviso});`;
+    } else {
+        var instrucaoSql = `delete from curtida where fk_aviso = ${idAviso} and fk_mural = ${idMural} and fk_usuario = ${idUsuario};`;
+    }
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+
 module.exports = {
     listar,
     listar2,
@@ -168,5 +185,7 @@ module.exports = {
     pesquisarDescricao,
     publicar,
     editar,
-    deletar
+    deletar,
+    verificarCurtida,
+    curtir
 }

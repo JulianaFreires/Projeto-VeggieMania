@@ -41,4 +41,11 @@ router.delete("/deletar/:idAviso", function (req, res) {
     avisoController.deletar(req, res);
 });
 
+router.post("/verificarCurtida", function (req, res) {
+    avisoController.verificarCurtida(req, res);
+});
+
+router.put("/curtir", function (req, res) {
+    avisoController.curtir(req, res);
+});
 module.exports = router;

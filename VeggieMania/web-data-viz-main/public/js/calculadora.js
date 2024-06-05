@@ -66,11 +66,11 @@ function calcular() {
             if (quantidade >= 1) {
 
                 nomel = nome[checkboxes[i].id]
-                calorial = Math.round(caloria[checkboxes[i].id] * quantidade);
-                proteinal = Math.round(proteina[checkboxes[i].id] * quantidade);
-                ferrol = Math.round(ferro[checkboxes[i].id] * quantidade);
-                calciol = Math.round(calcio[checkboxes[i].id] * quantidade);
-                zincol = Math.round(zinco[checkboxes[i].id] * quantidade);
+                calorial = (caloria[checkboxes[i].id] * quantidade);
+                proteinal = (proteina[checkboxes[i].id] * quantidade);
+                ferrol = (ferro[checkboxes[i].id] * quantidade);
+                calciol = (calcio[checkboxes[i].id] * quantidade);
+                zincol = (zinco[checkboxes[i].id] * quantidade);
 
 
                 totalCalorias += Number(calorial);

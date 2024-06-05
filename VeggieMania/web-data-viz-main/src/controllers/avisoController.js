@@ -174,6 +174,49 @@ function deletar(req, res) {
         );
 }
 
+function verificarCurtida(req, res) {
+    var idAviso = req.body.idAviso;
+    var idMural = req.body.idMural;
+    var idUsuario = req.body.idUsuario;
+
+    avisoModel.verificarCurtida(idAviso, idMural, idUsuario)
+        .then(
+            function (resultado) {
+                res.status(200).json(resultado);
+            }
+        )
+        .catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar o post: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+
+}
+
+function curtir(req, res) {
+    var idAviso = req.body.idAviso;
+    var idMural = req.body.idMural;
+    var idUsuario = req.body.idUsuario;
+    var curtido = req.body.curtido;
+
+    avisoModel.curtir(idAviso, idMural, idUsuario, curtido)
+        .then(
+            function (resultado) {
+                res.status(200).json(resultado);
+            }
+        )
+        .catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar o post: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+
+}
+
 module.exports = {
     listar,
     listar2,
@@ -183,5 +226,7 @@ module.exports = {
     pesquisarDescricao,
     publicar,
     editar,
-    deletar
+    deletar,
+    verificarCurtida,
+    curtir
 }
