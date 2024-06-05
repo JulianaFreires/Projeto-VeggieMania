@@ -14,7 +14,7 @@
 
 </head>
 
-<body onload="listar()">
+<body>
   <div class="inicioc">
     <div class="header">
       <div class="containerH">
@@ -42,9 +42,9 @@
     <!--header fim-->
 
     <div class="homec">
-      <div class="alerta_erro">
-        <div class="card_erro" id="cardErro">
-          <span id="mensagem_erro"></span>
+      <div class="alerta_erro2">
+        <div class="card_erro2" id="cardErro2">
+          <span id="mensagem_erro2"></span>
         </div>
       </div>
       <div class="container">
@@ -108,55 +108,70 @@
     var indiceEmail = emailVar.indexOf('@');
     var indiceEmail2 = emailVar.indexOf('.com');
     var tamCPF = cpfVar.length
+    var tamSenha = senhaVar.length
 
     if (
       nomeVar == "" ||
       emailVar == "" ||
       senhaVar == "" ||
       confirmacaoSenhaVar == "" ||
-      cpfVar == ""
+      cpfVar == 0
     ) {
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
+      cardErro2.style.display = "block";
+      mensagem_erro2.innerHTML =
         "Preencha todos os campos";
 
       finalizarAguardar();
       return false;
 
     } else if (senhaVar != confirmacaoSenhaVar) {
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
+      cardErro2.style.display = "block";
+      mensagem_erro2.innerHTML =
         "As senhas devem ser iguais";
-      finalizarAguardar();
-      return false;
-    } else if (indiceEmail < 0) {
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "Este email não é válido";
-      finalizarAguardar();
-      return false;
+        setTimeout(function() {
+            sumirMensagem; finalizarAguardar();
+          }, 3000);
+          return false;
+   
     } else if (indiceEmail2 < 0) {
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
+      cardErro2.style.display = "block";
+      mensagem_erro2.innerHTML =
         "Este email não é válido";
-      finalizarAguardar();
-      return false;
+        setTimeout(function() {
+            sumirMensagem; finalizarAguardar();
+          }, 3000);
+          return false;
+
     } else if (indiceEmail2 < 0) {
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
+      cardErro2.style.display = "block";
+      mensagem_erro2.innerHTML =
         "Este email não é válido";
-      finalizarAguardar();
-      return false;
+        setTimeout(function() {
+            sumirMensagem; finalizarAguardar();
+          }, 3000);
+          return false;
+
     } else if (tamCPF != 11) {
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
+      cardErro2.style.display = "block";
+      mensagem_erro2.innerHTML =
         "O CPF deve ter 11 digitos";
-      finalizarAguardar();
-        return false;
+        setTimeout(function() {
+            sumirMensagem; finalizarAguardar();
+          }, 3000);
+          return false;
+          
+    } else if (tamSenha < 6) {
+      cardErro2.style.display = "block";
+      mensagem_erro2.innerHTML =
+        "A senha deve conter pelo menos 6 caracteres";
+        setTimeout(function() {
+            sumirMensagem; finalizarAguardar();
+          }, 3000);
+          return false;
     } else {
       setInterval(sumirMensagem, 5000);
+       
     }
-
 
 
     // Enviando o valor da nova input
@@ -178,28 +193,28 @@
         console.log(resposta);
 
         if (resposta.ok) {
-          cardErro.style.display = "block";
-
-          mensagem_erro.innerHTML =
-            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-          setTimeout(() => {
-            window.location = "login.html";
-          }, "2000");
-
-          limparFormulario();
-          finalizarAguardar();
-        } else {
-          cardErro.style.display = "block";
-          mensagem_erro.innerHTML =
-          "O Email ou CPF já foi cadastrado";
-          
+          cardErro2.style.display = "block";
+          mensagem_erro2.innerHTML =
+          "Cadastrado com sucesso!";
           setTimeout(function() {
             sumirMensagem; finalizarAguardar();
           }, 3000);
+          window.location = "login.html";
+        
+          limparFormulario();
+          finalizarAguardar();
+        
+        } else {
+          cardErro2.style.display = "block";
+          mensagem_erro2.innerHTML =
+          "O Email ou CPF já foi cadastrado";
+          setTimeout(function() {
+            sumirMensagem; finalizarAguardar();
+          }, 3000);
+          return false;
           
           
-        }})
+        }} )
       .catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
 
@@ -211,6 +226,6 @@
 
 
   function sumirMensagem() {
-    cardErro.style.display = "none";
+    cardErro2.style.display = "none";
   }
 </script>

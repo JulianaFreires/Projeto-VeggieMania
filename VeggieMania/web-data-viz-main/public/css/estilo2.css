@@ -285,17 +285,43 @@ body {
   justify-content: flex-end;
 }
 
+.alerta_erro2{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.card_erro2 {
+  display: none;
+  background-color: #ffffffda;
+  color: black;
+  width: 220px;
+  position: fixed;
+  border-radius: 7px;
+  border: #89C063 3px solid;
+  padding: 9px;
+  margin-right: 8%;
+  font-family: Poppins;
+}
+
+.card_erro2 #mensagem_erro2{
+  font-weight: 500;
+  font-size: 20px;
+}
+
+
 
 .card_erro {
   display: none;
-  background-color: #fff;
+  background-color: #ffffffda;
   color: black;
-  width: 230px;
+  width: 220px;
   position: fixed;
-  border-radius: 4px;
-  border: #e6005a 3px solid;
-  padding: 10px;
-  margin-right: 10%;
+  border-radius: 7px;
+  border: #d0985c 3px solid;
+  padding: 9px;
+  margin-right: 21%;
+  margin-top: 6%;
+  font-family: Poppins;
 }
 
 .card_erro #mensagem_erro{
@@ -329,7 +355,7 @@ input {
   font-size: 18px;
   padding: 10px 15px;
   color: white;
-  background-color: #e6005a;
+  background-color: #89C063;
   width: 120px;
   align-self: center;
   margin-top: 5px;
