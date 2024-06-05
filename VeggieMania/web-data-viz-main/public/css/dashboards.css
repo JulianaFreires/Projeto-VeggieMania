@@ -18,6 +18,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 
+
 body {
   margin: 0;
   padding: 0;
@@ -31,9 +32,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: white;
-  border-radius: 50%;
-  border: 2px solid orange;
 }
 
 .nome {
@@ -61,13 +59,13 @@ body {
   left: -1%;
   z-index: 999;
   height: 100vh;
-  width: 20%;
+  width: 18%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  border-right: 2px solid #cd8732;
-  background-color: hsla(84, 9%, 89%, 0.895);
+  border-right: 2px solid #90c663;
+  background-color: #e5fec4;
 }
 
 .dash-right {
@@ -88,7 +86,7 @@ body {
 }
 
 .hello h3 {
-  color: #e3b062;
+  color: #90c663;
   font-weight: 300;
   font-size: 1.2rem;
 }
@@ -137,15 +135,15 @@ body {
 }
 
 button {
-
   background-color: #ffffff;
   width: 80%;
-  padding: 5%;
-  color: #d59b43;
+  padding: 4%;
+  color: #a4d774;
   font-size: 16px;
   font-weight: bold;
-  border: 2px solid greenyellow;
+  border: 3px solid #aecf80;
   border-radius: 15px;
+  font-family: Opens;
 }
 
 .botaoc {
@@ -159,16 +157,40 @@ button {
 }
 
 .botaoc button {
-  background-color: #ffffff;
   padding: 5%;
-  color: rgb(213, 155, 67);
-  font-size: 15px;
+  font-size: 14px;
   font-weight: bold;
-  border: 2px solid greenyellow;
-  border-radius: 15px;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 13px;
   margin-bottom: 7%;
   margin-top: 9%;
+  color: #ffffff;
   cursor: pointer;
+  font-family: Opens;
+  background-color:  #90c663;
+  color: white ;
+  border: 2px solid white ;
+}
+
+#cateinicial {
+  background-color: #ffffff;
+  width: 80%;
+  padding: 4%;
+  color: #a4d774;
+  font-size: 16px;
+  font-weight: bold;
+  border: 3px solid #aecf80;
+  border-radius: 15px;
+  font-family: Opens;
+ 
+}
+
+#cate{
+  background-color:  #e5fec4 ;
+  border:3px solid #e5fec4;
+  color: #90c663;
+  font-family: Opens;
+  font-size: 19px;
 }
 
 .btn-logout h3 {
@@ -180,9 +202,9 @@ button {
   margin: 0;
   padding: 0;
   width: 22%;
-  background-color: #7fcf50;
-  border: 2px solid rgb(11, 201, 11);
-  color: white;
+  background: linear-gradient(to right, #8fab78, #95be73);
+  border: 3px solid #688f48;
+  color: #fbfff7;
   border-radius: 15px;
   text-align: center;
   padding: 5px 9px;
@@ -300,3 +322,177 @@ button {
   margin-left: 30px;
 }
 
+.iniciot{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.tituloi{
+  width: 100%;
+  height: 13%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Poppins;
+  font-weight: bold;
+  font-size: 23px;
+}
+
+.corpoi{
+  width: 100%;
+  height: 87%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.corpotexto{
+  font-family: Poppins;
+  font-size: 19px;
+  width: 100%;
+  height: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.banners{
+  width: 93%;
+  height: 85%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.besquerdo{
+  width: 50%;
+  height: 94%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+
+.bdireito{
+  width: 50%;
+  height: 94%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction:column;
+}
+.restaurante{
+  width: 87%;
+  height: 45%;
+  display: inline-block;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+  align-items: center;
+  justify-content: center;
+}
+
+.receita{
+  width: 87%;
+  height: 45%;
+  display: inline-block;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+  align-items: center;
+  justify-content: center;
+}
+.cosmetico{
+  width: 87%;
+  height: 45%;
+  display: inline-block;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+  align-items: center;
+  justify-content: center;
+}
+.moda{
+  width: 87%;
+  height: 45%;
+  display: inline-block;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+  align-items: center;
+  justify-content: center;
+}
+
+.restaurante img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease-in-out;
+}
+
+.restaurante:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(248, 55, 104);
+}
+
+.cosmetico img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease-in-out;
+}
+
+.cosmetico:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(63, 159, 167);
+}
+
+.receita img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease-in-out;
+}
+
+.receita:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(251, 196, 75);
+}
+
+.moda img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease-in-out;
+}
+
+.moda:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(57, 94, 175);
+}
+
+.tela{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.telat{
+  width: 100%;
+  height: 18%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Poppins;
+  font-weight: bold;
+  font-size: 26px;
+}
+
+.telag{
+  width: 100%;
+  height: 72%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}

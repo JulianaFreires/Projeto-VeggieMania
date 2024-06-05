@@ -35,7 +35,7 @@
             <div class="containernav">
                 <div class="containerp">
                     <div class="perfil">
-                        a
+                        <img src="../css/img/logo.png" width="100%">
                     </div>
                 </div>
                 <div class="nome">
@@ -47,19 +47,21 @@
                 <div class="containerb">
 
                     <div class="btn-nav-white">
+
+                        <button onclick="inicio()">Inicio</button>
+
+                    </div>
+
+
+                    <div class="btn-nav-white">
                         <button onclick="card()">Tendências</button>
 
                     </div>
 
-                    <div class="btn-nav-white">
-
-                        <button onclick="favoritados()">Favoritados</button>
-
-                    </div>
-
+                   
 
                     <div class="btn-nav-white">
-                        <button onclick="exibir()">Categorias</button>
+                        <button id= "cateinicial" onclick="exibir()">Categorias</button>
                         <div class="botaoc" style="display: none;" id="botoes">
                             <button onclick="cat1()">Restaurantes</button>
                             <button onclick="cat2()">Receitas</button>
@@ -79,15 +81,50 @@
         </div>
 
         <div class="dash-right">
+            <div class="iniciot">
+                <div class="tituloi">
+                    <p>Compartilhe Suas Recomendações: Que Tal Fazer Um Post?</p>
 
-            <div class="dash">
-                <div id="grafico">
+                </div>
+                <div class="corpoi">
+                    <div class="corpotexto">
+                        <p>Está pronto para compartilhar suas dicas incríveis? Escolha uma das quatro categorias: Moda, Restaurante, Receita ou Cosméticos. Todas relacionadas ao veganismo e vegetarianismo. Sua experiência pode inspirar e ajudar outros a seguir um estilo de vida mais consciente. Poste agora e faça a diferença na nossa comunidade!</p>
+                    </div>
+                    <div class="banners">
+                        <div class="besquerdo">
+                            <div class="restaurante">
+                                <a href="mural.html">
+                                    <img src="../css/img/restaurante.png" width="460px">
+                                </a>
+                            </div>
+                            <div class="receita">
+                                <a href="mural2.html">
+                                    <img src="../css/img/receita.png" width="460px">
+                                </a>
+                            </div>
+
+                        </div>
+                        <div class="bdireito">
+                            <div class="cosmetico">
+                                <a href="mural3.html">
+                                    <img src="../css/img/cosmetico.png" width="460px">
+                                </a>
+                            </div>
+                            <div class="moda">
+                                <a href="mural4.html">
+                                    <img src="../css/img/moda.png" width="460px">
+                                </a>
+                            </div>
+                            
+                        </div>
+
+                    </div>
                 </div>
             </div>
-            <p>aaaaaa</p>
+        
         </div>
-    </div>
 
+                
 </body>
 
 </html>
@@ -96,14 +133,24 @@
 
     var cont = 0
 
+    function inicio() {
+
+    window.location = "dashboard.html"
+
+}
+
     function card() {
 
-        window.location = ""
+        window.location = "tendencias.html"
 
     }
 
     function exibir() {
-
+    
+        var botao = document.getElementById("cateinicial");
+        botao.id = "cate";
+        botao.innerText = "Categorias:";
+        
         if (cont == 0) {
 
             botoes.style.display = 'flex'
@@ -112,6 +159,8 @@
             botoes.style.display = 'none'
             cont = 0;
         }
+
+       
     }
 
     function cat1() {

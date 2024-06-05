@@ -35,7 +35,7 @@
             <div class="containernav">
                 <div class="containerp">
                     <div class="perfil">
-                        a
+                        <img src="../css/img/logo.png" width="100%">
                     </div>
                 </div>
                 <div class="nome">
@@ -45,21 +45,22 @@
                 </div>
 
                 <div class="containerb">
+                    <div class="btn-nav-white">
+
+                        <button onclick="inicio()">Inicio</button>
+
+                    </div>
 
                     <div class="btn-nav-white">
                         <button onclick="card()">Tendências</button>
 
                     </div>
 
-                    <div class="btn-nav-white">
-
-                        <button onclick="favoritados()">Favoritados</button>
-
-                    </div>
+                  
 
 
                     <div class="btn-nav-white">
-                        <button onclick="exibir()">Categorias</button>
+                        <button id="cateinicial" onclick="exibir()">Categorias</button>
                         <div class="botaoc" style="display: none;" id="botoes">
                             <button onclick="cat1()">Restaurantes</button>
                             <button onclick="cat2()">Receitas</button>
@@ -80,11 +81,18 @@
 
         <div class="dash-right">
 
-            <div class="dash">
-                <div id="grafico">
+            <div class="tela">
+                <div class="telat">
+                    <p>Gráfico sobre a quantidade de publicações por categoria</p>
+
+                </div>
+                <div class="telag">
+                    <div class="dash">
+                        <div id="grafico">
+                        </div>
+                    </div>
                 </div>
             </div>
-            <p>aaaaaa</p>
         </div>
     </div>
 
@@ -96,13 +104,23 @@
 
     var cont = 0
 
+    function inicio() {
+
+        window.location = "dashboard.html"
+
+    }
+
     function card() {
 
-        window.location = ""
+        window.location = "tendencias.html"
 
     }
 
     function exibir() {
+
+        var botao = document.getElementById("cateinicial");
+        botao.id = "cate";
+        botao.innerText = "Categorias:";
 
         if (cont == 0) {
 
