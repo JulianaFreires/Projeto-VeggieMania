@@ -30,7 +30,7 @@
 
 <body>
 
-    <div class="janela">
+    <div class="janelagraf">
         <div class="header-left">
             <div class="containernav">
                 <div class="containerp">
@@ -64,8 +64,8 @@
                         <div class="botaoc" style="display: none;" id="botoes">
                             <button onclick="cat1()">Restaurantes</button>
                             <button onclick="cat2()">Receitas</button>
-                            <button onclick="cat4()">Moda</button>
-                            <button onclick="cat5()">Cosméticos</button>
+                            <button onclick="cat3()">Moda</button>
+                            <button onclick="cat4()">Cosméticos</button>
                         </div>
                     </div>
                 </div>
@@ -83,13 +83,33 @@
 
             <div class="tela">
                 <div class="telat">
-                    <p>Gráfico sobre a quantidade de publicações por categoria</p>
+                    <p>Tendências de Participação da Comunidade</p>
+                </div>
+                <div class="telat2">
+                    <div class="telaesquerda">
+                        <p>Popularidade</p>
+                    </div>
+                    <div class="teladireita">
+                        <p>Engajamento</p>
+                    </div>
+                </div>
+
+                <div class="telat3">
+                    <div class="telaesquerda">
+                        <label>Quantidade de postagens por categoria</label>
+                    </div>
+                    <div class="teladireita">
+                        <label>Quantidade de curtidas por categoria</label>
+                    </div>
 
                 </div>
+
                 <div class="telag">
-                    <div class="dash">
-                        <div id="grafico">
-                        </div>
+                    <div class="telapost">
+                        <div id="grafico"></div>
+                    </div>
+                    <div class="telacurtida">
+                        <div id="grafico2"></div>
                     </div>
                 </div>
             </div>
@@ -161,14 +181,19 @@
     function exibirPosts() {
         document.getElementById("grafico").innerHTML += `
     
-                    <canvas id="myChartCanvas" style="position: relative; height:49vh; width:49vw"></canvas>
+         <canvas id="myChartCanvas" style="position: relative; height:30vh; width:30vw"></canvas>
 
-                    <canvas id="myChartCanvas2" style="position: relative; height:49vh; width:49vw"></canvas>
-          
+
+    
         `
+        document.getElementById("grafico2").innerHTML += `
+
+        <canvas id="myChartCanvas2" style="position: relative; height:23vh; width:23vw"></canvas>
+
+`
 
         obterDadosGrafico()
-        
+
         curtidasMural()
 
     }
@@ -235,39 +260,75 @@
     // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
     // A função *plotarGrafico* também invoca a função *atualizarGrafico*
     function plotarGrafico(resposta) {
-
-        // Criando estrutura para plotar gráfico - labels
         let labels = [];
 
-        // Criando estrutura para plotar gráfico - dados
         let dados = {
             labels: labels,
             datasets: [{
-                label: 'Quantidade de postagens',
+                label: [],
                 data: [],
-                fill: false,
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                borderColor: 'rgb(142, 208, 111)',
+                backgroundColor: [],
+                borderColor: [],
                 borderWidth: 1,
                 tension: 0.1
             }]
         };
 
-
-        // Inserindo valores recebidos em estrutura para plotar o gráfico
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
             labels.push(registro.categoria);
             dados.datasets[0].data.push(registro.qtdPost);
+
+            let backgroundColor;
+            let borderColor;
+            if (registro.categoria === 'Restaurante') {
+                backgroundColor = 'rgba(248, 55, 104, 0.5)';
+                borderColor = 'rgba(248, 55, 104, 1)';
+            } else if (registro.categoria === 'Receita') {
+                backgroundColor = 'rgba(251, 196, 75, 0.5)';
+                borderColor = 'rgba(251, 196, 75, 1)';
+            } else if (registro.categoria === 'Moda') {
+                backgroundColor = 'rgba(57, 94, 175, 0.5)';
+                borderColor = 'rgba(57, 94, 175, 1)';
+            } else if (registro.categoria === 'Cosmético') {
+                backgroundColor = 'rgba(63, 159, 167, 0.5)';
+                borderColor = 'rgba(63, 159, 167, 1)';
+            } else {
+                backgroundColor = 'rgba(0, 0, 0, 0.5)';
+                borderColor = 'rgba(0, 0, 0, 1)';
+            }
+            dados.datasets[0].backgroundColor.push(backgroundColor);
+            dados.datasets[0].borderColor.push(borderColor);
+
         }
 
-
-        // Criando estrutura para plotar gráfico - config
         const config = {
             type: 'bar',
             data: dados,
-
+            options: {
+                scales: {
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Quantidade de postagens'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: true, // Você pode mudar para true se desejar exibir a legenda
+                        displayColors: false, // Isso remove a caixa de cores da legenda
+                        labels: {
+        usePointStyle: true,
+        boxWidth: 0, // Isso remove a caixa da legenda
+        fontColor: 'transparent' // Isso torna o texto da legenda transparente
+    }
+                    }
+                }
+            }
         };
+
+        
 
         // Adicionando gráfico criado em div na tela
         let myChart = new Chart(
@@ -292,11 +353,11 @@
         let dados = {
             labels: labels,
             datasets: [{
-                label: 'Quantidade de postagens',
+                label: 'Quantidade de curtidas',
                 data: [],
                 fill: false,
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                borderColor: 'rgb(142, 208, 111)',
+                backgroundColor: [],
+                borderColor: [],
                 borderWidth: 1,
                 tension: 0.1
             }]
@@ -308,7 +369,31 @@
             var registro = resposta[i];
             labels.push(registro.categoria);
             dados.datasets[0].data.push(registro.qtdCurtidas);
+
+
+            let backgroundColor;
+            let borderColor;
+            if (registro.categoria === 'Restaurante') {
+                backgroundColor = 'rgba(248, 55, 104, 0.5)';
+                borderColor = 'rgba(248, 55, 104, 1)';
+            } else if (registro.categoria === 'Receita') {
+                backgroundColor = 'rgba(251, 196, 75, 0.5)';
+                borderColor = 'rgba(251, 196, 75, 1)';
+            } else if (registro.categoria === 'Moda') {
+                backgroundColor = 'rgba(57, 94, 175, 0.5)';
+                borderColor = 'rgba(57, 94, 175, 1)';
+            } else if (registro.categoria === 'Cosmético') {
+                backgroundColor = 'rgba(63, 159, 167, 0.5)';
+                borderColor = 'rgba(63, 159, 167, 1)';
+            } else {
+                backgroundColor = 'rgba(0, 0, 0, 0.5)';
+                borderColor = 'rgba(0, 0, 0, 1)';
+            }
+            dados.datasets[0].backgroundColor.push(backgroundColor);
+            dados.datasets[0].borderColor.push(borderColor);
+
         }
+
 
 
         // Criando estrutura para plotar gráfico - config

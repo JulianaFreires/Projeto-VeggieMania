@@ -253,6 +253,7 @@ button {
   width: 90%;
   border: none;
   font-family: Poppins;
+  cursor: default;
 }
 
 
@@ -277,6 +278,7 @@ button {
   border: none;
   background-color: #1F920D;
   font-family: Poppins;
+  cursor: default;
 }
 
 .meioou {
@@ -301,6 +303,7 @@ button {
   border: none;
   background-color: #1A7C6F;
   font-family: Poppins;
+  cursor: default;
 }
 
 
@@ -1211,7 +1214,7 @@ input {
 /*Rodapé*/
 
 .footer {
-  height: 130px;
+  height: 160px;
   background-color: #a9cb9e;
   justify-content: center;
   align-items: center;
@@ -1228,10 +1231,9 @@ input {
 
 .rodape p {
   font-family: Poppins;
-  color: #ffffff;
+  color: #3e6f38;
   font-weight: bold;
-  font-size: 19px;
-  margin-bottom: 7px;
+  font-size: 17px;
 }
 
 .baixo {
@@ -1254,13 +1256,27 @@ input {
 
 }
 
+.quadrante{
+  margin-right: 10%;
+}
+
 .listinha a {
   display: flex;
   justify-content: center;
   align-items: center;
   text-decoration: none;
-  color: #679a4d;
+  color: white;
 
+}
+#duvidas{
+  margin-left: 34%;
+}
+#site{
+  margin-left: 47%;
+}
+#redes{
+  margin-left: 30%;
+  white-space: nowrap;
 }
 
 .listinha img {

@@ -42,11 +42,9 @@ body {
   justify-content: center;
 }
 
-.janelaini {
+.janela {
   display: flex;
-  background-image: url(img/fundoinid.png);
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: white;
 }
 
 .header-left a {
@@ -256,14 +254,13 @@ button {
 .dash-right .avisos .div-form input {
   width: 95%;
   border-radius: 5px;
-  border: 3px solid rgb(131, 173, 83);
-  background-color: white;
+  border: 3px solid  rgba(248, 55, 104);
   
 }
 
 .dash-right .avisos .div-form textarea {
   width: 95%;
-  border: 3px solid  rgb(131, 173, 83);
+  border: 3px solid  rgba(248, 55, 104);
   background-color: white;
   border-radius: 5px;
 }
@@ -277,7 +274,7 @@ button {
   font-size: 18px;
   padding: 10px 15px;
   color: white;
-  background-color:  rgb(131, 173, 83);
+  background-color:  rgba(248, 55, 104);
   width: 120px;
 }
 
@@ -290,7 +287,7 @@ button {
   font-size: 14px;
   padding: 5px 8px;
   color: white;
-  background-color: rgba(251, 196, 75, 1);
+  background-color: rgba(248, 55, 104);
   width: 80px;
 }
 
@@ -301,7 +298,7 @@ button {
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
-  border-bottom: 3px solid rgba(251, 196, 75, 1);
+  border-bottom: 3px solid  rgba(248, 55, 104);
   padding: 20px;
 }
 
@@ -315,7 +312,7 @@ button {
 }
 
 .div-results .feed-container {
-  background-color: rgba(225, 219, 171, 0.819);
+  background-color: rgba(230, 212, 217, 0.725);
   border-radius: 10px;
   margin-bottom: 80px;
 }
@@ -585,8 +582,6 @@ font-size: 19px;
 }
 
 
-
-
 .label {
   display: flex;
   align-items: center;
@@ -633,60 +628,31 @@ button.like path {
   }
 }
 
-.janelaedit{
-  background-image: url(img/edit.png);
+.janelaini{
+  display: flex;
+  background-image: url(img/fundoinid.png);
   background-repeat: no-repeat;
   background-size: cover;
+  font-family: Poppins;
 }
-
 .janelagraf{
+  display: flex;
   background-image: url(img/tendencia.png);
   background-repeat: no-repeat;
   background-size: cover;
+  font-family: Poppins;
 }
 
-
-/* MURAL2 */
-
-.janela3{
+.janela1{
   display: flex;
-  background-image: url(img/modaf.png);
+  background-image: url(img/resta.png);
   background-repeat: no-repeat;
   background-size: cover;
   font-family: Poppins;
 }
 
-.janela2{
-  display: flex;
-  background-image: url(img/r.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  font-family: Poppins;
-}
-
-.tituloc2{
-color: #ffffff;
-font-size: 17px;
-display: flex;
-width: 100%;
-align-items: center;
-text-align: center;
-justify-content: center;
-flex-direction: column;
-}
-
-
-.janela2 label{
+.janela1 label{
   color: #353030;
   font-weight: bold;
   font-size: 16px;
-}
-.janela2 h2{
-  color: #353030;
-  font-size: 30px;
-  }
-.caixac2{
-  width: 80%;
-
-  
 }
