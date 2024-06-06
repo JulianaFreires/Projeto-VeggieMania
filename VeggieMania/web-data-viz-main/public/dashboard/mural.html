@@ -225,7 +225,7 @@
 
     function deletar(idAviso) {
         console.log("Criar função de apagar post escolhido - ID" + idAviso);
-        fetch(`/avisos/deletar/${idAviso}/curtir`, {
+        fetch(`/avisos/deletar/${idAviso}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"
@@ -294,7 +294,8 @@
                         divPublicacao.appendChild(divButtons);
                         feed.appendChild(divPublicacao);
 
-                        if (publicacao.fk_usuario == idUsuario) {
+
+                        if (publicacao.idUsuario == idUsuario) {
                             var btnEditar = document.createElement("button");
                             var btnDeletar = document.createElement("button");
                             btnEditar.innerHTML = "Editar";
@@ -399,6 +400,6 @@
         })
     }
 
-    // Inicialização do feed
-    atualizarFeed();
+
+    
 </script>

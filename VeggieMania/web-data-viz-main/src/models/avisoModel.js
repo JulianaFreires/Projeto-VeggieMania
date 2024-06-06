@@ -14,8 +14,7 @@ SELECT
             u.email,
             u.senha
         FROM aviso a
-             left join curtida c on a.id = c.fk_aviso join usuario u on a.fk_usuario = u.id group by a.id
-             where a.fk_mural = ${mural};
+             left join curtida c on a.id = c.fk_aviso join usuario u on a.fk_usuario = u.id where a.fk_mural = ${mural} group by a.id;
 
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
@@ -36,8 +35,7 @@ SELECT
             u.email,
             u.senha
         FROM aviso a
-             left join curtida c on a.id = c.fk_aviso join usuario u on a.fk_usuario = u.id group by a.id
-             where a.fk_mural = ${mural};
+             left join curtida c on a.id = c.fk_aviso join usuario u on a.fk_usuario = u.id where a.fk_mural = ${mural} group by a.id;
 
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
@@ -58,8 +56,7 @@ SELECT
             u.email,
             u.senha
         FROM aviso a
-             left join curtida c on a.id = c.fk_aviso join usuario u on a.fk_usuario = u.id group by a.id
-             where a.fk_mural = ${mural};
+             left join curtida c on a.id = c.fk_aviso join usuario u on a.fk_usuario = u.id where a.fk_mural = ${mural} group by a.id;
 
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
@@ -80,8 +77,7 @@ SELECT
             u.email,
             u.senha
         FROM aviso a
-             left join curtida c on a.id = c.fk_aviso join usuario u on a.fk_usuario = u.id group by a.id
-             where a.fk_mural = ${mural};
+             left join curtida c on a.id = c.fk_aviso join usuario u on a.fk_usuario = u.id where a.fk_mural = ${mural} group by a.id;
 
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
@@ -164,6 +160,7 @@ function verificarCurtida(idAviso, idMural, idUsuario) {
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
+
 function curtir(idAviso, idMural, idUsuario, curtido) {
     console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function editar(): ", idAviso, idMural, idUsuario);
     if (curtido == 0) {
@@ -171,6 +168,12 @@ function curtir(idAviso, idMural, idUsuario, curtido) {
     } else {
         var instrucaoSql = `delete from curtida where fk_aviso = ${idAviso} and fk_mural = ${idMural} and fk_usuario = ${idUsuario};`;
     }
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function curtidasMural() {
+    var instrucaoSql = `select mural.categoria, count(fk_mural) as qtdCurtidas from curtida join mural on idMural = fk_mural group by mural.categoria;`
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
@@ -187,5 +190,6 @@ module.exports = {
     editar,
     deletar,
     verificarCurtida,
-    curtir
+    curtir,
+    curtidasMural
 }

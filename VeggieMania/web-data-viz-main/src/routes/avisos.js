@@ -48,4 +48,7 @@ router.post("/verificarCurtida", function (req, res) {
 router.put("/curtir", function (req, res) {
     avisoController.curtir(req, res);
 });
+router.get("/curtidasMural", function (req, res) {
+    avisoController.curtidasMural(req, res);
+});
 module.exports = router;
