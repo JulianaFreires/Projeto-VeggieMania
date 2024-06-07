@@ -13,6 +13,10 @@
   src: url(fonte/Poppins-Regular.ttf)
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -544,6 +548,7 @@ button {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  font-weight: 600;
 }
 
 .caixah4 .caixa41 {
@@ -585,6 +590,7 @@ button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-weight: 600;
 }
 
 .caixasaude2 {
@@ -786,7 +792,7 @@ button {
 
 a[target="_blank"] {
   /* Estilos desejados */
-  color: rgba(215, 233, 204, 0.799);      /* Altera a cor do texto */
+  color: rgba(114, 235, 114, 0.799);      /* Altera a cor do texto */
   font-weight: bold; /* Deixa o texto em negrito */
   text-decoration: underline; /* Adiciona sublinhado */
 }
@@ -943,7 +949,7 @@ color: #8ABC67;
 }
 
 #div_mensagem p{
-  color: #57d055;
+  color: #399337;
   padding: 1%;
   font-size: 17px;
   background-color: rgba(201, 237, 177, 0.859);
@@ -1005,43 +1011,6 @@ input {
   font-family: Poppins;
   margin-left: 2%;
 
-}
-
-
-
-
-
-/* MISSÃO VISÃO VALORES */
-
-.social {
-  height: 100vh;
-  background-color: #e5e5e5;
-  display: flex;
-}
-
-.social .container {
-  justify-content: center;
-}
-
-.box img {
-  width: 170px;
-}
-
-.social .container .boxes {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  padding: 30px 0;
-}
-
-.social p {
-  text-align: center;
-}
-
-.box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 
