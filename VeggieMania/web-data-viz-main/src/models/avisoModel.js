@@ -172,11 +172,7 @@ function curtir(idAviso, idMural, idUsuario, curtido) {
     return database.executar(instrucaoSql);
 }
 
-function curtidasMural() {
-    var instrucaoSql = `select mural.categoria, count(fk_mural) as qtdCurtidas from curtida join mural on idMural = fk_mural group by mural.categoria;`
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
-}
+
 
 
 module.exports = {
@@ -190,6 +186,5 @@ module.exports = {
     editar,
     deletar,
     verificarCurtida,
-    curtir,
-    curtidasMural
+    curtir
 }

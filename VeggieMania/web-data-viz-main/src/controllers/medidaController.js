@@ -17,6 +17,25 @@ function nomeMural(req, res) {
 
 }
 
+function curtidasMural(req, res) {
+
+    medidaModel.curtidasMural()
+        .then(
+            function (resultado) {
+                res.status(200).json(resultado);
+            }
+        )
+        .catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar o post: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+
+}
+
 module.exports = {
-    nomeMural
+    nomeMural,
+    curtidasMural
 }

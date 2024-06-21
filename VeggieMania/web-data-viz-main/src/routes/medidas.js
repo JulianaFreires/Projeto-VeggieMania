@@ -7,5 +7,9 @@ router.get("/nomeMural", function (req, res) {
     medidaController.nomeMural(req, res);
 });
 
+router.get("/curtidasMural", function (req, res) {
+    medidaController.curtidasMural(req, res);
+});
+
 
 module.exports = router;

@@ -50,6 +50,7 @@ function cadastrar(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
     var cpf = req.body.cpfServer;
+    var tipo = req.body.tipoServer;
 
     // Faça as validações dos valores
     if (nome == undefined) {
@@ -60,10 +61,12 @@ function cadastrar(req, res) {
         res.status(400).send("Sua senha está undefined!");
     } else if (cpf == undefined) {
         res.status(400).send("Seu cpf está undefined!");
+    } else if (tipo == undefined) {
+        res.status(400).send("Seu tipo de alimentação está undefined!");
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, email, senha, cpf)
+        usuarioModel.cadastrar(nome, email, senha, cpf, tipo)
             .then(
                 function (resultado) {
                     res.json(resultado);
