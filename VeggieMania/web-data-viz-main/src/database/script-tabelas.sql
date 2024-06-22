@@ -9,9 +9,7 @@ CREATE TABLE usuario (
 	email VARCHAR(50) UNIQUE,
 	senha VARCHAR(50),
 	cpf CHAR(11) UNIQUE,
-    tipoAlimentacao VARCHAR(50)
-    
-
+  tipoAlimentacao VARCHAR(50)
 );
 
 CREATE TABLE mural (
@@ -40,6 +38,22 @@ FOREIGN KEY (fk_mural) REFERENCES mural(idMural) on delete cascade,
 FOREIGN KEY (fk_aviso) REFERENCES aviso(id) on delete cascade
 );
 
+CREATE TABLE dieta(
+idDieta INT,
+fk_usuario INT,
+FOREIGN KEY (fk_usuario) REFERENCES usuario(id)
+);
+
+CREATE TABLE refeicao(
+tipoRefeicao INT,
+fk_dieta INT,
+FOREIGN KEY (fk_dieta) REFERENCES dieta(idDieta),
+caloria VARCHAR(50),
+proteina VARCHAR(50),
+calcio VARCHAR(50),
+ferro VARCHAR(50),
+zinco VARCHAR(50)
+);
 
 INSERT INTO mural VALUES
 (1, "Restaurante"),

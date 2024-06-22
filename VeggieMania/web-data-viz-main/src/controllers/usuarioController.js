@@ -51,6 +51,7 @@ function cadastrar(req, res) {
     var senha = req.body.senhaServer;
     var cpf = req.body.cpfServer;
     var tipo = req.body.tipoServer;
+     //20/06 O tipo esta relacionado com o tipo de alimentação que o usúario selecionou no seu cadastro. Recupera o valor do campo 'tipoServer' do formulário de cadastro e o armazena na variável 'tipo'
 
     // Faça as validações dos valores
     if (nome == undefined) {

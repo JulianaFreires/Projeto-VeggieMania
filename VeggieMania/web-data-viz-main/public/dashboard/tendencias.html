@@ -235,6 +235,7 @@
 
 
     function curtidasMural(idMural) {
+        // função para plotar o grafico com a quantidade de curtidas em cada categoria. O fetch nesse caso está fazendo uma requisição para a rota de medidas/curtidasMural para poder retornar o dados para a criação do gráfico
 
         fetch(`/medidas/curtidasMural`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {

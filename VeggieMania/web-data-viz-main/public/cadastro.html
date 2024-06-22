@@ -116,7 +116,7 @@
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
-    var tipoVar = tipo_select.value;
+    var tipoVar = tipo_select.value; //cria uma variavel e obtém o valor do elemento que foi selecionado 20/06
     var cpfVar = cpf_input.value
     var indiceEmail = emailVar.indexOf('@');
     var indiceEmail2 = emailVar.indexOf('.com');
@@ -128,9 +128,10 @@
       emailVar == "" ||
       senhaVar == "" ||
       confirmacaoSenhaVar == "" ||
-      tipoVar == "#" ||
+      tipoVar == "#" || // validação para caso o usúario não selecione nenhuma opção válida no select 20/06
       cpfVar == 0
     ) {
+      //exibe o card de erro com a mensagem
       cardErro2.style.display = "block";
       mensagem_erro2.innerHTML =
         "Preencha todos os campos";
@@ -189,6 +190,8 @@
     }
 
 
+    //Envia uma solicitação POST para a rota /usuarios/cadastrar com os dados do usuário.
+    // faz uma solicitação ao servidor para cadastrar um usuário. O servidor pode responder com sucesso ou com um erro
     // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
       method: "POST",
@@ -196,18 +199,20 @@
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
         // Agora vá para o arquivo routes/usuario.js
         nomeServer: nomeVar,
         emailServer: emailVar,
         senhaServer: senhaVar,
         cpfServer: cpfVar,
-        tipoServer: tipoVar,
+        tipoServer: tipoVar, //tipoServer é uma propriedade do objeto JSON e o tipoVar será o valor que está relacionado com aquilo que o usúario selecionar 20/06
       }),
     })
+
+      // O then lida com a resposta da solicitação.
       .then(function (resposta) {
         console.log(resposta);
 
+        //Se a resposta for bem-sucedida, exibe uma mensagem de sucesso e redireciona para a página de login.
         if (resposta.ok) {
           cardErro2.style.display = "block";
           mensagem_erro2.innerHTML =
@@ -219,7 +224,8 @@
         
           limparFormulario();
           finalizarAguardar();
-        
+        //caso a resposta do servidor não é bem-sucedida 
+        // o servidor faz suas próprias validações e retorna erro. Caso tente cadastrar um email ou o CPF que já foi cadastrado anteriormente no banco de dados será exibido uma mensagem de erro, pois  o CPF e o email são especificados como "unique", ou seja, esse campos devem ser registrados de forma unica e excluisiva para cada usúario.
         } else {
           cardErro2.style.display = "block";
           mensagem_erro2.innerHTML =
@@ -228,6 +234,7 @@
             sumirMensagem(); finalizarAguardar();
           }, 3000);
           return false;
+          // Interrompe a execução da função
           
           
         }} )

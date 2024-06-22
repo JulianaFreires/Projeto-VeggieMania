@@ -12,10 +12,12 @@ function nomeMural() {
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
-
+// Model é responsável por executar uma consulta SQL
 function curtidasMural() {
+  // Define a instrução SQL que seleciona a categoria do mural e conta a quantidade de curtidas por categoria
     var instrucaoSql = `select mural.categoria, count(fk_mural) as qtdCurtidas from curtida join mural on idMural = fk_mural group by mural.categoria;`
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
+// Executa a instrução SQL no banco de dados e retorna os resultados
     return database.executar(instrucaoSql);
 }
 
