@@ -18,11 +18,11 @@ function nomeMural(req, res) {
 }
 
 function curtidasMural(req, res) {
-      // Chama a função curtidasMural do Model para obter dados do banco de dados
+    // Chama a função curtidasMural do Model para obter dados do banco de dados
 
     medidaModel.curtidasMural()
         .then(
-             // Se bem-sucedido, envia os dados no formato JSON
+            // Se bem-sucedido, envia os dados no formato JSON
             function (resultado) {
                 res.status(200).json(resultado);
             }
@@ -38,7 +38,28 @@ function curtidasMural(req, res) {
 
 }
 
+function Ranking(req, res) { // 22/06
+    // Chama a função curtidasMural do Model para obter dados do banco de dados
+
+    medidaModel.Ranking()
+        .then(
+            // Se bem-sucedido, envia os dados no formato JSON
+            function (resultado) {
+                res.status(200).json(resultado);
+            }
+        )
+        .catch(
+            function (erro) {
+                // Em caso de erro, registra no console e envia uma resposta de erro
+                console.log(erro);
+                console.log("Houve um erro ao realizar o post: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+
+}
 module.exports = {
     nomeMural,
-    curtidasMural
+    curtidasMural,
+    Ranking
 }

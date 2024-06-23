@@ -17,7 +17,19 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+body::-webkit-scrollbar {
+  width: 12px;               /* width of the entire scrollbar */
+}
 
+body::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.842);        /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgb(175, 230, 114);    /* color of the scroll thumb */
+  border-radius: 20px;       /* roundness of the scroll thumb */
+  border: 3px solid rgb(118, 166, 98);  /* creates padding around scroll thumb */
+}
 
 body {
   margin: 0;
@@ -484,12 +496,27 @@ button {
 }
 
 .tela{
+  background-color: white;
+  border-radius: 20px 20px 0 0;
   width: 100%;
-  height: 100%;
+  height: 95%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-top: 35px;
+}
+
+.tela2{
+  background-color: white;
+  border-radius: 20px;
+  width: 100%;
+  height: 95%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
 }
 
 .telat{
@@ -636,12 +663,15 @@ button.like path {
   font-family: Poppins;
 }
 .janelagraf{
+  background-color: #FCDE34;
+  height: 100vh;
   display: flex;
-  background-image: url(img/tendencia.png);
-  background-repeat: no-repeat;
+  flex-direction: column;
   background-size: cover;
-  font-family: Poppins;
+  background-repeat: no-repeat;
+  z-index: -2;
 }
+
 
 .janela1{
   display: flex;
@@ -655,4 +685,51 @@ button.like path {
   color: #353030;
   font-weight: bold;
   font-size: 16px;
+}
+
+/*22/06*/
+
+.janelagraf2{
+  background-color:#FCDE34;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: -2;
+}
+
+
+.ranking{
+  background-color: rgb(255, 255, 255);
+  border-radius: 0px 0px 20px 20px;
+  width: 100%;
+  height: 95%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 3%;
+
+}
+
+h1 {
+  text-align: center;
+}
+
+table {
+  width: 70%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  background-color: #e8f4e5; 
+  border: 1px solid #d2d2d2; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}
+
+th, td {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid rgb(167, 169, 164);
+}
+
+tr:hover {
+  background-color: #dadada;
 }

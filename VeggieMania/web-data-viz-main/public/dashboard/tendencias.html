@@ -10,7 +10,7 @@
 
 
     <link rel="stylesheet" href="./../css/dashboards1.css">
-    <link rel="stylesheet" href="./../css/estilo2.css" />
+
     <script src="../js/sessao.js"></script>
     <script src="./../js/alerta.js"></script>
 
@@ -29,7 +29,6 @@
 <!-- <body onload=" atualizarFeed()"> -->
 
 <body>
-
     <div class="janelagraf">
         <div class="header-left">
             <div class="containernav">
@@ -81,6 +80,7 @@
 
         <div class="dash-right">
 
+
             <div class="tela">
                 <div class="telat">
                     <p>Tendências de Participação da Comunidade</p>
@@ -115,12 +115,80 @@
             </div>
         </div>
     </div>
+    <div class="janelagraf2">
+        <div class="dash-right">
+            <div class="ranking">
+                <div class="telat">
+                    <h3>Ranking de Tipos de Alimentação</h3>
+                </div>
+                <table id="table">
+                    <thead>
+                        <tr>  <!-- titulo do cabeçalho, primeira linha -->
+                            <th>Tipo de Alimentação</th>  <!-- cabeçalho da primeira coluna -->
+                            <th>Quantidade de Usuários</th> <!-- cabeçalho da segunda coluna -->
+                        </tr>
+                    </thead>
+                    <tbody id="ranking">
+                          <!--  corpo da tabela ou seja é a parte do ranking -->
+                        <!-- as linhas da tabela serão adicionadas dinamicamente pelo JavaScript -->
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+
+    </div>
+
 
 </body>
 
 </html>
 
 <script>
+
+    function Ranking() {
+
+        const tabela = document.getElementById('ranking'); // 22/06    // Obtém a referência para o corpo da tabela onde as linhas serão inseridas dinamicamente
+
+        // Realiza uma requisição GET para obter os dados do ranking do servidor com base no formulário de cadastro do site
+        fetch('/medidas/Ranking', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then(response => {
+                 // Verifica
+                if (!response.ok) {
+                    throw new Error('Erro ao obter os dados do ranking');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Limpa o conteúdo atual do tbody
+                tabela.innerHTML = '';
+
+                // Loop pelos dados e criar as linhas da tabela
+                //o tr define uma linha em uma tabela
+                //o td cria uma célula da linha da tabela, ou seja, na horizontal.
+                data.forEach(item => {
+                    const linha = `<tr> 
+                            <td>${item.tipoAlimentacao}</td> 
+                            <td>${item.Qtd_Usuario}</td>
+                        </tr>`;
+                    tabela.innerHTML += linha;
+                });
+            })
+            .catch(error => {
+                console.error('Erro na requisição do ranking', error);
+            });
+
+        return false;
+    }
+
+    // Chama a função para carregar o ranking ao carregar a página
+    document.addEventListener('DOMContentLoaded', Ranking);
 
     var cont = 0
 
@@ -260,6 +328,7 @@
     // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
     // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
     // A função *plotarGrafico* também invoca a função *atualizarGrafico*
+
     function plotarGrafico(resposta) {
         let labels = [];
 
@@ -320,16 +389,16 @@
                         display: true, // Você pode mudar para true se desejar exibir a legenda
                         displayColors: false, // Isso remove a caixa de cores da legenda
                         labels: {
-        usePointStyle: true,
-        boxWidth: 0, // Isso remove a caixa da legenda
-        fontColor: 'transparent' // Isso torna o texto da legenda transparente
-    }
+                            usePointStyle: true,
+                            boxWidth: 0, // Isso remove a caixa da legenda
+                            fontColor: 'transparent' // Isso torna o texto da legenda transparente
+                        }
                     }
                 }
             }
         };
 
-        
+
 
         // Adicionando gráfico criado em div na tela
         let myChart = new Chart(
@@ -409,9 +478,6 @@
             document.getElementById(`myChartCanvas2`),
             config
         );
-
-
-
 
     }
 

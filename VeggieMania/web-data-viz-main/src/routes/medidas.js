@@ -16,5 +16,9 @@ router.get("/curtidasMural", function (req, res) {
     medidaController.curtidasMural(req, res);
 });
 
+router.get("/Ranking", function (req, res) {
+    medidaController.Ranking(req, res);
+}); // 22/06
+
 
 module.exports = router;
