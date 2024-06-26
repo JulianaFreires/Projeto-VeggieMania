@@ -10,7 +10,7 @@
 
 
     <link rel="stylesheet" href="./../css/dashboards1.css">
-    <link rel="stylesheet" href="./../css/estilo.css" />
+
     <script src="../js/sessao.js"></script>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -52,6 +52,12 @@
 
                     </div>
 
+                    
+                    <div class="btn-nav-white">
+                        <button onclick="dieta()">Dieta</button>
+
+                    </div>
+
 
 
 
@@ -75,27 +81,27 @@
 
         </div>
 
-        <div class="dash-right">
+        <div class="dash-rightE">
 
             <div class="avisos">
                 <div class="container">
-                    <h1>Editar Post</h1>
+                    <h1 style="color: rgb(79, 83, 79);">Editar Post</h1>
                     <div class="div-form">
                         <label>
                             ID:
                             <br>
-                            <input id="input_id" maxlength="100" type="text" style="color: rgb(165, 158, 158)" placeholder="Não pode ser editado" disabled>
+                            <input id="input_id" maxlength="100" type="text" placeholder="Não pode ser editado" disabled>
                         </label>
                         <label>
                             Autor:
                             <br>
-                            <input id="input_nome" maxlength="100" type="text" style="color: rgb(165, 158, 158)" placeholder="Não pode ser editado"
+                            <input id="input_nome" maxlength="100" type="text"  placeholder="Não pode ser editado"
                                 disabled>
                         </label>
                         <label>
                             Título:
                             <br>
-                            <input id="input_titulo" maxlength="100" type="text" style="color: rgb(165, 158, 158)" placeholder="Não pode ser editado"
+                            <input id="input_titulo" maxlength="100" type="text" placeholder="Não pode ser editado"
                                 disabled>
                         </label>
                         <br>
@@ -190,6 +196,10 @@
     function cat4() {
         window.location = "mural4.html"
 
+    }
+
+    function dieta(){
+        window.location = "dieta.html"
     }
 
 

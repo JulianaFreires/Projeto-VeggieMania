@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VeggieMania | Restaurantes</title>
 
-    <link rel="stylesheet" href="./../css/dashboards4.css">
+    <link rel="stylesheet" href="./../css/dashboards1.css">
     <link rel="stylesheet" href="./../css/estilo.css" />
     <script src="../js/sessao.js"></script>
     <script src="./../js/alerta.js"></script>
@@ -50,6 +50,11 @@
 
                     </div>
 
+                    <div class="btn-nav-white">
+                        <button onclick="dieta()">Dieta</button>
+
+                    </div>
+
                    
 
                     <div class="btn-nav-white">
@@ -72,7 +77,7 @@
 
         </div>
 
-        <div class="dash-right">
+        <div class="dash-right4">
 
 
             <div class="avisos">
@@ -100,7 +105,7 @@
                         </form>
                     </div>
                     <h1>Posts</h1>
-                    <div class="div-results">
+                    <div class="div-results4">
                         <div id="feed_container" class="feed-container">
                         </div>
                     </div>
@@ -162,6 +167,10 @@
     function cat4() {
         window.location = "mural4.html"
 
+    }
+
+    function dieta(){
+        window.location = "dieta.html"
     }
 
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
@@ -273,11 +282,11 @@
                         divDescricao.innerHTML = "Descrição: <b>" + publicacao.descricao + "</b>";
 
 
-                        divPublicacao.className = "publicacao";
+                        divPublicacao.className = "publicacao4";
                         spanTitulo.id = "inputNumero" + publicacao.idAviso;
-                        spanNome.className = "publicacao-nome";
-                        spanTitulo.className = "publicacao-titulo";
-                        divDescricao.className = "publicacao-descricao";
+                        spanNome.className = "publicacao4-nome";
+                        spanTitulo.className = "publicacao4-titulo";
+                        divDescricao.className = "publicacao4-descricao";
 
                         divButtons.className = "div-buttons"
 
@@ -294,11 +303,11 @@
                             var btnDeletar = document.createElement("button");
                             btnEditar.innerHTML = "Editar";
                             btnDeletar.innerHTML = "Deletar";
-                            btnEditar.className = "publicacao-btn-editar"
+                            btnEditar.className = "publicacao-btn-editar4"
                             btnEditar.id = "btnEditar" + publicacao.idAviso;
                             btnEditar.setAttribute("onclick", `editar(${publicacao.idAviso})`);
 
-                            btnDeletar.className = "publicacao-btn-editar"
+                            btnDeletar.className = "publicacao-btn-editar4"
                             btnDeletar.id = "btnDeletar" + publicacao.idAviso;
                             btnDeletar.setAttribute("onclick", `deletar(${publicacao.idAviso})`);
 
@@ -318,7 +327,7 @@
                     <div class="number" id="number-${publicacao.idAviso}">${publicacao.qtdCurtidas}</div>`;
 
                         btnCurtir.id = "btnCurtir" + publicacao.idAviso;
-                        btnCurtir.className += " publicacao-btn-editar";
+                        btnCurtir.className += " publicacao-btn-editar4";
                         btnCurtir.setAttribute("onclick", `Curtir(${publicacao.idAviso})`);
                         divButtons.appendChild(btnCurtir);
 
