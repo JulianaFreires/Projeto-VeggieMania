@@ -11,7 +11,8 @@
 
     <link rel="stylesheet" href="./../css/dashboards1.css">
 
-    <script src="calctest.js"></script>
+
+    <script src="../js/calctest.js"></script>
 
 
 <body>
@@ -42,7 +43,7 @@
                     </div>
 
                     <div class="btn-nav-white">
-                        <button onclick="card()">Dieta</button>
+                        <button onclick="dieta()">Dieta</button>
 
                     </div>
 
@@ -68,28 +69,30 @@
         </div>
 
         <div class="dash-right">
-
-
             <div class="cal2">
                 <div class="tudo2">
-                    <div class="pcima">
+                    <div class="pcima"><!-- 27/06 foram adicionados 25 alimentos em relação a primeira versão da calculadora, os queijos foram adicionados aos laticinios, alimentos como semente de girassol e nutella foram removidos-->
                         <div class="cereais">
                             <h2>Cereais</h2>
                             <form id="calcForm">
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="1" id="0">Aveia em flocos</p>
+                                    <p><input type="checkbox" class="caixa" value="Aveia em flocos" id="0">Aveia em
+                                        flocos</p> 
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="2" id="1">Quinoa em grãos</p>
+                                    <p><input type="checkbox" class="caixa" value="Quinoa em grãos" id="1">Quinoa em
+                                        grãos</p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="3" id="2">Milho</p>
+                                    <p><input type="checkbox" class="caixa" value="Milho em lata" id="2">Milho em lata
+                                    </p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="4" id="3">Arroz integral</p>
+                                    <p><input type="checkbox" class="caixa" value="Arroz integral" id="3">Arroz integral
+                                    </p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="5" id="4">Arroz Branco</p>
+                                    <p><input type="checkbox" class="caixa" value="Arroz Branco" id="4">Arroz Branco</p>
                                 </label>
                             </form>
                         </div>
@@ -97,26 +100,28 @@
                             <h2>Leguminosas</h2>
                             <form id="calcForm">
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="6" id="5">Ervilha</p>
+                                    <p><input type="checkbox" class="caixa" value="Ervilha em lata" id="5">Ervilha em
+                                        lata</p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="7" id="6">Feijão branco</p>
+                                    <p><input type="checkbox" class="caixa" value="Feijão branco" id="6">Feijão branco
+                                    </p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="8" id="7">Lentilha</p>
+                                    <p><input type="checkbox" class="caixa" value="Lentilha" id="7">Lentilha</p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="9" id="8">Grão-de-bico</p>
+                                    <p><input type="checkbox" class="caixa" value="Grão-de-bico" id="8">Grão-de-bico</p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="10" id="9">Feijão preto</p>
+                                    <p><input type="checkbox" class="caixa" value="Feijão preto" id="9">Feijão preto</p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="11" id="10">Feijão carioca</p>
+                                    <p><input type="checkbox" class="caixa" value="Feijão carioca" id="10">Feijão
+                                        carioca</p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="12" id="11">Tofu (com sulfato de
-                                        cálcio)</p>
+                                    <p><input type="checkbox" class="caixa" value="Tofu" id="11">Tofu</p>
                                 </label>
                             </form>
                         </div>
@@ -124,22 +129,26 @@
                             <h2>Oleaginosas</h2>
                             <form id="calcForm">
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="13" id="12">Amêndoa</p>
+                                    <p><input type="checkbox" class="caixa" value="Amêndoa torrada" id="12">Amêndoa
+                                        torrada</p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="14" id="13">Castanha de caju</p>
+                                    <p><input type="checkbox" class="caixa" value="Castanha de caju" id="13">Castanha de
+                                        caju</p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="15" id="14">Amendoim</p>
+                                    <p><input type="checkbox" class="caixa" value="Amendoim torrado" id="14">Amendoim
+                                        torrado</p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="16" id="15">Noz pecã</p>
+                                    <p><input type="checkbox" class="caixa" value="Noz pecã" id="15">Noz pecã</p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="17" id="16">Gergelim</p>
+                                    <p><input type="checkbox" class="caixa" value="Gergelim" id="16">Gergelim</p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="18" id="17">Semente de Girassol</p>
+                                    <p><input type="checkbox" class="caixa" value="Pasta de amendoim" id="17">Pasta de
+                                        amendoim</p>
                                 </label>
                             </form>
                         </div>
@@ -147,25 +156,34 @@
                             <h2>Verduras</h2>
                             <form id="calcForm">
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="19" id="18">Brócolis</p>
+                                    <p><input type="checkbox" class="caixa" value="Brócolis" id="18">Brócolis</p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="20" id="19">Agrião</p>
+                                    <p><input type="checkbox" class="caixa" value="Agrião" id="19">Agrião</p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="21" id="20">Mostarda</p>
+                                    <p><input type="checkbox" class="caixa" value="Mostarda de folha" id="20">Mostarda
+                                        de folha</p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="22" id="21">Rúcula</p>
+                                    <p><input type="checkbox" class="caixa" value="Rúcula" id="21">Rúcula</p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="23" id="22">Couve</p>
+                                    <p><input type="checkbox" class="caixa" value="Couve manteiga (refogada)"
+                                            id="22">Couve manteiga (refogada)</p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="24" id="23">Alface lisa</p>
+                                    <p><input type="checkbox" class="caixa" value="Alface lisa" id="23">Alface lisa</p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="25" id="24">Escarola</p>
+                                    <p><input type="checkbox" class="caixa" value="Espinafre (refogada)"
+                                            id="24">Espinafre (refogada)</p> <!--27/06 -->
+                                </label>
+                                <label>
+                                    <p><input type="checkbox" class="caixa" value="Couve-flor" id="25">Couve-flor</p><!--27/06 -->
+                                </label>
+                                <label>
+                                    <p><input type="checkbox" class="caixa" value="Escarola" id="26">Escarola</p><!--27/06 -->
                                 </label>
                             </form>
                         </div>
@@ -173,171 +191,200 @@
                             <h2>Legumes</h2>
                             <form id="calcForm">
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="26" id="25">Palmito</p>
+                                    <p><input type="checkbox" class="caixa" value="Palmito pupunha" id="27">Palmito
+                                        pupunha</p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="27" id="26">Abobrinha</p>
+                                    <p><input type="checkbox" class="caixa" value="Abobrinha" id="28">Abobrinha</p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="28" id="27">Berinjela</p>
+                                    <p><input type="checkbox" class="caixa" value="Berinjela" id="29">Berinjela</p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="29" id="28">Cenoura</p>
+                                    <p><input type="checkbox" class="caixa" value="Cenoura" id="30">Cenoura</p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="30" id="29">Chuchu</p>
+                                    <p><input type="checkbox" class="caixa" value="Abóbora cabotiá" id="31">Abóbora<!--27/06 -->
+                                        cabotiá</p>
+                                </label>
+                                <label>
+                                    <p><input type="checkbox" class="caixa" value="Chuchu" id="32">Chuchu</p>
                                 </label>
                             </form>
                         </div>
-                        <div id="carnes">
-                            <h2>Carnes</h2>
+                        <div id="Proteina animal">
+                            <h2>Proteína animal</h2>
                             <form id="calcForm">
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="31" id="30">Sardinhas</p>
+                                    <p><input type="checkbox" class="caixa" value="Sardinhas em lata" id="33">Sardinhas
+                                        em lata</p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="32" id="31">Pescada</p>
+                                    <p><input type="checkbox" class="caixa" value="Pescada (frita)" id="34">Pescada
+                                        (frita)</p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="33" id="32">Coxão mole bovino (sem
-                                        gordura, cozido)</p>
+                                    <p><input type="checkbox" class="caixa"
+                                            value="Coxão mole bovino (sem gordura, cozido)" id="35">Coxão mole bovino
+                                        (sem gordura, cozido)</p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="34" id="33">Músculo bovino (sem
-                                        gordura, cozido)</p>
+                                    <p><input type="checkbox" class="caixa" value="Músculo bovino (sem gordura, cozido)"
+                                            id="36">Músculo bovino (sem gordura, cozido)</p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="35" id="34">Contra-filé bovino (sem
-                                        gordura, cru)</p>
+                                    <p><input type="checkbox" class="caixa"
+                                            value="Contra-filé bovino (sem gordura, grelhado)" id="37">Contra-filé
+                                        bovino (sem gordura, grelhado)</p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="36" id="35">Peito de frango (sem
-                                        osso, cru)</p>
+                                    <p><input type="checkbox" class="caixa" value="Peito de frango (sem osso, assado)"
+                                            id="38">Peito de frango (sem osso, assado)</p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="37" id="36">Coxa de frango (sem osso,
-                                        crua)</p>
+                                    <p><input type="checkbox" class="caixa" value="Coxa de frango (com pele, assado)"
+                                            id="39">Coxa de frango (com pele, assado)</p>
+                                </label>
+                                <label>
+                                    <p><input type="checkbox" class="caixa" value="Carne bovina lagarto (cozido)"
+                                            id="40">Carne bovina lagarto (cozido)</p><!--27/06 -->
+                                </label>
+                                <label>
+                                    <p><input type="checkbox" class="caixa"
+                                            value="Filé mignon bovino (sem gordura, grelhado)" id="41">Filé mignon
+                                        bovino (sem gordura, grelhado)</p><!--27/06 -->
+                                </label>
+                                <label>
+                                    <p><input type="checkbox" class="caixa"
+                                            value="Carne bovina, patinho, sem gordura (grelhado)" id="42">Carne bovina,
+                                        patinho,
+                                        sem gordura (grelhado)</p><!--27/06 -->
+                                </label>
+                                <label>
+                                    <p><input type="checkbox" class="caixa" value="Salmão sem pele (grelhado)"
+                                            id="43">Salmão sem pele
+                                        (grelhado)</p><!--27/06 -->
+                                </label>
+                                <label>
+                                    <p><input type="checkbox" class="caixa" value="Ovo" id="44">Ovo</p>
                                 </label>
                             </form>
                         </div>
                         <div id="massas">
                             <h2>Massas</h2>
+                            <!--24/06 Mais alimentos foram adicionados nas listas relacionados a 3 categorias massas, laticínios e tubérculos-->
                             <form id="calcForm">
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="38" id="37">Macarrão</p>
+                                    <p><input type="checkbox" class="caixa" value="Macarrão" id="45">Macarrão</p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="39" id="38">Pão francês</p>
+                                    <p><input type="checkbox" class="caixa" value="Pão francês" id="46">Pão francês</p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="40" id="39">Pão puma</p>
+                                    <p><input type="checkbox" class="caixa" value="Pão puma" id="47">Pão puma</p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="41" id="40">Pão puma integral</p>
+                                    <p><input type="checkbox" class="caixa" value="Pão puma integral" id="48">Pão puma
+                                        integral</p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="42" id="41">Pão puma de milho</p>
+                                    <p><input type="checkbox" class="caixa" value="Pão puma de milho" id="49">Pão puma
+                                        de milho</p>
                                 </label>
                             </form>
                         </div>
+
                         <div id="laticinios">
-                            <h2>Laticínios</h2> <!--25/06 Os queijos foram para as listas dos laticínios-->
+                            <h2>Laticínios</h2>
                             <form id="calcForm">
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="43" id="42">Requeijão</p>
+                                    <p><input type="checkbox" class="caixa" value="Requeijão" id="50">Requeijão</p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="44" id="43">Creem cheese</p>
+                                    <p><input type="checkbox" class="caixa" value="Creem cheese" id="51">Creem cheese
+                                    </p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="45" id="44">Manteiga</p>
+                                    <p><input type="checkbox" class="caixa" value="Manteiga" id="52">Manteiga</p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="46" id="45">Margarina</p>
+                                    <p><input type="checkbox" class="caixa" value="Margarina" id="53">Margarina</p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="47" id="46">Doce de leite</p>
+                                    <p><input type="checkbox" class="caixa" value="Doce de leite" id="54">Doce de leite
+                                    </p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="48" id="47">Maionese</p>
+                                    <p><input type="checkbox" class="caixa" value="Maionese" id="55">Maionese</p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="49" id="48">Nutella</p>
+                                    <p><input type="checkbox" class="caixa" value="Queijo ricota" id="56">Queijo ricota<!--27/06 -->
+                                    </p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="50" id="49">Pasta de amendoim</p>
+                                    <p><input type="checkbox" class="caixa" value="Queijo Muçarela" id="57">Queijo<!--27/06 -->
+                                        Muçarela</p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="51" id="50">Queijo Prato</p>
+                                    <p><input type="checkbox" class="caixa" value="Queijo Prato" id="58">Queijo Prato
+                                    </p><!--27/06 -->
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="52" id="51">Queijo Mozzarella</p>
-                                </label>
-                                <label>
-                                    <p><input type="checkbox" class="caixa" value="53" id="52">Ricota</p>
+                                    <p><input type="checkbox" class="caixa" value="Queijo Parmesão" id="59">Queijo<!--27/06 -->
+                                        Parmesão</p>
                                 </label>
                             </form>
                         </div>
+
                         <div id="tuberculos">
                             <h2>Tubérculos</h2>
                             <form id="calcForm">
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="54" id="53">Mandioca</p>
+                                    <p><input type="checkbox" class="caixa" value="Mandioca" id="60">Mandioca</p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="55" id="54">Batata inglesa</p>
+                                    <p><input type="checkbox" class="caixa" value="Batata inglesa" id="61">Batata
+                                        inglesa</p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="56" id="55">Batata doce</p>
+                                    <p><input type="checkbox" class="caixa" value="Batata doce" id="62">Batata doce</p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="57" id="56">Mandioquinha</p>
+                                    <p><input type="checkbox" class="caixa" value="Mandioquinha" id="63">Mandioquinha
+                                    </p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="58" id="57">Inhame</p>
+                                    <p><input type="checkbox" class="caixa" value="Inhame" id="64">Inhame</p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="59" id="58">Rabanete</p>
+                                    <p><input type="checkbox" class="caixa" value="Rabanete" id="65">Rabanete</p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="60" id="59">Beterraba</p>
+                                    <p><input type="checkbox" class="caixa" value="Beterraba" id="66">Beterraba</p>
                                 </label>
                             </form>
                         </div>
+                        <div class="calcb">
+                            <button type="button" onclick="calcular()">Calcular</button>
+                        </div>
                     </div>
-                    <div class="calcb">
-                        <button type="button" onclick="calcular()">Calcular</button>
+                </div>
+                <div class="resposta">
+                    <div class="tituloresposta">
+                        <p id="resul">Resultado</p>
+                    </div>
+                    <div class="respostadiv">
+                        <div id="div_mensagem"></div>
                     </div>
                 </div>
             </div>
-            <div class="resposta">
-                <div class="tituloresposta">
-                    <p id="resul">Resultado</p>
-                </div>
-                <div class="respostadiv">
-                    <div id="div_mensagem"></div>
-                </div>
-            </div>
-
-
-
-        </div>
-
-
-    </div>
-
-
 </body>
 
 </html>
 
 <script>
 
-    var idUsuario = sessionStorage.ID_USUARIO;
-
-
     var cont = 0
-
 
     function inicio() {
 
@@ -353,14 +400,20 @@
 
     function exibir() {
 
+        var botao = document.getElementById("cateinicial");
+        botao.id = "cate";
+        botao.innerText = "Categorias:";
+
         if (cont == 0) {
 
-            botoes.style.display = 'none'
+            botoes.style.display = 'flex'
             cont = 1;
         } else if (cont == 1) {
-            botoes.style.display = 'flex'
+            botoes.style.display = 'none'
             cont = 0;
         }
+
+
     }
 
     function cat1() {
