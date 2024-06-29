@@ -12,4 +12,8 @@ router.post("/autenticar", function (req, res) {
     usuarioController.autenticar(req, res);
 });
 
+router.post("/cadastrarRefeicao", function (req, res) { //28/06 rota para o cadastro das refeições
+    usuarioController.cadastrarRefeicao(req, res);
+})
+
 module.exports = router;

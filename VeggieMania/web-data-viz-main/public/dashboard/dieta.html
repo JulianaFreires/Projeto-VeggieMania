@@ -12,7 +12,8 @@
     <link rel="stylesheet" href="./../css/dashboards1.css">
 
 
-    <script src="../js/calctest.js"></script>
+    <script src="../js/simuladorDash.js"></script>
+    <script src="../js/sessao.js"></script>
 
 
 <body>
@@ -69,6 +70,17 @@
         </div>
 
         <div class="dash-right">
+<!-- 28/06 O select para direcionar o tipo de refeição que o usuário deseja cadastrar os seus alimentos-->
+            <select id="select_tipoRefeicao" type="text">
+                <option value="Café da Manhã">Café da Manhã</option>
+                <option value="Lanche da manhã">Lanche da manhã</option>
+                <option value="Almoço">Almoço</option>
+                <option value="Lanche da tarde">Lanche da tarde</option>
+                <option value="Jantar">Jantar</option>
+                <option value="Lanche da noite">Lanche da noite</option>
+                
+            </select>
+
             <div class="cal2">
                 <div class="tudo2">
                     <div class="pcima"><!-- 27/06 foram adicionados 25 alimentos em relação a primeira versão da calculadora, os queijos foram adicionados aos laticinios, alimentos como semente de girassol e nutella foram removidos-->
@@ -365,7 +377,7 @@
                             </form>
                         </div>
                         <div class="calcb">
-                            <button type="button" onclick="calcular()">Calcular</button>
+                            <button type="button" onclick="cadastrarRefeicao()">Calcular</button>
                         </div>
                     </div>
                 </div>
@@ -439,5 +451,8 @@
 
 
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+
+
 
 </script>

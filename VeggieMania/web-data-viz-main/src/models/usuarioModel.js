@@ -22,7 +22,20 @@ function cadastrar(nome, email, senha, cpf, tipo) { // 20/06 foi adicionado o ti
     return database.executar(instrucaoSql);
 }
 
+
+function cadastrarRefeicao(idUsuario, tipo, nome, caloria, carboidrato, lipideo, fibra, proteina, ferro, calcio, zinco) { //28/06 O model executa a inserção dos dados na tabela refeição localizada no banco de dados
+    
+    var instrucaoSql = `
+    INSERT INTO refeicao (fk_usuario, tipoRefeicao, nomeAlimento, caloria, carboidrato, lipideo, fibra, proteina, calcio, ferro, zinco ) VALUES ('${idUsuario}', '${tipo}','${nome}','${caloria}', '${carboidrato}', '${lipideo}', '${fibra}', '${proteina}', '${ferro}', '${calcio}', '${zinco}');
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+     // Executa a instrução SQL no banco de dados e retorna os resultados
+    return database.executar(instrucaoSql);
+}
+
+
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    cadastrarRefeicao
 };

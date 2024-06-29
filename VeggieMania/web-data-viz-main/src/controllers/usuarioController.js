@@ -85,7 +85,70 @@ function cadastrar(req, res) {
     }
 }
 
+function cadastrarRefeicao(req, res) { //28/06 recupera os dados que foram cadastrados pelo usuário e realiza as validações para assim enviar para o usuariosModel.js
+    // Crie uma variável que vá recuperar os valores do arquivo dieta.html
+    console.log(req.body)
+    
+    var idUsuario = req.body.idUsuario;
+    var tipo = req.body.tipo;
+    var nome = req.body.nome;
+    var caloria = req.body.caloria;
+    var carboidrato = req.body.carboidrato;
+    var lipideo = req.body.lipideo;
+    var fibra = req.body.fibra;
+    var proteina = req.body.proteina;
+    var ferro = req.body.ferro;
+    var calcio = req.body.calcio;
+    var zinco = req.body.zinco;
+
+ 
+    if (idUsuario == undefined) {
+        res.status(400).send("o usuário está undefined");
+    } else if (tipo == undefined) {
+        res.status(400).send("o tipo de refeição está undefined!");
+    } else if (nome == undefined) {
+        res.status(400).send("nome do alimento está undefined!");
+    } else if (caloria == undefined) {
+        res.status(400).send("caloria está undefined!");
+    } else if (carboidrato == undefined) {
+        res.status(400).send("carboidrato está undefined!");
+    } else if (lipideo == undefined) {
+        res.status(400).send("lipideo undefined!");
+    } else if (fibra == undefined) {
+        res.status(400).send("fibra está undefined!");
+    } else if (proteina == undefined) {
+        res.status(400).send("proteina está undefined!");
+    } else if (ferro == undefined) {
+        res.status(400).send("ferro está undefined!");
+    } else if (calcio == undefined) {
+        res.status(400).send("calcio está undefined!");
+    } else if (zinco == undefined) {
+        res.status(400).send("zinco está undefined!");
+    } else {
+
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.cadastrarRefeicao(idUsuario, tipo, nome, caloria, carboidrato, lipideo, fibra, proteina, ferro, calcio, zinco)
+            .then(
+                function (resultado) {
+                    console.log(resultado)
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro da dieta Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    cadastrarRefeicao
+
 }
