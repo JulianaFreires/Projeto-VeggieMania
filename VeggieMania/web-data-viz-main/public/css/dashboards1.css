@@ -1,4 +1,4 @@
-/*Organizanção e ajuste do CSS da dashboard 25/06 */ 
+/*Organizanção e ajuste do CSS da dashboard 25/06 */
 
 @font-face {
   font-family: Opens;
@@ -15,22 +15,27 @@
   src: url(fonte/Poppins-Regular.ttf)
 }
 
-/* pagina mural */ 
+/* pagina mural */
 
 @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 body::-webkit-scrollbar {
-  width: 12px;               /* width of the entire scrollbar */
+  width: 12px;
+  /* width of the entire scrollbar */
 }
 
 body::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.842);        /* color of the tracking area */
+  background: rgba(255, 255, 255, 0.842);
+  /* color of the tracking area */
 }
 
 body::-webkit-scrollbar-thumb {
-  background-color: rgb(175, 230, 114);    /* color of the scroll thumb */
-  border-radius: 20px;       /* roundness of the scroll thumb */
-  border: 3px solid rgb(118, 166, 98);  /* creates padding around scroll thumb */
+  background-color: rgb(175, 230, 114);
+  /* color of the scroll thumb */
+  border-radius: 20px;
+  /* roundness of the scroll thumb */
+  border: 3px solid rgb(118, 166, 98);
+  /* creates padding around scroll thumb */
 }
 
 body {
@@ -138,7 +143,7 @@ body {
   padding: 3% 3%;
 }
 
-button {
+.containerb button {
   background-color: #ffffff;
   width: 80%;
   padding: 4%;
@@ -172,9 +177,9 @@ button {
   color: #ffffff;
   cursor: pointer;
   font-family: Opens;
-  background-color:  #90c663;
-  color: white ;
-  border: 2px solid white ;
+  background-color: #90c663;
+  color: white;
+  border: 2px solid white;
 }
 
 #cateinicial {
@@ -187,12 +192,12 @@ button {
   border: 3px solid #aecf80;
   border-radius: 15px;
   font-family: Opens;
- 
+
 }
 
-#cate{
-  background-color:  #e5fec4 ;
-  border:3px solid #e5fec4;
+#cate {
+  background-color: #e5fec4;
+  border: 3px solid #e5fec4;
   color: #90c663;
   font-family: Opens;
   font-size: 19px;
@@ -258,7 +263,7 @@ button {
 
 /*Pagina inicial do dashboard*/
 
-.iniciot{
+.iniciot {
   width: 100%;
   height: 100%;
   display: flex;
@@ -267,7 +272,7 @@ button {
   justify-content: center;
 }
 
-.tituloi{
+.tituloi {
   width: 100%;
   height: 13%;
   display: flex;
@@ -277,10 +282,10 @@ button {
   font-weight: bold;
   font-size: 27px;
   border-top: 2px solid black;
-  
+
 }
 
-.corpoi{
+.corpoi {
   width: 100%;
   height: 87%;
   display: flex;
@@ -289,7 +294,7 @@ button {
   flex-direction: column;
 }
 
-.corpotexto{
+.corpotexto {
   font-family: Poppins;
   font-size: 19px;
   width: 100%;
@@ -297,9 +302,10 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  
+
 }
-.banners{
+
+.banners {
   width: 90%;
   height: 85%;
   display: flex;
@@ -308,7 +314,7 @@ button {
   flex-direction: row;
 }
 
-.besquerdo{
+.besquerdo {
   width: 50%;
   height: 94%;
   display: flex;
@@ -317,15 +323,16 @@ button {
   flex-direction: column;
 }
 
-.bdireito{
+.bdireito {
   width: 50%;
   height: 94%;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  flex-direction:column;
+  flex-direction: column;
 }
-.restaurante{
+
+.restaurante {
   width: 85%;
   height: 43%;
   display: inline-block;
@@ -337,7 +344,7 @@ button {
   border-radius: 8px;
 }
 
-.receita{
+.receita {
   width: 85%;
   height: 43%;
   display: inline-block;
@@ -348,7 +355,8 @@ button {
   border: 2px solid rgba(251, 196, 75);
   border-radius: 8px;
 }
-.cosmetico{
+
+.cosmetico {
   width: 85%;
   height: 42%;
   display: inline-block;
@@ -359,7 +367,8 @@ button {
   border: 2px solid rgba(63, 159, 167);
   border-radius: 8px;
 }
-.moda{
+
+.moda {
   width: 85%;
   height: 43%;
   display: inline-block;
@@ -367,7 +376,7 @@ button {
   transition: transform 0.3s ease-in-out;
   align-items: center;
   justify-content: center;
-  border: 2px solid rgba(57, 94, 175) ;
+  border: 2px solid rgba(57, 94, 175);
   border-radius: 8px;
 }
 
@@ -414,10 +423,11 @@ button {
   transform: scale(1.1);
   box-shadow: 0 0 10px rgba(57, 94, 175);
 }
+
 /*Pagina inicial da dashboard acaba aqui*/
 
 /*css da pagina de tendências*/
-.tela{
+.tela {
   background-color: white;
   border-radius: 20px 20px 0 0;
   width: 100%;
@@ -429,7 +439,7 @@ button {
   margin-top: 35px;
 }
 
-.tela2{
+.tela2 {
   background-color: white;
   border-radius: 20px;
   width: 100%;
@@ -441,7 +451,7 @@ button {
 
 }
 
-.telat{
+.telat {
   width: 100%;
   height: 12%;
   display: flex;
@@ -456,7 +466,7 @@ button {
   border-bottom: 2px solid black;
 }
 
-.telat2{
+.telat2 {
   width: 100%;
   height: 10%;
   display: flex;
@@ -466,7 +476,8 @@ button {
   font-weight: bold;
   font-size: 26px;
 }
-.telat3{
+
+.telat3 {
   width: 100%;
   height: 5%;
   display: flex;
@@ -477,21 +488,15 @@ button {
   font-size: 26px;
 }
 
-.telag{
+.telag {
   width: 100%;
   height: 70%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.telapost{
-  width: 50%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.telacurtida{
+
+.telapost {
   width: 50%;
   height: 100%;
   display: flex;
@@ -499,7 +504,7 @@ button {
   justify-content: center;
 }
 
-.telaesquerda{
+.telacurtida {
   width: 50%;
   height: 100%;
   display: flex;
@@ -507,7 +512,7 @@ button {
   justify-content: center;
 }
 
-.teladireita{
+.telaesquerda {
   width: 50%;
   height: 100%;
   display: flex;
@@ -515,29 +520,39 @@ button {
   justify-content: center;
 }
 
-.telaesquerda p{
+.teladireita {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.telaesquerda p {
   font-size: 25px;
 }
 
-.teladireita p{
-font-size: 25px;
+.teladireita p {
+  font-size: 25px;
 }
-.telaesquerda label{
+
+.telaesquerda label {
   font-size: 19px;
 }
 
-.teladireita label{
-font-size: 19px;
+.teladireita label {
+  font-size: 19px;
 }
 
-.janelaini{
+.janelaini {
   display: flex;
   background-image: url(img/fundoinid.png);
   background-repeat: no-repeat;
   background-size: cover;
   font-family: Poppins;
 }
-.janelagraf{
+
+.janelagraf {
   background-color: #FCDE34;
   height: 100vh;
   display: flex;
@@ -550,8 +565,8 @@ font-size: 19px;
 
 /*22/06*/
 
-.janelagraf2{
-  background-color:#FCDE34;
+.janelagraf2 {
+  background-color: #FCDE34;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -561,7 +576,7 @@ font-size: 19px;
 }
 
 
-.ranking{
+.ranking {
   background-color: rgb(255, 255, 255);
   border-radius: 0px 0px 20px 20px;
   width: 100%;
@@ -580,12 +595,13 @@ table {
   width: 70%;
   margin: 20px auto;
   border-collapse: collapse;
-  background-color: #e8f4e5; 
-  border: 1px solid #d2d2d2; 
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+  background-color: #e8f4e5;
+  border: 1px solid #d2d2d2;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-th, td {
+th,
+td {
   padding: 10px;
   text-align: center;
   border-bottom: 1px solid rgb(167, 169, 164);
@@ -605,25 +621,32 @@ tr:hover {
   align-items: center;
   margin-right: 8px;
 }
+
 .label svg {
   margin-right: 4px;
 }
+
 .label path {
-  fill: #ffffff;   
-  transition: all .25s ease-in-out;       
+  fill: #ffffff;
+  transition: all .25s ease-in-out;
 }
+
 .number {
   color: #ffffff;
 }
-button:hover path{
+
+button:hover path {
   fill: #ff0000;
 }
+
 button.like .number {
   color: #ff0000
 }
+
 button.like svg {
   animation: transitionLike 1s ease-in;
 }
+
 button.like path {
   fill: #ff0000;
 }
@@ -631,16 +654,19 @@ button.like path {
 
 /* Estilo do ícone SVG quando curtido */
 .publicacao-btn-editar.liked .label svg path {
-  fill: #ff0000; /* cor do coração quando curtido */
+  fill: #ff0000;
+  /* cor do coração quando curtido */
 }
 
 @keyframes transitionLike {
   0% {
     transform: scale(1);
   }
+
   50% {
     transform: scale(1.3);
   }
+
   100% {
     transform: scale(1);
   }
@@ -650,12 +676,12 @@ button.like path {
 
 /*Edição do post*/
 
-.janelaedit{
-display: flex;
-background-image: url(img/edit.png);
-background-repeat: no-repeat;
-background-size: cover;
-font-family: Poppins;
+.janelaedit {
+  display: flex;
+  background-image: url(img/edit.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: Poppins;
 }
 
 /*edição do post*/
@@ -702,7 +728,7 @@ font-family: Poppins;
   border: 3px solid rgb(169, 216, 117);
   background-color: rgba(209, 209, 209, 0.645);
   padding: 1%;
-  
+
 }
 
 .dash-rightE .avisos .div-form textarea {
@@ -721,7 +747,7 @@ font-family: Poppins;
   font-size: 18px;
   padding: 10px 15px;
   color: white;
-  background-color:rgb(169, 216, 117);
+  background-color: rgb(169, 216, 117);
   width: 120px;
 }
 
@@ -757,13 +783,13 @@ font-family: Poppins;
 .dash-right .avisos .div-form input {
   width: 93%;
   border-radius: 5px;
-  border: 3px solid  rgba(248, 55, 104);
+  border: 3px solid rgba(248, 55, 104);
   padding: 1%;
 }
 
 .dash-right .avisos .div-form textarea {
   width: 95%;
-  border: 3px solid  rgba(248, 55, 104);
+  border: 3px solid rgba(248, 55, 104);
   background-color: white;
   border-radius: 5px;
 }
@@ -777,7 +803,7 @@ font-family: Poppins;
   font-size: 18px;
   padding: 10px 15px;
   color: white;
-  background-color:  rgba(248, 55, 104);
+  background-color: rgba(248, 55, 104);
   width: 120px;
 }
 
@@ -801,7 +827,7 @@ font-family: Poppins;
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
-  border-bottom: 3px solid  rgba(248, 55, 104);
+  border-bottom: 3px solid rgba(248, 55, 104);
   padding: 20px;
 }
 
@@ -820,7 +846,7 @@ font-family: Poppins;
   margin-bottom: 80px;
 }
 
-.janela1{
+.janela1 {
   display: flex;
   background-image: url(img/resta.png);
   background-repeat: no-repeat;
@@ -828,7 +854,7 @@ font-family: Poppins;
   font-family: Poppins;
 }
 
-.janela1 label{
+.janela1 label {
   color: #353030;
   font-weight: bold;
   font-size: 16px;
@@ -839,7 +865,7 @@ font-family: Poppins;
 
 /* Mural2 */
 
-.dash-right2{
+.dash-right2 {
   display: flex;
   width: 70%;
   height: fit-content;
@@ -880,12 +906,12 @@ font-family: Poppins;
   border: 3px solid rgba(251, 196, 75, 1);
   background-color: rgb(255, 255, 255);
   padding: 1%;
-  
+
 }
 
 .dash-right2 .avisos .div-form textarea {
   width: 95%;
-  border: 3px solid  rgba(251, 196, 75, 1);
+  border: 3px solid rgba(251, 196, 75, 1);
   background-color: white;
   border-radius: 5px;
 }
@@ -899,7 +925,7 @@ font-family: Poppins;
   font-size: 18px;
   padding: 10px 15px;
   color: white;
-  background-color:rgba(251, 196, 75, 1);
+  background-color: rgba(251, 196, 75, 1);
   width: 120px;
 }
 
@@ -943,7 +969,7 @@ font-family: Poppins;
 }
 
 
-.janela2{
+.janela2 {
   display: flex;
   background-image: url(img/r.png);
   background-repeat: no-repeat;
@@ -951,33 +977,36 @@ font-family: Poppins;
   font-family: Poppins;
 }
 
-.tituloc2{
-color: #ffffff;
-font-size: 17px;
-display: flex;
-width: 100%;
-align-items: center;
-text-align: center;
-justify-content: center;
-flex-direction: column;
+.tituloc2 {
+  color: #ffffff;
+  font-size: 17px;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 
-.janela2 label{
+.janela2 label {
   color: #353030;
   font-weight: bold;
   font-size: 16px;
 }
-.janela2 h2{
+
+.janela2 h2 {
   color: #353030;
   font-size: 30px;
-  }
-.caixac2{
+}
+
+.caixac2 {
   width: 80%;
 }
 
 .publicacao-btn-editar2.liked .label svg path {
-  fill: #ff0000; /* cor do coração quando curtido */
+  fill: #ff0000;
+  /* cor do coração quando curtido */
 }
 
 /*Mural2 acaba aqui */
@@ -1024,7 +1053,7 @@ flex-direction: column;
   border-radius: 5px;
   border: 3px solid rgba(57, 94, 175);
   padding: 1%;
-  
+
 }
 
 .dash-right3 .avisos .div-form textarea {
@@ -1087,7 +1116,7 @@ flex-direction: column;
 }
 
 
-.janela3{
+.janela3 {
   display: flex;
   background-image: url(img/modaf.png);
   background-repeat: no-repeat;
@@ -1095,14 +1124,15 @@ flex-direction: column;
   font-family: Poppins;
 }
 
-.janela3 label{
+.janela3 label {
   color: #353030;
   font-weight: bold;
   font-size: 16px;
 }
 
 .publicacao-btn-editar3.liked .label svg path {
-  fill: #ff0000; /* cor do coração quando curtido */
+  fill: #ff0000;
+  /* cor do coração quando curtido */
 }
 
 
@@ -1150,14 +1180,14 @@ flex-direction: column;
 .dash-right4 .avisos .div-form input {
   width: 93%;
   border-radius: 5px;
-  border: 3px solid  rgba(63, 159, 167);
+  border: 3px solid rgba(63, 159, 167);
   padding: 1%;
-  
+
 }
 
 .dash-right4 .avisos .div-form textarea {
   width: 95%;
-  border: 3px solid  rgba(63, 159, 167);
+  border: 3px solid rgba(63, 159, 167);
   background-color: white;
   border-radius: 5px;
 }
@@ -1171,7 +1201,7 @@ flex-direction: column;
   font-size: 18px;
   padding: 10px 15px;
   color: white;
-  background-color:  rgba(63, 159, 167);
+  background-color: rgba(63, 159, 167);
   width: 120px;
 }
 
@@ -1184,7 +1214,7 @@ flex-direction: column;
   font-size: 14px;
   padding: 5px 8px;
   color: white;
-  background-color:  rgba(63, 159, 167);
+  background-color: rgba(63, 159, 167);
   width: 80px;
 }
 
@@ -1195,7 +1225,7 @@ flex-direction: column;
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
-  border-bottom: 3px solid  rgba(63, 159, 167);
+  border-bottom: 3px solid rgba(63, 159, 167);
   padding: 20px;
 }
 
@@ -1214,7 +1244,7 @@ flex-direction: column;
   margin-bottom: 80px;
 }
 
-.janela4{
+.janela4 {
   display: flex;
   background-image: url(img/cosmeticos.png);
   background-repeat: no-repeat;
@@ -1222,14 +1252,15 @@ flex-direction: column;
   font-family: Poppins;
 }
 
-.janela4 label{
+.janela4 label {
   color: #353030;
   font-weight: bold;
   font-size: 16px;
 }
 
 .publicacao-btn-editar4.liked .label svg path {
-  fill: #ff0000; /* cor do coração quando curtido */
+  fill: #ff0000;
+  /* cor do coração quando curtido */
 }
 
 /*Mural4 acaba aqui */
@@ -1237,6 +1268,231 @@ flex-direction: column;
 
 /* Pagina da dieta*/
 
-.janeladieta{
+.janeladieta {
   background-color: white;
+  display: flex;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: Poppins;
+}
+
+/* cadastro alimentos   01/07*/
+
+
+.escolher {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 75%;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  font-size: 19px;
+  margin-bottom: 5%;
+}
+
+select {
+  font-size: 18px;
+  border: none;
+  background-color: #f0f0f000;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#select_tipoRefeicao.custom-select:focus {
+  outline: none;
+  /* Remove a borda de foco padrão */
+}
+
+.tudo2 {
+  width: 100%;
+  overflow-y: auto;
+}
+
+
+
+.dash-rightcalc {
+  display: flex;
+  width: 70%;
+  height: fit-content;
+  position: relative;
+  top: 0;
+  left: 25%;
+  height: 100vh;
+  overflow: auto;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.bloco {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  height: auto;
+
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+
+#calcForm {
+  font-size: 16px;
+  padding: 5px;
+
+}
+
+.calcb {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-bottom: 1px solid #D2E5C5;
+
+}
+
+.calcb button {
+  width: 100px;
+  padding: 10px;
+  background-color: #89c970;
+  border-radius: 10px;
+  border: 2px solid green;
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2%;
+}
+
+
+.resposta {
+  height: 100vh;
+  display: none;
+  font-family: Poppins;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#div_mensagem p {
+  color: #399337;
+  padding: 1%;
+  font-size: 17px;
+  border-radius: 10px;
+  border: 1px solid rgb(129, 201, 107)
+}
+
+#div_mensagem span {
+  color: #000000;
+  font-size: 16px;
+}
+
+.tituloresposta {
+  width: 100%;
+  height: 10%;
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  color: #000000;
+  display: flex;
+  font-family: Poppins;
+  justify-content: center;
+  margin-top: 1%;
+  margin-bottom: 2%;
+}
+
+.respostadiv {
+  width: 90%;
+  height: 90%;
+  text-align: center;
+
+}
+
+.inputQtd {
+  display: flex;
+  border: 2px solid #589c4c;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 12px;
+  color: #090909;
+  font-family: Poppins;
+  margin-left: 2%;
+
+}
+
+
+
+/* Carrossel  01/07 */
+
+.carousel {
+  overflow: hidden;
+  position: relative;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel .carousel__item {
+  display: none;
+}
+
+
+.carousel .carousel__item--visible {
+  display: block;
+  animation: fadeVisibility 0.5s;
+}
+
+.carousel .carousel__actions {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  position: absolute;
+  top: 20%;
+  transform: translateY(-50%);
+}
+
+.carousel__item {
+  width: 900px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #89c970;
+
+}
+
+.carousel .carousel__actions button {
+  border-radius: 50px;
+  border: 0;
+  font-weight: bold;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  color: #FFF;
+  background-color: #24242431;
+}
+
+.carousel .carousel__actions button[data-js="carousel__button--prev"] {
+  margin-left: 20px;
+}
+
+.carousel .carousel__actions button[data-js="carousel__button--next"] {
+  margin-right: 20px;
+}
+
+@keyframes fadeVisibility {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+    transform: opacity linear;
+  }
 }

@@ -69,27 +69,31 @@
 
         </div>
 
-        <div class="dash-right">
-<!-- 28/06 O select para direcionar o tipo de refeição que o usuário deseja cadastrar os seus alimentos-->
-            <select id="select_tipoRefeicao" type="text">
-                <option value="Café da Manhã">Café da Manhã</option>
-                <option value="Lanche da manhã">Lanche da manhã</option>
-                <option value="Almoço">Almoço</option>
-                <option value="Lanche da tarde">Lanche da tarde</option>
-                <option value="Jantar">Jantar</option>
-                <option value="Lanche da noite">Lanche da noite</option>
-                
-            </select>
+        <div class="dash-rightcalc">
+            <div class="escolher"><!-- 01/07 Div para a estilização do select-->
+                <p>Tipo de refeição :</p><br>
+                <!-- 28/06 O select para direcionar o tipo de refeição que o usuário deseja cadastrar os seus alimentos-->
+                <select id="select_tipoRefeicao" type="text">
+                    <option value="Café da Manhã">Café da Manhã</option>
+                    <option value="Lanche da manhã">Lanche da manhã</option>
+                    <option value="Almoço">Almoço</option>
+                    <option value="Lanche da tarde">Lanche da tarde</option>
+                    <option value="Jantar">Jantar</option>
+                    <option value="Lanche da noite">Lanche da noite</option>
+                </select>
+            </div>
 
-            <div class="cal2">
-                <div class="tudo2">
-                    <div class="pcima"><!-- 27/06 foram adicionados 25 alimentos em relação a primeira versão da calculadora, os queijos foram adicionados aos laticinios, alimentos como semente de girassol e nutella foram removidos-->
-                        <div class="cereais">
-                            <h2>Cereais</h2>
+            <div class="tudo2">
+                <div class="carousel"> <!-- Carrossel feito para a lista dos alimentos 01/07-->
+                    <div data-js="carousel__item" class="carousel__item carousel__item--visible">
+                        <!-- 27/06 foram adicionados 25 alimentos em relação a primeira versão da calculadora, os queijos foram adicionados aos laticinios, alimentos como semente de girassol e nutella foram removidos-->
+                        <div class="bloco">
+
                             <form id="calcForm">
+                                <h2>Cereais</h2>
                                 <label>
                                     <p><input type="checkbox" class="caixa" value="Aveia em flocos" id="0">Aveia em
-                                        flocos</p> 
+                                        flocos</p>
                                 </label>
                                 <label>
                                     <p><input type="checkbox" class="caixa" value="Quinoa em grãos" id="1">Quinoa em
@@ -107,10 +111,9 @@
                                     <p><input type="checkbox" class="caixa" value="Arroz Branco" id="4">Arroz Branco</p>
                                 </label>
                             </form>
-                        </div>
-                        <div id="leguminosas">
-                            <h2>Leguminosas</h2>
+
                             <form id="calcForm">
+                                <h2>Leguminosas</h2>
                                 <label>
                                     <p><input type="checkbox" class="caixa" value="Ervilha em lata" id="5">Ervilha em
                                         lata</p>
@@ -136,10 +139,9 @@
                                     <p><input type="checkbox" class="caixa" value="Tofu" id="11">Tofu</p>
                                 </label>
                             </form>
-                        </div>
-                        <div id="oleaginosas">
-                            <h2>Oleaginosas</h2>
+
                             <form id="calcForm">
+                                <h2>Oleaginosas</h2>
                                 <label>
                                     <p><input type="checkbox" class="caixa" value="Amêndoa torrada" id="12">Amêndoa
                                         torrada</p>
@@ -164,9 +166,13 @@
                                 </label>
                             </form>
                         </div>
-                        <div id="verduras">
-                            <h2>Verduras</h2>
+                    </div>
+
+                    <div data-js="carousel__item" class="carousel__item">
+                        <div class="bloco">
+
                             <form id="calcForm">
+                                <h2>Verduras</h2>
                                 <label>
                                     <p><input type="checkbox" class="caixa" value="Brócolis" id="18">Brócolis</p>
                                 </label>
@@ -182,26 +188,29 @@
                                 </label>
                                 <label>
                                     <p><input type="checkbox" class="caixa" value="Couve manteiga (refogada)"
-                                            id="22">Couve manteiga (refogada)</p>
+                                            id="22">Couve
+                                        manteiga (refogada)</p>
                                 </label>
                                 <label>
                                     <p><input type="checkbox" class="caixa" value="Alface lisa" id="23">Alface lisa</p>
                                 </label>
                                 <label>
                                     <p><input type="checkbox" class="caixa" value="Espinafre (refogada)"
-                                            id="24">Espinafre (refogada)</p> <!--27/06 -->
+                                            id="24">Espinafre
+                                        (refogada)</p> <!--27/06 -->
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="Couve-flor" id="25">Couve-flor</p><!--27/06 -->
+                                    <p><input type="checkbox" class="caixa" value="Couve-flor" id="25">Couve-flor</p>
+                                    <!--27/06 -->
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="Escarola" id="26">Escarola</p><!--27/06 -->
+                                    <p><input type="checkbox" class="caixa" value="Escarola" id="26">Escarola</p>
+                                    <!--27/06 -->
                                 </label>
                             </form>
-                        </div>
-                        <div id="legumes">
-                            <h2>Legumes</h2>
+
                             <form id="calcForm">
+                                <h2>Legumes</h2>
                                 <label>
                                     <p><input type="checkbox" class="caixa" value="Palmito pupunha" id="27">Palmito
                                         pupunha</p>
@@ -216,17 +225,17 @@
                                     <p><input type="checkbox" class="caixa" value="Cenoura" id="30">Cenoura</p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="Abóbora cabotiá" id="31">Abóbora<!--27/06 -->
+                                    <p><input type="checkbox" class="caixa" value="Abóbora cabotiá"
+                                            id="31">Abóbora<!--27/06 -->
                                         cabotiá</p>
                                 </label>
                                 <label>
                                     <p><input type="checkbox" class="caixa" value="Chuchu" id="32">Chuchu</p>
                                 </label>
                             </form>
-                        </div>
-                        <div id="Proteina animal">
-                            <h2>Proteína animal</h2>
+
                             <form id="calcForm">
+                                <h2>Proteína animal</h2>
                                 <label>
                                     <p><input type="checkbox" class="caixa" value="Sardinhas em lata" id="33">Sardinhas
                                         em lata</p>
@@ -282,10 +291,14 @@
                                 </label>
                             </form>
                         </div>
-                        <div id="massas">
-                            <h2>Massas</h2>
+                    </div>
+
+
+                    <div data-js="carousel__item" class="carousel__item">
+                        <div class="bloco">
                             <!--24/06 Mais alimentos foram adicionados nas listas relacionados a 3 categorias massas, laticínios e tubérculos-->
                             <form id="calcForm">
+                                <h2>Massas</h2>
                                 <label>
                                     <p><input type="checkbox" class="caixa" value="Macarrão" id="45">Macarrão</p>
                                 </label>
@@ -304,11 +317,9 @@
                                         de milho</p>
                                 </label>
                             </form>
-                        </div>
 
-                        <div id="laticinios">
-                            <h2>Laticínios</h2>
                             <form id="calcForm">
+                                <h2>Laticínios</h2>
                                 <label>
                                     <p><input type="checkbox" class="caixa" value="Requeijão" id="50">Requeijão</p>
                                 </label>
@@ -330,11 +341,13 @@
                                     <p><input type="checkbox" class="caixa" value="Maionese" id="55">Maionese</p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="Queijo ricota" id="56">Queijo ricota<!--27/06 -->
+                                    <p><input type="checkbox" class="caixa" value="Queijo ricota" id="56">Queijo
+                                        ricota<!--27/06 -->
                                     </p>
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="Queijo Muçarela" id="57">Queijo<!--27/06 -->
+                                    <p><input type="checkbox" class="caixa" value="Queijo Muçarela"
+                                            id="57">Queijo<!--27/06 -->
                                         Muçarela</p>
                                 </label>
                                 <label>
@@ -342,15 +355,15 @@
                                     </p><!--27/06 -->
                                 </label>
                                 <label>
-                                    <p><input type="checkbox" class="caixa" value="Queijo Parmesão" id="59">Queijo<!--27/06 -->
+                                    <p><input type="checkbox" class="caixa" value="Queijo Parmesão"
+                                            id="59">Queijo<!--27/06 -->
                                         Parmesão</p>
                                 </label>
                             </form>
-                        </div>
 
-                        <div id="tuberculos">
-                            <h2>Tubérculos</h2>
+
                             <form id="calcForm">
+                                <h2>Tubérculos</h2>
                                 <label>
                                     <p><input type="checkbox" class="caixa" value="Mandioca" id="60">Mandioca</p>
                                 </label>
@@ -376,20 +389,40 @@
                                 </label>
                             </form>
                         </div>
-                        <div class="calcb">
-                            <button type="button" onclick="cadastrarRefeicao()">Calcular</button>
-                        </div>
+                    </div>
+
+
+
+
+                    <div class="carousel__actions">
+                        <!-- Botões do Carrossel feitos para passa as listas dos alimentos 01/07-->
+                        <button data-js="carousel__button--prev" aria-label="Slide anterior">
+                            < </button>
+
+                                <button data-js="carousel__button--next" aria-label="Próximo slide">
+                                    >
+                                </button>
                     </div>
                 </div>
-                <div class="resposta">
-                    <div class="tituloresposta">
-                        <p id="resul">Resultado</p>
-                    </div>
-                    <div class="respostadiv">
-                        <div id="div_mensagem"></div>
-                    </div>
+
+
+
+
+                <div class="calcb">
+                    <button type="button" onclick="cadastrarRefeicao()">Cadastrar</button>
                 </div>
             </div>
+
+        </div>
+        <div class="resposta">
+            <div class="tituloresposta">
+                <p id="resul">Resultado</p>
+            </div>
+            <div class="respostadiv">
+                <div id="div_mensagem"></div>
+            </div>
+        </div>
+
 </body>
 
 </html>
@@ -451,6 +484,57 @@
 
 
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+
+    //Código do carrossel 01/07
+
+    // Seleciona todos os elementos de slide no HTML
+    const slides = document.querySelectorAll('[data-js="carousel__item"]');
+    const nextButton = document.querySelector('[data-js="carousel__button--next"]'); // Seleciona o botão de próximo slide 
+    const prevButton = document.querySelector('[data-js="carousel__button--prev"]'); // botão de slide anterior
+
+
+    let currentSlideIndex = 0; // essa variável armazena o índice do slide que está sendo exibido atualmente no carrossel.
+
+
+    nextButton.addEventListener('click', () => { // Código vai ser executado quando o evento 'click' ocorrer
+
+        if (currentSlideIndex === slides.length - 1) {     // verifica se o slide atual é o último
+
+            currentSlideIndex = 0; // se for o último, volta ao primeiro slide
+        } else {
+
+            currentSlideIndex++;  // caso contrário ele avança para o próximo slide
+        }
+
+
+        slides.forEach(slide => {
+            slide.classList.remove('carousel__item--visible');  // remove a classe que torna todos os slides visíveis de todos os slides
+        });
+
+
+        slides[currentSlideIndex].classList.add('carousel__item--visible');  // adiciona a classe para tornar visível (block) apenas o slide atual com o currentSlideIndex
+    });
+
+
+    prevButton.addEventListener('click', () => { // o evento acontece quando o botão de slide anterior é clicado
+
+        if (currentSlideIndex === 0) { // se o slide atual é o primeiro
+
+            currentSlideIndex = slides.length - 1; // caso for o primeiro ele vai para o último slide
+
+        } else {
+
+            currentSlideIndex--;  // Caso ele não for a primeiro slide volta para o slide anterior
+        }
+
+
+        slides.forEach(slide => {
+            slide.classList.remove('carousel__item--visible');   // remove a classe que torna todos os slides visíveis de todos os slides
+        });
+
+        slides[currentSlideIndex].classList.add('carousel__item--visible');  // adiciona a classe para tornar visível (block) apenas o slide atual com o currentSlideIndex
+    });
 
 
 
