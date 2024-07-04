@@ -1,3 +1,4 @@
+const { obterTotal } = require("../controllers/usuarioController");
 var database = require("../database/config")
 
 function autenticar(email, senha) {
@@ -33,9 +34,26 @@ function cadastrarRefeicao(idUsuario, tipo, nome, caloria, carboidrato, lipideo,
     return database.executar(instrucaoSql);
 }
 
+function obter(idUsuario,opcao) { // 03/07 select das informações do alimentos que foram cadastrados pelo usuario de uma determinada refeição
+    var instrucaoSql = `select nomeAlimento,caloria,carboidrato,lipideo,fibra,proteina,ferro,calcio,zinco from refeicao join usuario on id = fk_usuario
+where id = ${idUsuario} and tipoRefeicao = "${opcao}"`
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function Total(idUsuario,opcao) { // 03/07 select que soma as informações nutricionais de todos os alimentos que foram cadastrados pelo usuario de uma determinada refeição
+    var instrucaoSql = ` select sum(caloria) as caloriat, sum(carboidrato) as carboidratot, sum(lipideo) as lipideot, sum(fibra) as fibrat, sum(proteina) as proteinat, sum(ferro) as ferrot, sum(calcio) as calciot, sum(zinco) as zincot from refeicao join usuario on id = fk_usuario
+    where id = ${idUsuario} and tipoRefeicao = "${opcao}"`
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
 
 module.exports = {
     autenticar,
     cadastrar,
-    cadastrarRefeicao
+    cadastrarRefeicao,
+    obter,
+    Total
 };

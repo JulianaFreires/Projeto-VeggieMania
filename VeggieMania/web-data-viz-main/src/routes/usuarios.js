@@ -16,4 +16,15 @@ router.post("/cadastrarRefeicao", function (req, res) { //28/06 rota para o cada
     usuarioController.cadastrarRefeicao(req, res);
 })
 
+
+router.get("/obter/:idUsuario/:opcao", function (req, res) { //03/07 Rota para adiconar a tabela dos alimentos cadastrados pelo usuario de uma determinada refeição
+    usuarioController.obter(req, res);
+});
+
+router.get("/Total/:idUsuario/:opcao", function (req, res) { //03/07 Rota para adiconar a tabela do total de nutrientes dos alimentos cadastrados pelo usuario em uma determinada refeição
+    usuarioController.Total(req, res);
+});
+
+
+
 module.exports = router;

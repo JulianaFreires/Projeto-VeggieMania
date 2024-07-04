@@ -1274,6 +1274,20 @@ button.like path {
   background-repeat: no-repeat;
   background-size: cover;
   font-family: Poppins;
+  flex-direction: column;
+}
+
+.dash-rightcalc {
+  display: flex;
+  width: 70%;
+  height: fit-content;
+  position: relative;
+  top: 0;
+  left: 25%;
+  margin-top: 2%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 /* cadastro alimentos   01/07*/
@@ -1305,42 +1319,29 @@ select {
 
 .tudo2 {
   width: 100%;
-  overflow-y: auto;
 }
 
-
-
-.dash-rightcalc {
+h3{
   display: flex;
-  width: 70%;
-  height: fit-content;
-  position: relative;
-  top: 0;
-  left: 25%;
-  height: 100vh;
-  overflow: auto;
-  justify-content: center;
   align-items: center;
-  flex-direction: column;
+  justify-content: center;
 }
 
 .bloco {
   display: flex;
   justify-content: center;
-  align-items: center;
   flex-direction: row;
   height: auto;
-
-}
-
-form {
   margin-bottom: 20px;
+
 }
 
 
-#calcForm {
+
+.calcForm {
   font-size: 16px;
   padding: 5px;
+  margin-right: 2%;
 
 }
 
@@ -1351,7 +1352,6 @@ form {
   align-items: center;
   background-size: cover;
   background-repeat: no-repeat;
-  border-bottom: 1px solid #D2E5C5;
 
 }
 
@@ -1371,13 +1371,83 @@ form {
 }
 
 
-.resposta {
-  height: 100vh;
-  display: none;
+.resposta1 {
+  display: block;
   font-family: Poppins;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  width: 70%;
+  height: fit-content;
+  position: relative;
+  top: 0;
+  left: 25%;
+}
+
+.resposta2 {
+  display: block;
+  font-family: Poppins;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 70%;
+  height: fit-content;
+  position: relative;
+  top: 0;
+  left: 25%;
+}
+
+.resposta3 {
+  display: block;
+  font-family: Poppins;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 70%;
+  height: fit-content;
+  position: relative;
+  top: 0;
+  left: 25%;
+}
+
+.resposta4 {
+  display: block;
+  font-family: Poppins;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 70%;
+  height: fit-content;
+  position: relative;
+  top: 0;
+  left: 25%;
+
+}
+
+.resposta5 {
+  display: block;
+  font-family: Poppins;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 70%;
+  height: fit-content;
+  position: relative;
+  top: 0;
+  left: 25%;
+}
+
+.resposta6 {
+  display: block;
+  font-family: Poppins;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 70%;
+  height: fit-content;
+  position: relative;
+  top: 0;
+  left: 25%;
 }
 
 #div_mensagem p {

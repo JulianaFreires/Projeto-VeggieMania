@@ -55,11 +55,11 @@ function criarInput(checkbox) {// Função para criar ou remover um input de aco
 function cadastrarRefeicao() {
     // Seleciona todas as checkboxes com a classe "caixa"
     var idUsuario = sessionStorage.ID_USUARIO; //28/06 indetificar o usuário que está logado
-    div_mensagem.innerHTML = ""
+    // div_mensagem.innerHTML = ""
     var tipoRefeicao = select_tipoRefeicao.value //28/06 variável que guarda o tipo de refeição selecionado pelo usuário
     var checkboxes = document.querySelectorAll('.caixa');
     var selecionados = []; // Array para armazenar os ids das checkboxes selecionadas
-    var texto = ""
+    // var texto = ""
     var totalCalorias = 0;
     var totalCarboidratos = 0; // 27/06
     var totalLipideos = 0; // 27/06
@@ -102,10 +102,10 @@ function cadastrarRefeicao() {
                 totalZinco += Number(zincol);
 
                 // Exibe a div de resposta e rola para a visualização
-                document.querySelector('.resposta').style.display = 'flex';
-                document.getElementById('resul').scrollIntoView({ behavior: 'smooth' });
+                // document.querySelector('.resposta').style.display = 'flex';
+                // document.getElementById('resul').scrollIntoView({ behavior: 'smooth' });
 
-                texto += `<span>${nomel} - Calorias: ${calorial} |  Carboidratos:: ${carboidratol} |  Lipideos: ${lipideol} |  Fibra alimentar: ${fibral} | Proteinas: ${proteinal} | Cálcio: ${calciol} | Ferro: ${ferrol} | Zinco: ${zincol}<br></span>`// 27/06
+                // texto += `<span>${nomel} - Calorias: ${calorial} |  Carboidratos:: ${carboidratol} |  Lipideos: ${lipideol} |  Fibra alimentar: ${fibral} | Proteinas: ${proteinal} | Cálcio: ${calciol} | Ferro: ${ferrol} | Zinco: ${zincol}<br></span>`// 27/06
 
                 console.log(JSON.stringify({
                     idUsuario: sessionStorage.ID_USUARIO,
@@ -149,10 +149,10 @@ function cadastrarRefeicao() {
                                 console.log('Dieta cadastrada com sucesso', data);
 
                             })
-                        }else{
+                        } else {
                             response.text().then(data => {
                                 console.log('erro:', data);
-                            
+
                             })
                         }
                     })
@@ -185,18 +185,141 @@ function cadastrarRefeicao() {
     totalZincoFixed = Number(totalZinco).toFixed(2);
 
 
-    div_mensagem.innerHTML += `<p>${texto}<br> O prato contém no total: Calorias: ${totalCaloriasFixed} | Carboidratos: ${totalCarboidratosFixed} | Lipideos: ${totalLipideosFixed} | Fibras alimentares: ${totalFibrasFixed} | Proteina: ${totalProteinasFixed} | Cálcio: ${totalCalcioFixed} | Ferro: ${totalFerroFixed} | Zinco:${totalZincoFixed}</p>`// 27/06
+    // div_mensagem.innerHTML += `<p>${texto}<br> O prato contém no total: Calorias: ${totalCaloriasFixed} | Carboidratos: ${totalCarboidratosFixed} | Lipideos: ${totalLipideosFixed} | Fibras alimentares: ${totalFibrasFixed} | Proteina: ${totalProteinasFixed} | Cálcio: ${totalCalcioFixed} | Ferro: ${totalFerroFixed} | Zinco:${totalZincoFixed}</p>`// 27/06
 
 
-
-
-
-
-
+    obter();
 }
 
+function obter() { // 03/07 Funcão para  a criação das tabelas de forma dinâmica na pagina de dieta do dashboard
+    const idUsuario = sessionStorage.ID_USUARIO; // Obtém o ID do usuário da sessionStorage
+    const opcao = document.getElementById('select_tipoRefeicao').value; // A opcao é utilizada para que o alimento seja selecionado de forma dinâmica no model
+    const refeicao = document.getElementById(opcao); // A refeicao é utilizada para que os elementos HTML sejam adicionados de forma dinâmica na div com o respectivo nome da opção
 
 
+    // 03/07 Tabela com os alimentos de nutrientes de uma determinada refeição    
+    fetch(`/usuarios/obter/${idUsuario}/${opcao}`, {
+
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+        .then(response => {
+            // Verifica
+            if (!response.ok) {
+                throw new Error('Erro ao obter os dados do ranking');
+            }
+            return response.json();
+        })
+        .then(data => {  // 03/07 Adiciona a tabela dentro da div com o id do nome da refeição selecionada pelo usuário    
+
+            var tabela = ""
+        tabela  = `  
+        <table>
+              <thead>
+                    <tr>  
+                        <th>Alimento</th>  
+                        <th>Calorias</th>
+                        <th>Carboidratos</th>
+                        <th>Lipideos</th>
+                        <th>Fibras</th> 
+                        <th>Proteinas</th>
+                        <th>Ferro</th>
+                        <th>Calcio</th>
+                        <th>Zinco</th>
+                    </tr>
+                </thead>
+                <tbody>`;
+
+
+            data.forEach(item => {
+                const linha = `
+                 
+                <tr> 
+                    <td>${item.nomeAlimento}</td>
+                    <td>${item.caloria}</td> 
+                    <td>${item.carboidrato}</td>
+                    <td>${item.lipideo}</td>
+                    <td>${item.fibra}</td>
+                    <td>${item.proteina}</td>
+                    <td>${item.ferro}</td>
+                    <td>${item.calcio}</td>
+                    <td>${item.zinco}</td>
+                </tr>`;
+
+            tabela  += linha;
+            });
+
+        tabela += `  </tbody>
+            </table>`
+
+            refeicao.innerHTML += tabela
+            
+        })
+        .catch(error => {
+            console.error('Erro na requisição do ranking', error);
+        });
+
+
+    // 03/07 Tabela do total de nutrientes de uma determinada refeição    
+    fetch(`/usuarios/Total/${idUsuario}/${opcao}`, {
+
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+        .then(response => {
+            // Verifica
+            if (!response.ok) {
+                throw new Error('Erro ao obter os dados do ranking');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data)
+        
+            refeicao.innerHTML += 
+             `
+
+                <table>
+                    <caption>Total</caption>
+                    <thead>
+                        <tr>   
+                            <th>Calorias</th>
+                            <th>Carboidratos</th>
+                            <th>Lipideos</th>
+                            <th>Fibras</th> 
+                            <th>Proteinas</th>
+                            <th>Ferro</th>
+                            <th>Calcio</th>
+                            <th>Zinco</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr> 
+                        <td>${data[0].caloriat}</td>
+                        <td>${data[0].carboidratot}</td>
+                        <td>${data[0].lipideot}</td>
+                        <td>${data[0].fibrat}</td>
+                        <td>${data[0].proteinat}</td>
+                        <td>${data[0].ferrot}</td>
+                        <td>${data[0].calciot}</td>
+                        <td>${data[0].zincot}</td>
+                    </tr>
+                     </tbody>
+            </table>`;
+            
+        })
+
+        
+        .catch(error => {
+            console.error('Erro na requisição do ranking', error);
+        });
+
+}
 
 
 

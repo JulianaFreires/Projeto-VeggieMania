@@ -146,9 +146,58 @@ function cadastrarRefeicao(req, res) { //28/06 recupera os dados que foram cadas
     }
 }
 
+
+function obter(req, res) {
+    const idUsuario = req.params.idUsuario; // 03/07 Obtém o ID do usuário da URL (parâmetro da rota)
+    const opcao = req.params.opcao; // Obtém valor do select do tipo de refeição selecionada pelo usuário
+
+
+    usuarioModel.obter(idUsuario,opcao)
+    .then(
+        // Se bem-sucedido, envia os dados no formato JSON
+        function (resultado) {
+            res.status(200).json(resultado);
+        }
+    )
+    .catch(
+        function (erro) {
+            // Em caso de erro, registra no console e envia uma resposta de erro
+            console.log(erro);
+            console.log("Houve um erro ao realizar o post: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
+
+}
+
+function Total(req, res) { // 03/07
+    const idUsuario = req.params.idUsuario; // Obtém o ID do usuário da URL (parâmetro da rota)
+    const opcao = req.params.opcao;
+
+
+    usuarioModel.Total(idUsuario,opcao)
+    .then(
+        // Se bem-sucedido, envia os dados no formato JSON
+        function (resultado) {
+            res.status(200).json(resultado);
+        }
+    )
+    .catch(
+        function (erro) {
+            // Em caso de erro, registra no console e envia uma resposta de erro
+            console.log(erro);
+            console.log("Houve um erro ao realizar o post: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
+
+}
+
 module.exports = {
     autenticar,
     cadastrar,
-    cadastrarRefeicao
+    cadastrarRefeicao,
+    obter,
+    Total
 
 }

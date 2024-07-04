@@ -74,12 +74,12 @@
                 <p>Tipo de refeição :</p><br>
                 <!-- 28/06 O select para direcionar o tipo de refeição que o usuário deseja cadastrar os seus alimentos-->
                 <select id="select_tipoRefeicao" type="text">
-                    <option value="Café da Manhã">Café da Manhã</option>
-                    <option value="Lanche da manhã">Lanche da manhã</option>
-                    <option value="Almoço">Almoço</option>
-                    <option value="Lanche da tarde">Lanche da tarde</option>
-                    <option value="Jantar">Jantar</option>
-                    <option value="Lanche da noite">Lanche da noite</option>
+                    <option>Café da Manhã</option>
+                    <option>Lanche da Manhã</option>
+                    <option>Almoço</option>
+                    <option>Lanche da Tarde</option>
+                    <option>Jantar</option>
+                    <option>Lanche da Noite</option>
                 </select>
             </div>
 
@@ -89,7 +89,7 @@
                         <!-- 27/06 foram adicionados 25 alimentos em relação a primeira versão da calculadora, os queijos foram adicionados aos laticinios, alimentos como semente de girassol e nutella foram removidos-->
                         <div class="bloco">
 
-                            <form id="calcForm">
+                            <form class="calcForm">
                                 <h2>Cereais</h2>
                                 <label>
                                     <p><input type="checkbox" class="caixa" value="Aveia em flocos" id="0">Aveia em
@@ -112,7 +112,7 @@
                                 </label>
                             </form>
 
-                            <form id="calcForm">
+                            <form class="calcForm">
                                 <h2>Leguminosas</h2>
                                 <label>
                                     <p><input type="checkbox" class="caixa" value="Ervilha em lata" id="5">Ervilha em
@@ -140,7 +140,7 @@
                                 </label>
                             </form>
 
-                            <form id="calcForm">
+                            <form class="calcForm">
                                 <h2>Oleaginosas</h2>
                                 <label>
                                     <p><input type="checkbox" class="caixa" value="Amêndoa torrada" id="12">Amêndoa
@@ -171,7 +171,7 @@
                     <div data-js="carousel__item" class="carousel__item">
                         <div class="bloco">
 
-                            <form id="calcForm">
+                            <form class="calcForm">
                                 <h2>Verduras</h2>
                                 <label>
                                     <p><input type="checkbox" class="caixa" value="Brócolis" id="18">Brócolis</p>
@@ -209,7 +209,7 @@
                                 </label>
                             </form>
 
-                            <form id="calcForm">
+                            <form class="calcForm">
                                 <h2>Legumes</h2>
                                 <label>
                                     <p><input type="checkbox" class="caixa" value="Palmito pupunha" id="27">Palmito
@@ -234,7 +234,7 @@
                                 </label>
                             </form>
 
-                            <form id="calcForm">
+                            <form class="calcForm">
                                 <h2>Proteína animal</h2>
                                 <label>
                                     <p><input type="checkbox" class="caixa" value="Sardinhas em lata" id="33">Sardinhas
@@ -297,7 +297,7 @@
                     <div data-js="carousel__item" class="carousel__item">
                         <div class="bloco">
                             <!--24/06 Mais alimentos foram adicionados nas listas relacionados a 3 categorias massas, laticínios e tubérculos-->
-                            <form id="calcForm">
+                            <form class="calcForm">
                                 <h2>Massas</h2>
                                 <label>
                                     <p><input type="checkbox" class="caixa" value="Macarrão" id="45">Macarrão</p>
@@ -318,7 +318,7 @@
                                 </label>
                             </form>
 
-                            <form id="calcForm">
+                            <form class="calcForm">
                                 <h2>Laticínios</h2>
                                 <label>
                                     <p><input type="checkbox" class="caixa" value="Requeijão" id="50">Requeijão</p>
@@ -362,7 +362,7 @@
                             </form>
 
 
-                            <form id="calcForm">
+                            <form class="calcForm">
                                 <h2>Tubérculos</h2>
                                 <label>
                                     <p><input type="checkbox" class="caixa" value="Mandioca" id="60">Mandioca</p>
@@ -414,14 +414,48 @@
             </div>
 
         </div>
-        <div class="resposta">
-            <div class="tituloresposta">
-                <p id="resul">Resultado</p>
+        <div class="resposta1" id="Café da Manhã"> <!-- O id recebe o nome do das opções do select para que o then retorne na div respectiva do tipo de alimento que foi selecionado pelo usuário-->
+            <div class="telat">
+                <h3>Café da manhã</h3>
             </div>
-            <div class="respostadiv">
-                <div id="div_mensagem"></div>
-            </div>
+         
         </div>
+    
+        <div class="resposta2" id="Lanche da manhã">
+            <div class="telat">
+                <h3>Lanche da manhã</h3>
+            </div>
+       
+        </div>
+
+        <div class="resposta3" id="Almoço">
+            <div class="telat">
+                <h3>Almoço</h3>
+            </div>
+          
+        </div>
+
+        <div class="resposta4" id="Lanche da Tarde">
+            <div class="telat">
+                <h3>Lanche da Tarde</h3>
+            </div>
+           
+        </div>
+
+        <div class="resposta5" id="Jantar">
+            <div class="telat">
+                <h3>Jantar</h3>
+            </div>
+           
+        </div>
+
+        <div class="resposta6" id="Lanche da noite">
+            <div class="telat">
+                <h3>Lanche da noite</h3>
+            </div>
+         
+        </div>
+    
 
 </body>
 
