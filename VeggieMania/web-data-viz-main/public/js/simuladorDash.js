@@ -206,11 +206,11 @@ function obter() { // 03/07 Funcão para  a criação das tabelas de forma dinâ
         },
     })
         .then(response => {
-            // Verifica
+            // Verifica  se a resposta da requisição (response) foi bem-sucedida
             if (!response.ok) {
-                throw new Error('Erro ao obter os dados do ranking');
+                throw new Error('Erro ao obter os dados da refeição');
             }
-            return response.json();
+            return response.json(); //converte os dados da resposta para JSON  e retorna esses dados para o próximo then.
         })
         .then(data => {  // 03/07 Adiciona a tabela dentro da div com o id do nome da refeição selecionada pelo usuário    
 
@@ -233,7 +233,7 @@ function obter() { // 03/07 Funcão para  a criação das tabelas de forma dinâ
                 <tbody>`;
 
 
-            data.forEach(item => {
+            data.forEach(item => {  //itera sobre cada item no array, criando dinamicamente uma linha da tabela reenchendo com os valores recebido (informações nutriconais do alimento)
                 const linha = `
                  
                 <tr> 
@@ -254,7 +254,7 @@ function obter() { // 03/07 Funcão para  a criação das tabelas de forma dinâ
         tabela += `  </tbody>
             </table>`
 
-            refeicao.innerHTML += tabela
+            refeicao.innerHTML += tabela // Após todos os valores serem adicionados na variavel tabela, todo o conteúdo é adicionado ao  HTML do elemento com o id refeicao que o usuário selecionou
             
         })
         .catch(error => {

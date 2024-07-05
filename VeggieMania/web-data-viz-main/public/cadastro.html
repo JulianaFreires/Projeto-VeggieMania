@@ -50,65 +50,85 @@
       <div class="container">
         <div class="card card-cadastro">
           <h2>Bem-vindo!</h2>
-          <div class="formulario">
-            <!--
-                         Para inserir mais um campo, copie uma das inputs abaixo.
-                         Assim que inserir vá para o script abaixo.
-                     -->
+          <form class="formulario" onsubmit="cadastrar(event)"> <!--04/07 O forms foi utlizado estilizar o cadastro-->
+            <div class="camposC">
+              <div class="parte1">
+                <div class="campo">
+                  <span>Nome:</span>
+                  <input required id="nome_input" type="text" placeholder="Seu nome" />
+                </div>
+                <div class="campo">
+                  <span>CPF:</span>
+                  <input required id="cpf_input" type="text" placeholder="xxxxxxxxxxx" />
+                </div>
+                <div class="campo">
+                  <span>E-mail:</span>
+                  <input required id="email_input" type="text" placeholder="seuemail@provedor.com" />
+                </div>
+                <div class="campo">
+                  <span>Senha:</span>
+                  <input required id="senha_input" type="password" placeholder="******" />
+                </div>
 
-            <div class="campo">
-              <span>Nome:</span>
-              <input id="nome_input" type="text" placeholder="Seu nome" />
+              </div>
+              <div class="parte2"><!--04/07-->
+                <div class="campo">
+                  <span>Seu tipo de alimentação:</span>
+                  <select required  id="tipo_select" type="text">
+                    <option disabled selected value="">Selecione seu tipo de alimentação</option>
+                    <option>Onívoro</option>
+                    <option>Vegana</option>
+                    <option>Vegetariano estrito</option>
+                    <option>Ovolactovegetariano</option>
+                    <option>Lactovegetariano</option>
+                    <option>Ovovegetariano</option>
+                  </select>
+                </div>
+                <div class="campo">
+                  <span>Data de nascimento:</span><!--04/07-->
+                  <input required id="data_nasc" type="date" />
+                </div>
+                <div class="campo">
+                  <span>Sexo biológico:</span><!--04/07-->
+                  <select required id="tipo_sexo" type="text">
+                    <option disabled selected value="">Selecione seu sexo</option>
+                    <option>Feminino</option>
+                    <option>Masculino</option>
+                  </select>
+                </div>
+                <div class="campo">
+                  <span>Confirmação da Senha:</span>
+                  <input required id="confirmacao_senha_input" type="password" placeholder="******" />
+                </div>
+              </div>
             </div>
-            <div class="campo">
-              <span>CPF:</span>
-              <input id="cpf_input" type="text" placeholder="xxxxxxxxxxx" />
+            <button class="botao">Cadastrar</button>
+            <div id="div_aguardar" class="loading-div">
+              <img src="css/img/loading-load.gif" id="loading-gif" />
             </div>
-            <div class="campo">
-              <span>E-mail:</span>
-              <input id="email_input" type="text" placeholder="seuemail@provedor.com" />
-            </div>
-            <div class="campo">
-              <span>Senha:</span>
-              <input id="senha_input" type="password" placeholder="******" />
-            </div>
-            <div class="campo">
-              <span>Confirmação da Senha:</span>
-              <input id="confirmacao_senha_input" type="password" placeholder="******" />
-            </div>
-            <div class="campo">
-              <span>Seu tipo de alimentação:</span>
-              <select id="tipo_select" type="text">
-                <option value="#">Selecione seu tipo de alimentação</option>
-                <option value="Onivoro">Onívoro</option>
-                <option value="Vegana">Vegana</option>
-                <option value="Vegetariano Estrito">Vegetariano estrito</option>
-                <option value="Ovolactovegetariano">Ovolactovegetariano</option>
-                <option value="Lactovegetariano">Lactovegetariano</option>
-                <option value="Ovovegetariano">Ovovegetariano</option>
-              </select>
-            </div>
-            <button class="botao" onclick="cadastrar()">Cadastrar</button>
-          </div>
-          <div id="div_aguardar" class="loading-div">
-            <img src="css/img/loading-load.gif" id="loading-gif" />
-          </div>
-
-          <div id="div_erros_login"></div>
+          </form>
         </div>
       </div>
+
+
+
+      <div id="div_erros_login"></div>
     </div>
+  </div>
+  </div>
 
-    <!--footer inicio-->
+  <!--footer inicio-->
 
-    <!--footer fim-->
+  <!--footer fim-->
 </body>
 
 </html>
 
 <script>
-  function cadastrar() {
+  function cadastrar(event) { 
+    event.preventDefault()
     aguardar();
+
 
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
@@ -122,77 +142,90 @@
     var indiceEmail2 = emailVar.indexOf('.com');
     var tamCPF = cpfVar.length
     var tamSenha = senhaVar.length
+    var nascVar = data_nasc.value //04/07
+    var sexoVar = tipo_sexo.value //04/07
+
 
     if (
       nomeVar == "" ||
       emailVar == "" ||
       senhaVar == "" ||
       confirmacaoSenhaVar == "" ||
-      tipoVar == "#" || // validação para caso o usúario não selecione nenhuma opção válida no select 20/06
-      cpfVar == 0
+      tipoVar == "" || // validação para caso o usúario não selecione nenhuma opção válida no select 20/06
+      cpfVar == 0 ||
+      nascVar == "" || //04/07
+      sexoVar == ""
+
     ) {
       //exibe o card de erro com a mensagem
       cardErro2.style.display = "block";
       mensagem_erro2.innerHTML =
         "Preencha todos os campos";
-      setTimeout(function() {
-            sumirMensagem(); finalizarAguardar();
-          }, 3000);
-          return false;
+      setTimeout(function () {
+        sumirMensagem(); finalizarAguardar();
+      }, 3000);
+  
+      return false;
 
     } else if (senhaVar != confirmacaoSenhaVar) {
       cardErro2.style.display = "block";
       mensagem_erro2.innerHTML =
         "As senhas devem ser iguais";
-        setTimeout(function() {
-            sumirMensagem(); finalizarAguardar();
-          }, 3000);
-          return false;
-   
-    } else if (indiceEmail2 < 0) {
-      cardErro2.style.display = "block";
-      mensagem_erro2.innerHTML =
-        "Este email não é válido";
-        setTimeout(function() {
-            sumirMensagem(); finalizarAguardar();
-          }, 3000);
-          return false;
+      setTimeout(function () {
+        sumirMensagem(); finalizarAguardar();
+      }, 3000);
+  
+      return false;
 
     } else if (indiceEmail2 < 0) {
       cardErro2.style.display = "block";
       mensagem_erro2.innerHTML =
         "Este email não é válido";
-        setTimeout(function() {
-            sumirMensagem(); finalizarAguardar();
-          }, 3000);
-          return false;
+      setTimeout(function () {
+        sumirMensagem(); finalizarAguardar();
+      }, 3000);
+    
+      return false;
+
+    } else if (indiceEmail2 < 0) {
+      cardErro2.style.display = "block";
+      mensagem_erro2.innerHTML =
+        "Este email não é válido";
+      setTimeout(function () {
+        sumirMensagem(); finalizarAguardar();
+      }, 3000);
+  
+      return false;
 
     } else if (tamCPF != 11) {
       cardErro2.style.display = "block";
       mensagem_erro2.innerHTML =
         "O CPF deve ter 11 digitos";
-        setTimeout(function() {
-            sumirMensagem(); finalizarAguardar();
-          }, 3000);
-          return false;
-          
+      setTimeout(function () {
+        sumirMensagem(); finalizarAguardar();
+      }, 3000);
+    
+      return false;
+
     } else if (tamSenha < 6) {
       cardErro2.style.display = "block";
       mensagem_erro2.innerHTML =
         "A senha deve conter pelo menos 6 caracteres";
-        setTimeout(function() {
-            sumirMensagem(); finalizarAguardar();
-          }, 3000);
-          return false;
+      setTimeout(function () {
+        sumirMensagem(); finalizarAguardar();
+      }, 3000);
+      return false;
     } else {
+  
       setInterval(sumirMensagem, 5000);
-       
+
     }
 
 
     //Envia uma solicitação POST para a rota /usuarios/cadastrar com os dados do usuário.
     // faz uma solicitação ao servidor para cadastrar um usuário. O servidor pode responder com sucesso ou com um erro
     // Enviando o valor da nova input
+
     fetch("/usuarios/cadastrar", {
       method: "POST",
       headers: {
@@ -205,6 +238,8 @@
         senhaServer: senhaVar,
         cpfServer: cpfVar,
         tipoServer: tipoVar, //tipoServer é uma propriedade do objeto JSON e o tipoVar será o valor que está relacionado com aquilo que o usúario selecionar 20/06
+        nascServer: nascVar, //04/07
+        sexoServer: sexoVar
       }),
     })
 
@@ -216,28 +251,29 @@
         if (resposta.ok) {
           cardErro2.style.display = "block";
           mensagem_erro2.innerHTML =
-          "Cadastrado com sucesso!";
-          setTimeout(function() {
+            "Cadastrado com sucesso!";
+          setTimeout(function () {
             sumirMensagem; finalizarAguardar();
           }, 3000);
           window.location = "login.html";
-        
+
           limparFormulario();
           finalizarAguardar();
-        //caso a resposta do servidor não é bem-sucedida 
-        // o servidor faz suas próprias validações e retorna erro. Caso tente cadastrar um email ou o CPF que já foi cadastrado anteriormente no banco de dados será exibido uma mensagem de erro, pois  o CPF e o email são especificados como "unique", ou seja, esse campos devem ser registrados de forma unica e excluisiva para cada usúario.
+          //caso a resposta do servidor não é bem-sucedida 
+          // o servidor faz suas próprias validações e retorna erro. Caso tente cadastrar um email ou o CPF que já foi cadastrado anteriormente no banco de dados será exibido uma mensagem de erro, pois  o CPF e o email são especificados como "unique", ou seja, esse campos devem ser registrados de forma unica e excluisiva para cada usúario.
         } else {
           cardErro2.style.display = "block";
           mensagem_erro2.innerHTML =
-          "O Email ou CPF já foi cadastrado";
-          setTimeout(function() {
+            "O Email ou CPF já foi cadastrado";
+          setTimeout(function () {
             sumirMensagem(); finalizarAguardar();
           }, 3000);
           return false;
           // Interrompe a execução da função
-          
-          
-        }} )
+
+
+        }
+      })
       .catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
 

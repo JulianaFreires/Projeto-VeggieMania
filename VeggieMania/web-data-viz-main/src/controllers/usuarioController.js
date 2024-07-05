@@ -45,12 +45,15 @@ function autenticar(req, res) {
 }
 
 function cadastrar(req, res) {
-    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html 
     var nome = req.body.nomeServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
     var cpf = req.body.cpfServer;
     var tipo = req.body.tipoServer;
+    var nasc = req.body.nascServer; //04/07
+    var sexo = req.body.sexoServer;
+    
      //20/06 O tipo esta relacionado com o tipo de alimentação que o usúario selecionou no seu cadastro. Recupera o valor do campo 'tipoServer' do formulário de cadastro e o armazena na variável 'tipo'
 
     // Faça as validações dos valores
@@ -64,10 +67,14 @@ function cadastrar(req, res) {
         res.status(400).send("Seu cpf está undefined!");
     } else if (tipo == undefined) {
         res.status(400).send("Seu tipo de alimentação está undefined!");
+    } else if (nasc == undefined) {
+        res.status(400).send("Sua data de aniversário está undefined!");
+    } else if (sexo == undefined) {
+        res.status(400).send("Seu sexo está undefined!");
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, email, senha, cpf, tipo)
+        usuarioModel.cadastrar(nome, email, senha, cpf, tipo, nasc, sexo)
             .then(
                 function (resultado) {
                     res.json(resultado);

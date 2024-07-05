@@ -9,7 +9,9 @@ CREATE TABLE usuario (
 	email VARCHAR(50) UNIQUE,
 	senha VARCHAR(50),
 	cpf CHAR(11) UNIQUE,
-    tipoAlimentacao VARCHAR(50)
+    tipoAlimentacao VARCHAR(50),
+    nascimento DATE,
+    sexo VARCHAR(50)
 );
 
 CREATE TABLE mural (
@@ -38,7 +40,7 @@ FOREIGN KEY (fk_mural) REFERENCES mural(idMural) on delete cascade,
 FOREIGN KEY (fk_aviso) REFERENCES aviso(id) on delete cascade
 );
 
-CREATE TABLE refeicao( 
+CREATE TABLE refeicao(
 idRefeicao INT PRIMARY KEY AUTO_INCREMENT,
 fk_usuario INT,
 FOREIGN KEY (fk_usuario) REFERENCES usuario(id),
@@ -54,13 +56,9 @@ ferro DECIMAL(7,2),
 zinco DECIMAL(7,2)
 );
 
-INSERT INTO usuario values
-(5, 'ju', 'ju@gmail.com', '123456', 46084056830, 'Vegana');
 
-
-INSERT INTO refeicao (fk_usuario, tipoRefeicao, nomeAlimento, caloria, carboidrato, lipideo, fibra, proteina, calcio, ferro, zinco ) VALUES
- (5,'teste', 'teste',7,7,7,7,7,7,7,7);
     
+    select * from usuario;
 
 
 INSERT INTO mural VALUES
@@ -68,6 +66,3 @@ INSERT INTO mural VALUES
 (2, "Receita"),
 (3, "Moda"),
 (4, "Cosmético");
-
-select usuario.*, aviso.*, mural.* from aviso join usuario on usuario.id = aviso.fk_usuario
-join mural on mural.idMural = aviso.fk_mural;

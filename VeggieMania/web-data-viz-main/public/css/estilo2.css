@@ -116,7 +116,7 @@ body {
   flex-direction: row;
 }
 .homec {
-  width: 37%;
+  width: 40%;
   flex-grow: 1;
   /* p-oucpa o resto da div pai */
   display: flex;
@@ -222,28 +222,47 @@ body {
 }
 
 .formulario input {
+  font-size: 1em;
+  color: gray;
   border: 2px solid #89C063;
   text-align: center;
   border-radius: 10px;
   margin: 0;
+  padding: 10px;
 }
 
 
 .formulario select {
+  font-size: 1em;
   border: 2px solid #9ce660;
   background-color: white;
   color: gray;
-  height: 36px;
   text-align: center;
   border-radius: 10px;
   margin: 0;
   outline: none;
+  padding: 10px;
 }
 
 .formulario select:focus {
   border: 2px solid #9ce660; /* Mantém a borda verde ao focar */
   box-shadow: none; /* Remove o efeito de sombra ao focar */
 }
+
+.camposC{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 2%;
+}
+
+.camposC > div{
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  height: 100%;
+}
+
 
 .campo {
   display: flex;
@@ -346,13 +365,6 @@ body {
   flex-direction: column;
 }
 
-input {
-  margin-bottom: 10px;
-  border: 2px solid #32b9cd;
-  padding: 10px;
-  text-align: center;
-  border-radius: 10px;
-}
 
 .btn {
   font-family: "Barlow", sans-serif;

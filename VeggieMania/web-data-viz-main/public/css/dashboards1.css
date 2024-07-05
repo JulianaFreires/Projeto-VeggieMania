@@ -1307,15 +1307,21 @@ button.like path {
 select {
   font-size: 18px;
   border: none;
-  background-color: #f0f0f000;
   padding: 10px;
   border-radius: 5px;
+  appearance: none; /* 04/07  Remove o estilo padrão do sistema operacional */
+  cursor: pointer; 
+  background-image: url('data:image/svg+xml;utf8,<svg fill="black" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); /* Adiciona a seta SVG */
+  background-repeat: no-repeat;
+  background-position: right 10px center; /* Posiciona a imagem para a direita */
+  padding-right: 31px; /* Espaçamento para acomodar a seta */
 }
 
-#select_tipoRefeicao.custom-select:focus {
+select:focus {
   outline: none;
-  /* Remove a borda de foco padrão */
 }
+
+
 
 .tudo2 {
   width: 100%;
@@ -1486,17 +1492,24 @@ h3{
 
 .inputQtd {
   display: flex;
-  border: 2px solid #589c4c;
+  border: 2px solid #69954e;
   border-radius: 5px;
-  padding: 5px;
+  padding: 4px;
   font-size: 12px;
   color: #090909;
   font-family: Poppins;
   margin-left: 2%;
+  z-index: 1000;      /*04/07  Ajuste da posição do input e da checkbox para corrigir os bugs dos cliques nesse elementos*/
+  position: relative;
 
 }
 
 
+input[type="checkbox"] {
+  position: relative;
+  width: 13px;
+  z-index: 1100 ;
+}
 
 /* Carrossel  01/07 */
 
