@@ -69,6 +69,10 @@
                   <span>Senha:</span>
                   <input required id="senha_input" type="password" placeholder="******" />
                 </div>
+                <div class="campo">
+                  <span>Altura em metros:</span>
+                  <input required id="altura_input" type="number" step="0.01" placeholder="Exemplo: 1.60" /><!--09/07 O step  permite que o usuário insira número decimais, o numero 0.01 permite números decimais com até 2 casas decimais.-->
+                </div>
 
               </div>
               <div class="parte2"><!--04/07-->
@@ -100,15 +104,22 @@
                   <span>Confirmação da Senha:</span>
                   <input required id="confirmacao_senha_input" type="password" placeholder="******" />
                 </div>
+                <div class="campo">
+                  <span>Peso em kg:</span>
+                  <input required id="peso_input" type="number"  step="0.01" placeholder="Exemplo: 60" /><!--09/07-->
+                </div>
               </div>
             </div>
             <div class="campo">
-              <span>Estilo de vida:</span><!--06/07-->
-              <select required id="estilo" type="text">
-                <option disabled selected value="">Selecione seu estilo de vida</option>
-                <option>Ativo</option>
-                <option>Sedentário</option>
-              </select>
+              <span>Nível de atividade física:</span><!--06/07-->
+              <select required id="nivel" type="text">
+                <option disabled selected value="">Selecione o seu nível de atividade física</option>
+                <option>Sedentário</option><!--09/07 Foram adicionadas as opções: leve, moderada, intensa e muito intensa.-->
+                <option>Leve</option>
+                <option>Moderada</option>
+                <option>Intensa</option>
+                <option>Muito intensa</option>
+              </select><!--Os campos: peso, altura, idade, sexo e nivel de atividade fisica foram adicionados para o calculo da Taxa metabólica basal poder ser realizado na página "dieta"-->
             </div>
             <button class="botao">Cadastrar</button>
             <div id="div_aguardar" class="loading-div">
@@ -152,7 +163,9 @@
     var tamSenha = senhaVar.length
     var nascVar = data_nasc.value //04/07
     var sexoVar = tipo_sexo.value //04/07
-    var estiloVar = estilo.value //06/07
+    var alturaVar = altura_input.value//09/07
+    var pesoVar = peso_input.value//09/07
+    var nivelVar = nivel.value //06/07
 
 
     if (
@@ -164,7 +177,9 @@
       cpfVar == 0 ||
       nascVar == "" || //04/07
       sexoVar == "" ||
-      estiloVar == ""
+      alturaVar == 0 ||
+      pesoVar == 0 ||
+      nivelVar == ""
 
     ) {
       //exibe o card de erro com a mensagem
@@ -250,7 +265,9 @@
         tipoServer: tipoVar, //tipoServer é uma propriedade do objeto JSON e o tipoVar será o valor que está relacionado com aquilo que o usúario selecionar 20/06
         nascServer: nascVar, //04/07
         sexoServer: sexoVar,
-        estiloServer: estiloVar
+        alturaServer: alturaVar, //09/07
+        pesoServer: pesoVar, //09/07
+        nivelServer: nivelVar
       }),
     })
 

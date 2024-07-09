@@ -28,6 +28,10 @@ router.get("/Total/:idUsuario/:opcao", function (req, res) { //03/07 Rota para a
     usuarioController.Total(req, res);
 });
 
+router.get("/relatorio/:idUsuario", function (req, res) { //09/07 Rota para adiconar um relatório sobre as informações nutricionais da dieta
+    usuarioController.relatorio(req, res);
+});
+
 
 
 module.exports = router;

@@ -53,7 +53,9 @@ function cadastrar(req, res) {
     var tipo = req.body.tipoServer;
     var nasc = req.body.nascServer; //04/07
     var sexo = req.body.sexoServer; //04/07
-    var estilo = req.body.estiloServer;
+    var altura = req.body.alturaServer;//09/07
+    var peso = req.body.pesoServer;//09/07
+    var nivel = req.body.nivelServer;//08/07
 
     //20/06 O tipo esta relacionado com o tipo de alimentação que o usúario selecionou no seu cadastro. Recupera o valor do campo 'tipoServer' do formulário de cadastro e o armazena na variável 'tipo'
 
@@ -72,12 +74,16 @@ function cadastrar(req, res) {
         res.status(400).send("Sua data de aniversário está undefined!");
     } else if (sexo == undefined) {
         res.status(400).send("Seu sexo está undefined!");
-    } else if (estilo == undefined) {
+    } else if (altura == undefined) {
+        res.status(400).send("Sua altura está undefined!");
+    } else if (peso == undefined) {
+        res.status(400).send("Seu peso está undefined!");
+    } else if (nivel == undefined) {
         res.status(400).send("Seu estilo de vida está undefined!");
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, email, senha, cpf, tipo, nasc, sexo, estilo)
+        usuarioModel.cadastrar(nome, email, senha, cpf, tipo, nasc, sexo, altura, peso, nivel)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -245,12 +251,36 @@ function Total(req, res) { // 03/07
 
 }
 
+
+function relatorio(req, res) { // 09/07
+    const idUsuario = req.params.idUsuario; // Obtém o ID do usuário da URL (parâmetro da rota)
+
+    usuarioModel.relatorio(idUsuario)
+        .then(
+            // Se bem-sucedido, envia os dados no formato JSON
+            function (resultado) {
+                res.status(200).json(resultado);
+            }
+        )
+        .catch(
+            function (erro) {
+                // Em caso de erro, registra no console e envia uma resposta de erro
+                console.log(erro);
+                console.log("Houve um erro ao realizar o post: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+
+}
+
+
 module.exports = {
     autenticar,
     cadastrar,
     cadastrarRefeicao,
     cadastrarAlimento,
     obter,
-    Total
+    Total,
+    relatorio
 
 }

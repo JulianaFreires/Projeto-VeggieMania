@@ -13,7 +13,9 @@ CREATE TABLE usuario (
     tipoAlimentacao VARCHAR(50),
     nascimento DATE,
     sexo VARCHAR(50),
-    estiloVida VARCHAR(50)
+    altura DECIMAL(3,2),
+    peso DECIMAL(4,2),
+    nivelAtividade VARCHAR(50)
 );
 
 CREATE TABLE mural (

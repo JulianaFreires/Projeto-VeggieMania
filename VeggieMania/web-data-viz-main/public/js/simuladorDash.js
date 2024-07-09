@@ -53,7 +53,7 @@ function criarInput(checkbox) {// Função para criar ou remover um input de aco
 }
 
 function cadastrarRefeicao() {
- 
+
     var nomeRefeicao = select_tipoRefeicao.value //28/06 variável que guarda o tipo de refeição selecionado pelo usuário
     var checkboxes = document.querySelectorAll('.caixa');   // Seleciona todas as checkboxes com a classe "caixa"
     var selecionados = []; // Array para armazenar os ids das checkboxes selecionadas
@@ -149,7 +149,7 @@ function cadastrarRefeicao() {
                                         console.log('alimento cadastrado com sucesso', data2);
 
                                         cont++ //08/07 soma no cont cada alimento que está sendo cadastrado
-                                       
+
                                     })
                                 } else {
                                     response2.text().then(data => {
@@ -271,11 +271,12 @@ function obter() { // 03/07 Funcão para  a criação das tabelas de forma dinâ
 
                         tabela += linha;
                     });
-//A tabela só pode ser fechada depois do loop, após todos os elementos terem sido inseridos nela 
+                    //A tabela só pode ser fechada depois do loop, após todos os elementos terem sido inseridos nela 
                     tabela += `  </tbody>
             </table>
             `
                     refeicao.innerHTML += tabela
+                    
 
 
 
@@ -325,7 +326,154 @@ function obter() { // 03/07 Funcão para  a criação das tabelas de forma dinâ
                                 <td>${data2[0].zincot}</td>
                             </tr>
                              </tbody>
-                    </table>`;
+                    </table>
+
+                    `;
+
+                            fetch(`/usuarios/relatorio/${idUsuario}`, { //09/07 Fetch realiza uma requisição GET utilizando o usuário como parâmetro. Caso for bem-sucedido ele retorna as informações nutricionais da dieta (soma dos as informações nutricionais das refeições), além de retornar o sexo, peso, altura, idade e nivel de ativdade fisica do usuario
+
+                                method: 'GET',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                            })
+                                .then(response3 => {
+                                    // Verifica
+                                    if (!response3.ok) {
+                                        throw new Error('Erro ao obter os dados do ranking');
+                                    }
+                                    return response3.json();
+                                })
+                                .then(data3 => {
+                                    console.log(data3)
+
+                                    //09/07 considerando o nivel de atividade fisica do usuario ele armazena na váriavel "nivel" UM valor que posteriormente e utilizado no calculo do TMB
+                                    if(data3[0].nivelAtividade == "Sedentário"){
+                                        var nivel = 1.2
+                                    }else if(data3[0].nivelAtividade == "Leve"){
+                                        var nivel = 1.3
+                                    }else if(data3[0].nivelAtividade == "Moderada"){
+                                        var nivel = 1.5
+                                    }else if(data3[0].nivelAtividade == "Intensa"){
+                                        var nivel = 1.7
+                                    }else{
+                                        var nivel = 1.9
+
+                                    }
+                                    
+
+                                    //09/07 a TAXA METABOLICA BASAL é calculada por meio de 2 fórmulas que são diferentes dependendo do sexo do usuário e que leva também em consideração o peso, altura, idade e nivel de atividade fisica do usuário. A TBM serve para calcularmos a quantidade recomendada de calorias que deve ser consumida em 1 dia.
+                                    if(data3[0].sexo == "feminino"){
+                                    var TMB = ( 655 + (9.6 * data3[0].peso ) + (1.7 * ((data3[0].altura) * 100)) - (4.7 * data3[0].idade) ) * nivel;
+
+                                    }else{
+                                    var TMB = ( 66 + (13.7 * data3[0].peso ) + (5 * ((data3[0].altura) * 100)) - (6.8 * data3[0].idade) ) * nivel;
+
+                                    }
+
+                                    //09/07 Calcula o percentual de calorias provenientes de cada macronutriente (carboidrato, lipideo e proteina) levando em consideração todas as informações nutricionais da dieta cadastrada pelo usuário
+                                    if(data3[0].carboidrato){
+                                        var carboitradoC =  data3[0].carboidrato * 4
+                                        var carboidratoP =  ((carboitradoC/  data3[0].caloria) * 100).toFixed(2)
+                                    }
+                                    if(data3[0].lipideo){
+                                        var lipideoC =  data3[0].lipideo * 9
+                                        var lipideoP =  ((lipideoC/ data3[0].caloria) * 100).toFixed(2)
+                                    }
+
+                                  
+                                    if(data3[0].proteina){
+                                    var proteinaC =  data3[0].proteina * 9
+                                    var proteinaP =  ((proteinaC/  data3[0].caloria) * 100).toFixed(2)
+                                    }
+
+                                    //09/07 Calcula a quantidade de fibras ideal (recomendada) com base na quantidade de calorias da dieta
+                                    if(data3[0].fibra){
+                                        var fibraR =  (data3[0].caloria * 0.014).toFixed(2)   //09/07 14g de fibra a cada 1000kcal consumidas
+                                        }
+                               
+                                
+                                  
+                                    //Tabela do total de todas as informações nutricionais da dieta + cards com a porcentagem das informações nutricionais 
+                                    relatorio.innerHTML =
+                                                            `
+                                <div class="qmaior">
+
+                                    <label>Relatório da dieta</label>
+
+                                    <div class="qcontainer">
+
+                                     <table>
+                            <thead>
+                                <tr>   
+                                    <th>Calorias</th>
+                                    <th>Carboidratos</th>
+                                    <th>Lipideos</th>
+                                    <th>Fibras</th> 
+                                    <th>Proteinas</th>
+                                    <th>Ferro</th>
+                                    <th>Calcio</th>
+                                    <th>Zinco</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <tr> 
+                                <td>${data3[0].caloria}</td>
+                                <td>${data3[0].carboidrato}</td>
+                                <td>${data3[0].lipideo}</td>
+                                <td>${data3[0].fibra}</td>
+                                <td>${data3[0].proteina}</td>
+                                <td>${data3[0].ferro}</td>
+                                <td>${data3[0].calcio}</td>
+                                <td>${data3[0].zinco}</td>
+                            </tr>
+                             </tbody>
+                    </table>
+                                    
+                                       
+                                    </div>
+                                    
+                                    <div class="qcontainer">
+                                    
+                                        <div class="qmenor">
+                                            <span>Carboidrato:</span>
+                                            <p>${carboidratoP}%</p>
+                                        </div>
+
+                                        <div class="qmenor">
+                                             <span>Lipideo:</span>
+                                            <p>${lipideoP}%</p>
+                                        </div>
+
+                                        <div class="qmenor">
+                                                <span>Proteina:</span>
+                                            <p>${proteinaP}%</p>
+                                        </div>
+                                       
+                                    </div>
+                                      <div class="qcontainer">
+
+                                         <div class="qmenor">
+                                            <span>Calorias recomendadas:</span>
+                                            <p>${TMB}</p>
+                                        </div>
+
+                                         <div class="qmenor">
+                                                <span>Fibra recomendade:</span>
+                                            <p>${fibraR}</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                                `;
+
+                                })
+
+                                .catch(error => {
+                                    console.error('Erro na requisição do relatório', error);
+                                });
 
 
                         })
@@ -334,8 +482,6 @@ function obter() { // 03/07 Funcão para  a criação das tabelas de forma dinâ
                             console.error('Erro na requisição do total', error);
                         });
                 }
-
-                // Após todos os valores serem adicionados na variavel tabela, todo o conteúdo é adicionado ao  HTML do elemento com o id refeicao que o usuário selecionou
 
             })
             .catch(error => {
