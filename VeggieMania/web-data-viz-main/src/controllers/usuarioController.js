@@ -26,7 +26,7 @@ function autenticar(req, res) {
                             nome: resultadoAutenticar[0].nome,
                             senha: resultadoAutenticar[0].senha
                         });
-            
+
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
                     } else {
@@ -52,9 +52,10 @@ function cadastrar(req, res) {
     var cpf = req.body.cpfServer;
     var tipo = req.body.tipoServer;
     var nasc = req.body.nascServer; //04/07
-    var sexo = req.body.sexoServer;
-    
-     //20/06 O tipo esta relacionado com o tipo de alimentação que o usúario selecionou no seu cadastro. Recupera o valor do campo 'tipoServer' do formulário de cadastro e o armazena na variável 'tipo'
+    var sexo = req.body.sexoServer; //04/07
+    var estilo = req.body.estiloServer;
+
+    //20/06 O tipo esta relacionado com o tipo de alimentação que o usúario selecionou no seu cadastro. Recupera o valor do campo 'tipoServer' do formulário de cadastro e o armazena na variável 'tipo'
 
     // Faça as validações dos valores
     if (nome == undefined) {
@@ -71,10 +72,12 @@ function cadastrar(req, res) {
         res.status(400).send("Sua data de aniversário está undefined!");
     } else if (sexo == undefined) {
         res.status(400).send("Seu sexo está undefined!");
+    } else if (estilo == undefined) {
+        res.status(400).send("Seu estilo de vida está undefined!");
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, email, senha, cpf, tipo, nasc, sexo)
+        usuarioModel.cadastrar(nome, email, senha, cpf, tipo, nasc, sexo, estilo)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -92,12 +95,49 @@ function cadastrar(req, res) {
     }
 }
 
-function cadastrarRefeicao(req, res) { //28/06 recupera os dados que foram cadastrados pelo usuário e realiza as validações para assim enviar para o usuariosModel.js
+function cadastrarRefeicao(req, res) { //08/07 recupera os dados que foram cadastrados pelo usuário e realiza as validações para assim enviar para o usuariosModel.js
     // Crie uma variável que vá recuperar os valores do arquivo dieta.html
-    console.log(req.body)
-    
+    console.log("CadastrarRefeicao",req.body)
+
     var idUsuario = req.body.idUsuario;
-    var tipo = req.body.tipo;
+    var nome = req.body.nome; //nome da refeição
+
+
+    if (idUsuario == undefined) {
+        res.status(400).send("o usuário está undefined");
+    } else if (nome == undefined) {
+        res.status(400).send("o nome da refeição está undefined!");
+    }else{
+
+
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.cadastrarRefeicao(idUsuario, nome)
+            .then(
+                function (resultado) {
+                    console.log(resultado)
+                    res.json(resultado);
+
+                }
+
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro da dieta Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
+function cadastrarAlimento(req, res) { //28/06 recupera os dados que foram cadastrados pelo usuário e realiza as validações para assim enviar para o usuariosModel.js
+    // Crie uma variável que vá recuperar os valores do arquivo dieta.html
+    console.log("CadastrarAlimento",req.body)
+
+    var idUsuario = req.body.idUsuario;
+    var idRefeicao = req.body.idRefeicao;
     var nome = req.body.nome;
     var caloria = req.body.caloria;
     var carboidrato = req.body.carboidrato;
@@ -108,11 +148,11 @@ function cadastrarRefeicao(req, res) { //28/06 recupera os dados que foram cadas
     var calcio = req.body.calcio;
     var zinco = req.body.zinco;
 
- 
+
     if (idUsuario == undefined) {
         res.status(400).send("o usuário está undefined");
-    } else if (tipo == undefined) {
-        res.status(400).send("o tipo de refeição está undefined!");
+    } else if (idRefeicao == undefined) {
+        res.status(400).send("o id da refeição está undefined!");
     } else if (nome == undefined) {
         res.status(400).send("nome do alimento está undefined!");
     } else if (caloria == undefined) {
@@ -134,12 +174,16 @@ function cadastrarRefeicao(req, res) { //28/06 recupera os dados que foram cadas
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrarRefeicao(idUsuario, tipo, nome, caloria, carboidrato, lipideo, fibra, proteina, ferro, calcio, zinco)
+        usuarioModel.cadastrarAlimento(idUsuario, idRefeicao, nome, caloria, carboidrato, lipideo, fibra, proteina, ferro, calcio, zinco)
             .then(
                 function (resultado) {
                     console.log(resultado)
                     res.json(resultado);
+
+
                 }
+
+
             ).catch(
                 function (erro) {
                     console.log(erro);
@@ -154,26 +198,27 @@ function cadastrarRefeicao(req, res) { //28/06 recupera os dados que foram cadas
 }
 
 
+
 function obter(req, res) {
     const idUsuario = req.params.idUsuario; // 03/07 Obtém o ID do usuário da URL (parâmetro da rota)
     const opcao = req.params.opcao; // Obtém valor do select do tipo de refeição selecionada pelo usuário
 
 
-    usuarioModel.obter(idUsuario,opcao)
-    .then(
-        // Se bem-sucedido, envia os dados no formato JSON
-        function (resultado) {
-            res.status(200).json(resultado);
-        }
-    )
-    .catch(
-        function (erro) {
-            // Em caso de erro, registra no console e envia uma resposta de erro
-            console.log(erro);
-            console.log("Houve um erro ao realizar o post: ", erro.sqlMessage);
-            res.status(500).json(erro.sqlMessage);
-        }
-    );
+    usuarioModel.obter(idUsuario, opcao)
+        .then(
+            // Se bem-sucedido, envia os dados no formato JSON
+            function (resultado) {
+                res.status(200).json(resultado);
+            }
+        )
+        .catch(
+            function (erro) {
+                // Em caso de erro, registra no console e envia uma resposta de erro
+                console.log(erro);
+                console.log("Houve um erro ao realizar o post: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
 
 }
 
@@ -182,21 +227,21 @@ function Total(req, res) { // 03/07
     const opcao = req.params.opcao;
 
 
-    usuarioModel.Total(idUsuario,opcao)
-    .then(
-        // Se bem-sucedido, envia os dados no formato JSON
-        function (resultado) {
-            res.status(200).json(resultado);
-        }
-    )
-    .catch(
-        function (erro) {
-            // Em caso de erro, registra no console e envia uma resposta de erro
-            console.log(erro);
-            console.log("Houve um erro ao realizar o post: ", erro.sqlMessage);
-            res.status(500).json(erro.sqlMessage);
-        }
-    );
+    usuarioModel.Total(idUsuario, opcao)
+        .then(
+            // Se bem-sucedido, envia os dados no formato JSON
+            function (resultado) {
+                res.status(200).json(resultado);
+            }
+        )
+        .catch(
+            function (erro) {
+                // Em caso de erro, registra no console e envia uma resposta de erro
+                console.log(erro);
+                console.log("Houve um erro ao realizar o post: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
 
 }
 
@@ -204,6 +249,7 @@ module.exports = {
     autenticar,
     cadastrar,
     cadastrarRefeicao,
+    cadastrarAlimento,
     obter,
     Total
 

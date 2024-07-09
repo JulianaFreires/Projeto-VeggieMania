@@ -53,21 +53,10 @@ function criarInput(checkbox) {// Função para criar ou remover um input de aco
 }
 
 function cadastrarRefeicao() {
-    // Seleciona todas as checkboxes com a classe "caixa"
-    var idUsuario = sessionStorage.ID_USUARIO; //28/06 indetificar o usuário que está logado
-    // div_mensagem.innerHTML = ""
-    var tipoRefeicao = select_tipoRefeicao.value //28/06 variável que guarda o tipo de refeição selecionado pelo usuário
-    var checkboxes = document.querySelectorAll('.caixa');
+ 
+    var nomeRefeicao = select_tipoRefeicao.value //28/06 variável que guarda o tipo de refeição selecionado pelo usuário
+    var checkboxes = document.querySelectorAll('.caixa');   // Seleciona todas as checkboxes com a classe "caixa"
     var selecionados = []; // Array para armazenar os ids das checkboxes selecionadas
-    // var texto = ""
-    var totalCalorias = 0;
-    var totalCarboidratos = 0; // 27/06
-    var totalLipideos = 0; // 27/06
-    var totalFibras = 0; // 27/06
-    var totalProteinas = 0;
-    var totalFerro = 0;
-    var totalCalcio = 0;
-    var totalZinco = 0;
 
 
     // Itera sobre todas as checkboxes usando um loop for e verifica se estão marcadas
@@ -78,144 +67,176 @@ function cadastrarRefeicao() {
 
             var quantidade = document.getElementById('input_' + checkboxes[i].id).value; // Obtém a quantidade inserida no input correspondente a checkbox que foi marcada
 
-            if (quantidade >= 1) {
+            if (quantidade < 1) { // 08/07 Validação para saber se a gramatura selecionada e válida
 
-                // Calcula os valores nutricionais multiplicando dos alimentos selecionados em uma lista, multiplicando cada valor pelo número de porções (quantidade) que o usuário especificou.
-                var nomel = nome[checkboxes[i].id]
-                var calorial = Number(caloria[checkboxes[i].id] * quantidade).toFixed(2);
-                var carboidratol = Number(carboidrato[checkboxes[i].id] * quantidade).toFixed(2);// 27/06
-                var lipideol = Number(lipideo[checkboxes[i].id] * quantidade).toFixed(2);// 27/06
-                var fibral = Number(fibraAlimentar[checkboxes[i].id] * quantidade).toFixed(2);// 27/06
-                var proteinal = Number(proteina[checkboxes[i].id] * quantidade).toFixed(2);
-                var ferrol = Number(ferro[checkboxes[i].id] * quantidade).toFixed(2);
-                var calciol = Number(calcio[checkboxes[i].id] * quantidade).toFixed(2);
-                var zincol = Number(zinco[checkboxes[i].id] * quantidade).toFixed(2);
-
-                // Somando os valores nutricionais de cada alimento selecionado para fornecer um total.
-                totalCalorias += Number(calorial);
-                totalCarboidratos += Number(carboidratol);// 27/06
-                totalLipideos += Number(lipideol);// 27/06
-                totalFibras += Number(fibral)// 27/06
-                totalProteinas += Number(proteinal);
-                totalFerro += Number(ferrol);
-                totalCalcio += Number(calciol);
-                totalZinco += Number(zincol);
-
-                // Exibe a div de resposta e rola para a visualização
-                // document.querySelector('.resposta').style.display = 'flex';
-                // document.getElementById('resul').scrollIntoView({ behavior: 'smooth' });
-
-                // texto += `<span>${nomel} - Calorias: ${calorial} |  Carboidratos:: ${carboidratol} |  Lipideos: ${lipideol} |  Fibra alimentar: ${fibral} | Proteinas: ${proteinal} | Cálcio: ${calciol} | Ferro: ${ferrol} | Zinco: ${zincol}<br></span>`// 27/06
-
-                console.log(JSON.stringify({
-                    idUsuario: sessionStorage.ID_USUARIO,
-                    tipo: tipoRefeicao,
-                    nome: nomel,
-                    caloria: calorial,
-                    carboidrato: carboidratol,
-                    lipideo: lipideol,
-                    fibra: fibral,
-                    proteina: proteinal,
-                    ferro: ferrol,
-                    calcio: calciol,
-                    zinco: zincol,
-
-                }))
-
-                fetch("/usuarios/cadastrarRefeicao", { //28/06 Fetch envia uma requisição http para o back end, o fetch foi colocado dentro do for para pegar todos os alimentos (os alimentos e suas respectivas informações nutricionais), que foram selecionados pelo usuário
-                    method: "POST",//Envia os dados
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({ // armazena no formato json todas as infromações necessarias para o cadastro da refeição do usuário
-                        idUsuario: sessionStorage.ID_USUARIO,
-                        tipo: tipoRefeicao,
-                        nome: nomel,
-                        caloria: calorial,
-                        carboidrato: carboidratol,
-                        lipideo: lipideol,
-                        fibra: fibral,
-                        proteina: proteinal,
-                        ferro: ferrol,
-                        calcio: calciol,
-                        zinco: zincol,
-
-                    }),
-                })
-                    .then(response => { // resposta
-                        console.log(response)
-                        if (response.ok) {
-                            response.json().then(data => {
-                                console.log('Dieta cadastrada com sucesso', data);
-
-                            })
-                        } else {
-                            response.text().then(data => {
-                                console.log('erro:', data);
-
-                            })
-                        }
-                    })
-
-                    .catch(error => {
-                        console.error('Erro ao cadastrar dieta', error);
-                    });
-
-
-
-
-            } else {
                 alert(`${nome[checkboxes[i].id]} - Selecione um valor válido na gramatura`)
+                return false
             }
         }
+
     }
 
     // Se nenhum ingrediente foi selecionado exibe o alert
     if (selecionados.length <= 0) {
         alert('Nenhuma checkbox foi selecionada.');
-    }
-
-    totalCaloriasFixed = Number(totalCalorias).toFixed(2);
-    totalCarboidratosFixed = Number(totalCarboidratos).toFixed(2);// 27/06
-    totalLipideosFixed = Number(totalLipideos).toFixed(2);// 27/06
-    totalFibrasFixed = Number(totalFibras).toFixed(2);// 27/06
-    totalProteinasFixed = Number(totalProteinas).toFixed(2);
-    totalFerroFixed = Number(totalFerro).toFixed(2);
-    totalCalcioFixed = Number(totalCalcio).toFixed(2);
-    totalZincoFixed = Number(totalZinco).toFixed(2);
+        return false // 08/07 impede de ir para a próxima etapa/ interrompe
+    };
 
 
-    // div_mensagem.innerHTML += `<p>${texto}<br> O prato contém no total: Calorias: ${totalCaloriasFixed} | Carboidratos: ${totalCarboidratosFixed} | Lipideos: ${totalLipideosFixed} | Fibras alimentares: ${totalFibrasFixed} | Proteina: ${totalProteinasFixed} | Cálcio: ${totalCalcioFixed} | Ferro: ${totalFerroFixed} | Zinco:${totalZincoFixed}</p>`// 27/06
 
 
-    obter();
+    fetch("/usuarios/cadastrarRefeicao", { // 08/07 Fetch sincrono para cadastrar o tipo da refeição que foi selecionado pelo usuário
+        method: "POST",//Envia os dados
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ // armazena no formato json todas as infromações necessarias para o cadastro da refeição do usuário
+            idUsuario: sessionStorage.ID_USUARIO,
+            nome: nomeRefeicao,
+
+        }),
+    })
+        .then(response => { // resposta
+            console.log(response)
+            if (response.ok) {
+                response.json().then(data => {
+                    console.log('refeicao cadastrada com sucesso', data);
+
+                    var cont = 0 //08/07  conta a quantidade de vezes que o fetch cadastrou cada alimento
+
+                    // Itera sobre todas as checkboxes usando um loop for e verifica se estão marcadas
+                    for (let i = 0; i < selecionados.length; i++) {
+
+                        var quantidade = document.getElementById('input_' + selecionados[i]).value; // Obtém a quantidade inserida no input correspondente a checkbox que foi marcada
+
+
+                        // Calcula os valores nutricionais multiplicando dos alimentos selecionados em uma lista, multiplicando cada valor pelo número de porções (quantidade) que o usuário especificou.
+                        var nomel = nome[selecionados[i]]
+                        var calorial = Number(caloria[selecionados[i]] * quantidade).toFixed(2);
+                        var carboidratol = Number(carboidrato[selecionados[i]] * quantidade).toFixed(2);// 27/06
+                        var lipideol = Number(lipideo[selecionados[i]] * quantidade).toFixed(2);// 27/06
+                        var fibral = Number(fibraAlimentar[selecionados[i]] * quantidade).toFixed(2);// 27/06
+                        var proteinal = Number(proteina[selecionados[i]] * quantidade).toFixed(2);
+                        var ferrol = Number(ferro[selecionados[i]] * quantidade).toFixed(2);
+                        var calciol = Number(calcio[selecionados[i]] * quantidade).toFixed(2);
+                        var zincol = Number(zinco[selecionados[i]] * quantidade).toFixed(2);
+
+
+                        fetch("/usuarios/cadastrarAlimento", { //28/06 Fetch envia uma requisição http para o back end, o fetch foi colocado dentro do for para pegar todos os alimentos (os alimentos e suas respectivas informações nutricionais), que foram selecionados pelo usuário
+                            method: "POST",//Envia os dados
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify({ // 08/07 armazena no formato json todas as infromações necessarias para o cadastrar cada alimento selecionado pelo usuário
+                                idUsuario: sessionStorage.ID_USUARIO,
+                                idRefeicao: data.insertId, // Esse dado pode ser visualizado no terminal quando o refeição é cadastrada(inserida) no banco de dados. No terminal o objeto resultSetHeader contém as informações sobre a operação realizada. A propriedade insertId é uma dessas propriedades e contém o ID do registro que foi inserido.
+                                nome: nomel,
+                                caloria: calorial,
+                                carboidrato: carboidratol,
+                                lipideo: lipideol,
+                                fibra: fibral,
+                                proteina: proteinal,
+                                ferro: ferrol,
+                                calcio: calciol,
+                                zinco: zincol,
+
+                            }),
+                        })
+                            .then(response2 => { // resposta
+                                console.log(response2)
+                                if (response2.ok) { // response2 e data2 para não ocorrer conflitos dos dados que estão sendo armazenados
+                                    response2.json().then(data2 => {
+                                        console.log('alimento cadastrado com sucesso', data2);
+
+                                        cont++ //08/07 soma no cont cada alimento que está sendo cadastrado
+                                       
+                                    })
+                                } else {
+                                    response2.text().then(data => {
+                                        console.log('erro:', data);
+
+                                    })
+                                }
+                            })
+
+                            .catch(error => {
+                                console.error('Erro ao cadastrar dieta', error);
+                            });
+
+
+                    }
+
+                    const intervalo = setInterval(function () {
+                        if (selecionados.length == cont) { //08/07 Assim que todos os itens terminam de ser enviados pelo fetch ele chama a função obter -> compara a quantidade de alimentos que o usuário selecionou com a quantidade de vezes que o fetch realizou o cadastro de cada alimento
+                            obter() //chama a função obter
+                            clearInterval(intervalo) // Evita que a função continue sendo executada uma vez que a condição é atendida. Sem clearInterval, a função continuaria rodando a cada 0,5 s
+                        }
+                    }, 500)
+
+                })
+            } else {
+                response.text().then(data => {
+                    console.log('erro:', data);
+                    alert(`O ${nomeRefeicao} já foi cadastrado`)
+
+                })
+            }
+
+        })
+
+        .catch(error => {
+            console.error('Erro ao cadastrar dieta', error);
+        });
+
+
 }
 
 function obter() { // 03/07 Funcão para  a criação das tabelas de forma dinâmica na pagina de dieta do dashboard
     const idUsuario = sessionStorage.ID_USUARIO; // Obtém o ID do usuário da sessionStorage
-    const opcao = document.getElementById('select_tipoRefeicao').value; // A opcao é utilizada para que o alimento seja selecionado de forma dinâmica no model
-    const refeicao = document.getElementById(opcao); // A refeicao é utilizada para que os elementos HTML sejam adicionados de forma dinâmica na div com o respectivo nome da opção
+    const refeicoes = [  // 08/07 array que armazena os nomes de todos os tipos de refeção
+        "Café da Manhã",
+        "Lanche da Manhã",
+        "Almoço",
+        "Lanche da Tarde",
+        "Jantar",
+        "Lanche da Noite",
+    ]
 
 
-    // 03/07 Tabela com os alimentos de nutrientes de uma determinada refeição    
-    fetch(`/usuarios/obter/${idUsuario}/${opcao}`, {
+    // 03/07 Tabela com os alimentos de nutrientes de uma determinada refeição  
+    //08/07 o forEach faz com que os fetchs percorram por todas as refeições e as utiliza com parâmetro para poder obter os dados de cada uma
+    refeicoes.forEach((opcao) => {
 
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    })
-        .then(response => {
-            // Verifica  se a resposta da requisição (response) foi bem-sucedida
-            if (!response.ok) {
-                throw new Error('Erro ao obter os dados da refeição');
-            }
-            return response.json(); //converte os dados da resposta para JSON  e retorna esses dados para o próximo then.
+        const refeicao = document.getElementById(opcao); // A refeicao é utilizada para que os elementos HTML sejam adicionados de forma dinâmica na div com o respectivo nome da opção (refeição)
+        refeicao.innerHTML = "" // Limpa o HTML para os conteúdos da página não duplicarem, até porque a refeicao.innerHTML está utilizando o += ou seja está adicionando a cada iteração o conteúdo
+
+        fetch(`/usuarios/obter/${idUsuario}/${opcao}`, {
+
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
         })
-        .then(data => {  // 03/07 Adiciona a tabela dentro da div com o id do nome da refeição selecionada pelo usuário    
+            .then(response => {
+                // Verifica  se a resposta da requisição (response) foi bem-sucedida
+                if (!response.ok) {
+                    throw new Error('Erro ao obter os dados dos alimentos cadastrados');
+                }
+                return response.json(); //converte os dados da resposta para JSON  e retorna esses dados para o próximo then.
+                // 03/07 Adiciona a tabela dentro da div com o id do nome da refeição selecionada pelo usuário    
 
-            var tabela = ""
-        tabela  = `  
+            })
+            .then(data => {
+                // 03/07 Tabela do total de nutrientes de uma determinada refeição    
+                if (data.length > 0) { // 08/07 Verica que os dados de uma determinada refeição e usuário existem para assim exibir as tabelas
+                    console.log(opcao)
+
+                    var tabela = ""
+                    tabela = ` 
+               <div class="telat">
+                <h3>${opcao}</h3>
+                </div> 
+            
         <table>
               <thead>
                     <tr>  
@@ -232,9 +253,9 @@ function obter() { // 03/07 Funcão para  a criação das tabelas de forma dinâ
                 </thead>
                 <tbody>`;
 
-
-            data.forEach(item => {  //itera sobre cada item no array, criando dinamicamente uma linha da tabela reenchendo com os valores recebido (informações nutriconais do alimento)
-                const linha = `
+                    // Após todos os valores serem adicionados na variavel tabela, todo o conteúdo é adicionado ao  HTML do elemento com o id refeicao que o usuário selecionou
+                    data.forEach(item => {
+                        const linha = `
                  
                 <tr> 
                     <td>${item.nomeAlimento}</td>
@@ -248,78 +269,85 @@ function obter() { // 03/07 Funcão para  a criação das tabelas de forma dinâ
                     <td>${item.zinco}</td>
                 </tr>`;
 
-            tabela  += linha;
+                        tabela += linha;
+                    });
+//A tabela só pode ser fechada depois do loop, após todos os elementos terem sido inseridos nela 
+                    tabela += `  </tbody>
+            </table>
+            `
+                    refeicao.innerHTML += tabela
+
+
+
+                    fetch(`/usuarios/Total/${idUsuario}/${opcao}`, {
+
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                    })
+                        .then(response2 => {
+                            // Verifica
+                            if (!response2.ok) {
+                                throw new Error('Erro ao obter os dados do ranking');
+                            }
+                            return response2.json();
+                        })
+                        .then(data2 => {
+                            console.log(data2)
+
+
+                            refeicao.innerHTML +=
+                                `
+                        <table>
+                            <caption>Total</caption>
+                            <thead>
+                                <tr>   
+                                    <th>Calorias</th>
+                                    <th>Carboidratos</th>
+                                    <th>Lipideos</th>
+                                    <th>Fibras</th> 
+                                    <th>Proteinas</th>
+                                    <th>Ferro</th>
+                                    <th>Calcio</th>
+                                    <th>Zinco</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <tr> 
+                                <td>${data2[0].caloriat}</td>
+                                <td>${data2[0].carboidratot}</td>
+                                <td>${data2[0].lipideot}</td>
+                                <td>${data2[0].fibrat}</td>
+                                <td>${data2[0].proteinat}</td>
+                                <td>${data2[0].ferrot}</td>
+                                <td>${data2[0].calciot}</td>
+                                <td>${data2[0].zincot}</td>
+                            </tr>
+                             </tbody>
+                    </table>`;
+
+
+                        })
+
+                        .catch(error => {
+                            console.error('Erro na requisição do total', error);
+                        });
+                }
+
+                // Após todos os valores serem adicionados na variavel tabela, todo o conteúdo é adicionado ao  HTML do elemento com o id refeicao que o usuário selecionou
+
+            })
+            .catch(error => {
+                console.error('Erro na requisição do alimentos', error);
             });
-
-        tabela += `  </tbody>
-            </table>`
-
-            refeicao.innerHTML += tabela // Após todos os valores serem adicionados na variavel tabela, todo o conteúdo é adicionado ao  HTML do elemento com o id refeicao que o usuário selecionou
-            
-        })
-        .catch(error => {
-            console.error('Erro na requisição do ranking', error);
-        });
-
-
-    // 03/07 Tabela do total de nutrientes de uma determinada refeição    
-    fetch(`/usuarios/Total/${idUsuario}/${opcao}`, {
-
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-        },
     })
-        .then(response => {
-            // Verifica
-            if (!response.ok) {
-                throw new Error('Erro ao obter os dados do ranking');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log(data)
-        
-            refeicao.innerHTML += 
-             `
 
-                <table>
-                    <caption>Total</caption>
-                    <thead>
-                        <tr>   
-                            <th>Calorias</th>
-                            <th>Carboidratos</th>
-                            <th>Lipideos</th>
-                            <th>Fibras</th> 
-                            <th>Proteinas</th>
-                            <th>Ferro</th>
-                            <th>Calcio</th>
-                            <th>Zinco</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                    <tr> 
-                        <td>${data[0].caloriat}</td>
-                        <td>${data[0].carboidratot}</td>
-                        <td>${data[0].lipideot}</td>
-                        <td>${data[0].fibrat}</td>
-                        <td>${data[0].proteinat}</td>
-                        <td>${data[0].ferrot}</td>
-                        <td>${data[0].calciot}</td>
-                        <td>${data[0].zincot}</td>
-                    </tr>
-                     </tbody>
-            </table>`;
-            
-        })
-
-        
-        .catch(error => {
-            console.error('Erro na requisição do ranking', error);
-        });
 
 }
+
+
+document.addEventListener('DOMContentLoaded', obter); //event executa quando o documento HTML quando for carregado completamente e a função obter erá executada automaticamente quando esse evento ocorrer
 
 
 

@@ -75,7 +75,7 @@
                 <div class="campo">
                   <span>Seu tipo de alimentação:</span>
                   <select required  id="tipo_select" type="text">
-                    <option disabled selected value="">Selecione seu tipo de alimentação</option>
+                    <option disabled selected value="">Selecione o seu tipo de alimentação</option>
                     <option>Onívoro</option>
                     <option>Vegana</option>
                     <option>Vegetariano estrito</option>
@@ -101,6 +101,14 @@
                   <input required id="confirmacao_senha_input" type="password" placeholder="******" />
                 </div>
               </div>
+            </div>
+            <div class="campo">
+              <span>Estilo de vida:</span><!--06/07-->
+              <select required id="estilo" type="text">
+                <option disabled selected value="">Selecione seu estilo de vida</option>
+                <option>Ativo</option>
+                <option>Sedentário</option>
+              </select>
             </div>
             <button class="botao">Cadastrar</button>
             <div id="div_aguardar" class="loading-div">
@@ -144,6 +152,7 @@
     var tamSenha = senhaVar.length
     var nascVar = data_nasc.value //04/07
     var sexoVar = tipo_sexo.value //04/07
+    var estiloVar = estilo.value //06/07
 
 
     if (
@@ -154,7 +163,8 @@
       tipoVar == "" || // validação para caso o usúario não selecione nenhuma opção válida no select 20/06
       cpfVar == 0 ||
       nascVar == "" || //04/07
-      sexoVar == ""
+      sexoVar == "" ||
+      estiloVar == ""
 
     ) {
       //exibe o card de erro com a mensagem
@@ -239,7 +249,8 @@
         cpfServer: cpfVar,
         tipoServer: tipoVar, //tipoServer é uma propriedade do objeto JSON e o tipoVar será o valor que está relacionado com aquilo que o usúario selecionar 20/06
         nascServer: nascVar, //04/07
-        sexoServer: sexoVar
+        sexoServer: sexoVar,
+        estiloServer: estiloVar
       }),
     })
 

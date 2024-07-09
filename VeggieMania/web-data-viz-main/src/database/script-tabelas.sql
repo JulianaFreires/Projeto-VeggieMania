@@ -1,3 +1,4 @@
+drop database if exists juliana;
 create DATABASE juliana;
 
 USE juliana;
@@ -11,7 +12,8 @@ CREATE TABLE usuario (
 	cpf CHAR(11) UNIQUE,
     tipoAlimentacao VARCHAR(50),
     nascimento DATE,
-    sexo VARCHAR(50)
+    sexo VARCHAR(50),
+    estiloVida VARCHAR(50)
 );
 
 CREATE TABLE mural (
@@ -41,10 +43,22 @@ FOREIGN KEY (fk_aviso) REFERENCES aviso(id) on delete cascade
 );
 
 CREATE TABLE refeicao(
-idRefeicao INT PRIMARY KEY AUTO_INCREMENT,
+idRefeicao INT auto_increment,
 fk_usuario INT,
+nomeRefeicao VARCHAR(50),	
 FOREIGN KEY (fk_usuario) REFERENCES usuario(id),
-tipoRefeicao VARCHAR(50),
+PRIMARY KEY (idRefeicao, fk_usuario),
+UNIQUE (fk_usuario, nomeRefeicao)
+);
+
+
+CREATE TABLE alimento(
+idAlimento INT auto_increment,
+fk_usuario INT,
+fk_refeicao INT,
+FOREIGN KEY (fk_usuario) REFERENCES usuario(id),
+FOREIGN KEY (fk_refeicao) REFERENCES refeicao(idRefeicao),
+PRIMARY KEY (idAlimento, fk_usuario, fk_refeicao),
 nomeAlimento VARCHAR(50),
 caloria DECIMAL(9,2),
 carboidrato DECIMAL(7,2),
@@ -55,10 +69,6 @@ calcio DECIMAL(7,2),
 ferro DECIMAL(7,2),
 zinco DECIMAL(7,2)
 );
-
-
-    
-    select * from usuario;
 
 
 INSERT INTO mural VALUES

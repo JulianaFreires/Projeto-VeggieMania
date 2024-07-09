@@ -12,10 +12,13 @@ router.post("/autenticar", function (req, res) {
     usuarioController.autenticar(req, res);
 });
 
-router.post("/cadastrarRefeicao", function (req, res) { //28/06 rota para o cadastro das refeições
+router.post("/cadastrarRefeicao", function (req, res) { //08/07 rota para o cadastro das refeições
     usuarioController.cadastrarRefeicao(req, res);
 })
 
+router.post("/cadastrarAlimento", function (req, res) { //08/07 rota para o cadastro dos alimentos
+    usuarioController.cadastrarAlimento(req, res);
+})
 
 router.get("/obter/:idUsuario/:opcao", function (req, res) { //03/07 Rota para adiconar a tabela dos alimentos cadastrados pelo usuario de uma determinada refeição
     usuarioController.obter(req, res);
