@@ -47,7 +47,7 @@ function criarInput(checkbox) {// Função para criar ou remover um input de aco
         // Remove o input correspondente se a checkbox for desmarcada
         var input = document.getElementById('input_' + checkbox.id); // Seleciona o input pelo seu id
         if (input) {
-            checkbox.parentElement.removeChild(input);
+            checkbox.parentElement.removeChild(input);// remove um filho específico do pai ao qual ele pertence nesse caso o input da checkbox correspondente.
         }
     }
 }
@@ -66,6 +66,7 @@ function cadastrarRefeicao() {
             selecionados.push(checkboxes[i].id); // Adiciona o id da checkbox ao array selecionados
 
             var quantidade = document.getElementById('input_' + checkboxes[i].id).value; // Obtém a quantidade inserida no input correspondente a checkbox que foi marcada
+            
 
             if (quantidade < 1) { // 08/07 Validação para saber se a gramatura selecionada e válida
 
@@ -127,7 +128,7 @@ function cadastrarRefeicao() {
                             headers: {
                                 "Content-Type": "application/json",
                             },
-                            body: JSON.stringify({ // 08/07 armazena no formato json todas as infromações necessarias para o cadastrar cada alimento selecionado pelo usuário
+                            body: JSON.stringify({ // 08/07 armazena no formato json todas as informações necessarias para o cadastrar cada alimento selecionado pelo usuário
                                 idUsuario: sessionStorage.ID_USUARIO,
                                 idRefeicao: data.insertId, // Esse dado pode ser visualizado no terminal quando o refeição é cadastrada(inserida) no banco de dados. No terminal o objeto resultSetHeader contém as informações sobre a operação realizada. A propriedade insertId é uma dessas propriedades e contém o ID do registro que foi inserido.
                                 nome: nomel,
@@ -373,18 +374,34 @@ function obter() { // 03/07 Funcão para  a criação das tabelas de forma dinâ
 
                                     //09/07 Calcula o percentual de calorias provenientes de cada macronutriente (carboidrato, lipideo e proteina) levando em consideração todas as informações nutricionais da dieta cadastrada pelo usuário
                                     if(data3[0].carboidrato){
-                                        var carboitradoC =  data3[0].carboidrato * 4
-                                        var carboidratoP =  ((carboitradoC/  data3[0].caloria) * 100).toFixed(2)
+                                        var carboidratoC =  data3[0].carboidrato * 4
+                                        var carboidratoP =  ((carboidratoC/  data3[0].caloria) * 100).toFixed(2)
+                                        var carboidratoI =  (data3[0].caloria * 0.20).toFixed(2) // 11/07 -  Calculo relacionado as diretrizes gerais para a distribuição de macronutrientes em uma dieta saudável =>  quantidade de calorias ideal min
+                                        var carboidratoI2 =  (data3[0].caloria * 0.35).toFixed(2)  // quantidade de calorias ideal mmax
+                                        var carboidratoIG = (carboidratoI / 4).toFixed(2) //gramatura ideal min
+                                        var carboidratoIG2 = (carboidratoI2 / 4).toFixed(2) //gramatura ideal max
                                     }
                                     if(data3[0].lipideo){
                                         var lipideoC =  data3[0].lipideo * 9
                                         var lipideoP =  ((lipideoC/ data3[0].caloria) * 100).toFixed(2)
+                                        var lipideoI =  (data3[0].caloria * 0.20).toFixed(2) // 11/07 quantidade de calorias ideal min
+                                        var lipideoI2 =  (data3[0].caloria * 0.35).toFixed(2) // quantidade de calorias ideal mmax
+                                        var lipideoIG = (lipideoI / 9).toFixed(2) //gramatura ideal min
+                                        var lipideoIG2 = (lipideoI2 / 9).toFixed(2) //gramatura ideal max
                                     }
 
                                   
                                     if(data3[0].proteina){
                                     var proteinaC =  data3[0].proteina * 9
                                     var proteinaP =  ((proteinaC/  data3[0].caloria) * 100).toFixed(2)
+                                    var proteinaI =  (data3[0].caloria * 0.10).toFixed(2) // 11/07 quantidade de calorias ideal min
+                                    var proteinaI2 = (data3[0].caloria * 0.35).toFixed(2) // quantidade de calorias ideal mmax
+                                    var proteinaIG = (proteinaI / 9).toFixed(2) //gramatura ideal min
+                                    var proteinaIG2 = (proteinaI2 / 9).toFixed(2) //gramatura ideal max
+
+
+
+
                                     }
 
                                     //09/07 Calcula a quantidade de fibras ideal (recomendada) com base na quantidade de calorias da dieta
@@ -437,17 +454,21 @@ function obter() { // 03/07 Funcão para  a criação das tabelas de forma dinâ
                                     
                                         <div class="qmenor">
                                             <span>Carboidrato:</span>
-                                            <p>${carboidratoP}%</p>
+                                            <b>${carboidratoP}%</b>
+                                            <p>${carboidratoC}</p>
+
                                         </div>
 
                                         <div class="qmenor">
                                              <span>Lipideo:</span>
-                                            <p>${lipideoP}%</p>
+                                            <b>${lipideoP}%</b>
+                                            <p>${lipideoC}</p>
                                         </div>
 
                                         <div class="qmenor">
                                                 <span>Proteina:</span>
-                                            <p>${proteinaP}%</p>
+                                            <b>${proteinaP}%</b>
+                                            <p>${proteinaC}</p>
                                         </div>
                                        
                                     </div>
@@ -460,11 +481,40 @@ function obter() { // 03/07 Funcão para  a criação das tabelas de forma dinâ
 
                                          <div class="qmenor">
                                                 <span>Fibra recomendade:</span>
-                                            <p>${fibraR}</p>
+                                            <p>${fibraR} g</p>
                                         </div>
 
                                     </div>
+
+                                     <div class="qcontainer">
+
+                                        <div class="qmenor">
+                                            <span>Carboidrato ideal de 45 a 65%:</span>
+                                            <b>${carboidratoI} a ${carboidratoI2} cal</b>
+                                            <b>${carboidratoIG} a ${carboidratoIG2} g</b>
+                                        </div>
+
+                                        <div class="qmenor">
+                                            <span>Lipideo ieal de 20 a 35%:</span>
+                                            <b>${lipideoI} a ${lipideoI2} cal</b>
+                                            <b>${lipideoIG} a ${lipideoIG2} g</b>
+                                            
+                                        </div>
+
+                                        <div class="qmenor">
+                                            <span>Proteina ideal de 10 a 35%:</span>
+                                            <b>${proteinaI} a ${proteinaI2} cal</b>
+                                            <b>${proteinaIG} a ${proteinaIG2} g</b>
+                                            
+                                        </div>
+
+                                       
+
+                                    </div>
                                 </div>
+                                
+
+                                
 
 
                                 `;
