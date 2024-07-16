@@ -32,6 +32,9 @@ router.get("/relatorio/:idUsuario", function (req, res) { //09/07 Rota para adic
     usuarioController.relatorio(req, res);
 });
 
+router.delete("/delet/:idUsuario/:opcao", function (req, res) { //15/07  Rota para deletar a refeição cadastrada pelo usuario em uma determinada refeição
+    usuarioController.delet(req, res);
+});
 
 
 module.exports = router;

@@ -274,6 +274,30 @@ function relatorio(req, res) { // 09/07
 }
 
 
+function delet(req, res) { // 15/07
+    const idUsuario = req.params.idUsuario; // Obtém o ID do usuário da URL (parâmetro da rota)
+    const opcao = req.params.opcao; // botém o nome da refeição que foi selecionada para excluir
+
+
+    usuarioModel.delet(idUsuario, opcao)
+        .then(
+            // Se bem-sucedido, envia os dados no formato JSON
+            function (resultado) {
+                res.status(200).json(resultado);
+            }
+        )
+        .catch(
+            function (erro) {
+                // Em caso de erro, registra no console e envia uma resposta de erro
+                console.log(erro);
+                console.log("Houve um erro ao deletar refeição: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+
+}
+
+
 module.exports = {
     autenticar,
     cadastrar,
@@ -281,6 +305,7 @@ module.exports = {
     cadastrarAlimento,
     obter,
     Total,
-    relatorio
+    relatorio,
+    delet
 
 }

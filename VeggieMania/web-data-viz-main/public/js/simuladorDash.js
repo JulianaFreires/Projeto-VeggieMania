@@ -66,7 +66,7 @@ function cadastrarRefeicao() {
             selecionados.push(checkboxes[i].id); // Adiciona o id da checkbox ao array selecionados
 
             var quantidade = document.getElementById('input_' + checkboxes[i].id).value; // Obtém a quantidade inserida no input correspondente a checkbox que foi marcada
-            
+
 
             if (quantidade < 1) { // 08/07 Validação para saber se a gramatura selecionada e válida
 
@@ -273,11 +273,14 @@ function obter() { // 03/07 Funcão para  a criação das tabelas de forma dinâ
                         tabela += linha;
                     });
                     //A tabela só pode ser fechada depois do loop, após todos os elementos terem sido inseridos nela 
-                    tabela += `  </tbody>
+                    tabela += `  <button type="button"  id="${opcao}">Deletar</button>
+  </tbody>
             </table>
             `
+            document.getElementById(opcao).addEventListener("click", delet); //15/07 Seleciona o elemento HTML com o id ${opcao} e adiciona um evento para quando o elemento (botão) for clicado a função "delet" é executada
+
                     refeicao.innerHTML += tabela
-                    
+
 
 
 
@@ -289,6 +292,8 @@ function obter() { // 03/07 Funcão para  a criação das tabelas de forma dinâ
                         },
                     })
                         .then(response2 => {
+
+                            
                             // Verifica
                             if (!response2.ok) {
                                 throw new Error('Erro ao obter os dados do ranking');
@@ -328,10 +333,11 @@ function obter() { // 03/07 Funcão para  a criação das tabelas de forma dinâ
                             </tr>
                              </tbody>
                     </table>
-
+                  
                     `;
 
-                            fetch(`/usuarios/relatorio/${idUsuario}`, { //09/07 Fetch realiza uma requisição GET utilizando o usuário como parâmetro. Caso for bem-sucedido ele retorna as informações nutricionais da dieta (soma dos as informações nutricionais das refeições), além de retornar o sexo, peso, altura, idade e nivel de ativdade fisica do usuario
+
+                            fetch(`/usuarios/relatorio/${idUsuario}`, { //09/07 Fetch realiza uma requisição GET utilizando o usuário como parâmetro. Caso for bem-sucedido ele retorna as informações nutricionais da dieta (soma das informações nutricionais das refeições), além de retornar o sexo, peso, altura, idade e nivel de ativdade fisica do usuario
 
                                 method: 'GET',
                                 headers: {
@@ -349,71 +355,62 @@ function obter() { // 03/07 Funcão para  a criação das tabelas de forma dinâ
                                     console.log(data3)
 
                                     //09/07 considerando o nivel de atividade fisica do usuario ele armazena na váriavel "nivel" UM valor que posteriormente e utilizado no calculo do TMB
-                                    if(data3[0].nivelAtividade == "Sedentário"){
+                                    if (data3[0].nivelAtividade == "Sedentário") {
                                         var nivel = 1.2
-                                    }else if(data3[0].nivelAtividade == "Leve"){
+                                    } else if (data3[0].nivelAtividade == "Leve") {
                                         var nivel = 1.3
-                                    }else if(data3[0].nivelAtividade == "Moderada"){
+                                    } else if (data3[0].nivelAtividade == "Moderada") {
                                         var nivel = 1.5
-                                    }else if(data3[0].nivelAtividade == "Intensa"){
+                                    } else if (data3[0].nivelAtividade == "Intensa") {
                                         var nivel = 1.7
-                                    }else{
+                                    } else {
                                         var nivel = 1.9
 
                                     }
-                                    
+
 
                                     //09/07 a TAXA METABOLICA BASAL é calculada por meio de 2 fórmulas que são diferentes dependendo do sexo do usuário e que leva também em consideração o peso, altura, idade e nivel de atividade fisica do usuário. A TBM serve para calcularmos a quantidade recomendada de calorias que deve ser consumida em 1 dia.
-                                    if(data3[0].sexo == "feminino"){
-                                    var TMB = ( 655 + (9.6 * data3[0].peso ) + (1.7 * ((data3[0].altura) * 100)) - (4.7 * data3[0].idade) ) * nivel;
+                                    if (data3[0].sexo == "feminino") {
+                                        var TMB = (655 + (9.6 * data3[0].peso) + (1.7 * ((data3[0].altura) * 100)) - (4.7 * data3[0].idade)) * nivel;
 
-                                    }else{
-                                    var TMB = ( 66 + (13.7 * data3[0].peso ) + (5 * ((data3[0].altura) * 100)) - (6.8 * data3[0].idade) ) * nivel;
+                                    } else {
+                                        var TMB = (66 + (13.7 * data3[0].peso) + (5 * ((data3[0].altura) * 100)) - (6.8 * data3[0].idade)) * nivel;
 
                                     }
 
                                     //09/07 Calcula o percentual de calorias provenientes de cada macronutriente (carboidrato, lipideo e proteina) levando em consideração todas as informações nutricionais da dieta cadastrada pelo usuário
-                                    if(data3[0].carboidrato){
-                                        var carboidratoC =  data3[0].carboidrato * 4
-                                        var carboidratoP =  ((carboidratoC/  data3[0].caloria) * 100).toFixed(2)
-                                        var carboidratoI =  (data3[0].caloria * 0.20).toFixed(2) // 11/07 -  Calculo relacionado as diretrizes gerais para a distribuição de macronutrientes em uma dieta saudável =>  quantidade de calorias ideal min
-                                        var carboidratoI2 =  (data3[0].caloria * 0.35).toFixed(2)  // quantidade de calorias ideal mmax
-                                        var carboidratoIG = (carboidratoI / 4).toFixed(2) //gramatura ideal min
-                                        var carboidratoIG2 = (carboidratoI2 / 4).toFixed(2) //gramatura ideal max
-                                    }
-                                    if(data3[0].lipideo){
-                                        var lipideoC =  data3[0].lipideo * 9
-                                        var lipideoP =  ((lipideoC/ data3[0].caloria) * 100).toFixed(2)
-                                        var lipideoI =  (data3[0].caloria * 0.20).toFixed(2) // 11/07 quantidade de calorias ideal min
-                                        var lipideoI2 =  (data3[0].caloria * 0.35).toFixed(2) // quantidade de calorias ideal mmax
-                                        var lipideoIG = (lipideoI / 9).toFixed(2) //gramatura ideal min
-                                        var lipideoIG2 = (lipideoI2 / 9).toFixed(2) //gramatura ideal max
-                                    }
 
-                                  
-                                    if(data3[0].proteina){
-                                    var proteinaC =  data3[0].proteina * 9
-                                    var proteinaP =  ((proteinaC/  data3[0].caloria) * 100).toFixed(2)
-                                    var proteinaI =  (data3[0].caloria * 0.10).toFixed(2) // 11/07 quantidade de calorias ideal min
+                                    var carboidratoC = data3[0].carboidrato * 4
+                                    var carboidratoP = ((carboidratoC / data3[0].caloria) * 100).toFixed(2)
+                                    var carboidratoI = (data3[0].caloria * 0.20).toFixed(2) // 11/07 -  Calculo relacionado as diretrizes gerais para a distribuição de macronutrientes em uma dieta saudável =>  quantidade de calorias ideal min
+                                    var carboidratoI2 = (data3[0].caloria * 0.35).toFixed(2)  // quantidade de calorias ideal mmax
+                                    var carboidratoIG = (carboidratoI / 4).toFixed(2) //gramatura ideal min
+                                    var carboidratoIG2 = (carboidratoI2 / 4).toFixed(2) //gramatura ideal max
+
+
+                                    var lipideoC = data3[0].lipideo * 9
+                                    var lipideoP = ((lipideoC / data3[0].caloria) * 100).toFixed(2)
+                                    var lipideoI = (data3[0].caloria * 0.20).toFixed(2) // 11/07 quantidade de calorias ideal min
+                                    var lipideoI2 = (data3[0].caloria * 0.35).toFixed(2) // quantidade de calorias ideal mmax
+                                    var lipideoIG = (lipideoI / 9).toFixed(2) //gramatura ideal min
+                                    var lipideoIG2 = (lipideoI2 / 9).toFixed(2) //gramatura ideal max
+
+
+                                    var proteinaC = data3[0].proteina * 9
+                                    var proteinaP = ((proteinaC / data3[0].caloria) * 100).toFixed(2)
+                                    var proteinaI = (data3[0].caloria * 0.10).toFixed(2) // 11/07 quantidade de calorias ideal min
                                     var proteinaI2 = (data3[0].caloria * 0.35).toFixed(2) // quantidade de calorias ideal mmax
                                     var proteinaIG = (proteinaI / 9).toFixed(2) //gramatura ideal min
                                     var proteinaIG2 = (proteinaI2 / 9).toFixed(2) //gramatura ideal max
 
 
-
-
-                                    }
-
                                     //09/07 Calcula a quantidade de fibras ideal (recomendada) com base na quantidade de calorias da dieta
-                                    if(data3[0].fibra){
-                                        var fibraR =  (data3[0].caloria * 0.014).toFixed(2)   //09/07 14g de fibra a cada 1000kcal consumidas
-                                        }
-                               
-                                
-                                  
+                                    var fibraR = (data3[0].caloria * 0.014).toFixed(2)   //09/07 14g de fibra a cada 1000kcal consumidas
+
+
                                     //Tabela do total de todas as informações nutricionais da dieta + cards com a porcentagem das informações nutricionais 
                                     relatorio.innerHTML =
-                                                            `
+                                        `
                                 <div class="qmaior">
 
                                     <label>Relatório da dieta</label>
@@ -455,20 +452,20 @@ function obter() { // 03/07 Funcão para  a criação das tabelas de forma dinâ
                                         <div class="qmenor">
                                             <span>Carboidrato:</span>
                                             <b>${carboidratoP}%</b>
-                                            <p>${carboidratoC}</p>
+                                            <p>${carboidratoC} cal</p>
 
                                         </div>
 
                                         <div class="qmenor">
                                              <span>Lipideo:</span>
                                             <b>${lipideoP}%</b>
-                                            <p>${lipideoC}</p>
+                                            <p>${lipideoC} cal</p>
                                         </div>
 
                                         <div class="qmenor">
                                                 <span>Proteina:</span>
                                             <b>${proteinaP}%</b>
-                                            <p>${proteinaC}</p>
+                                            <p>${proteinaC} cal</p>
                                         </div>
                                        
                                     </div>
@@ -518,6 +515,8 @@ function obter() { // 03/07 Funcão para  a criação das tabelas de forma dinâ
 
 
                                 `;
+    
+                                
 
                                 })
 
@@ -542,15 +541,35 @@ function obter() { // 03/07 Funcão para  a criação das tabelas de forma dinâ
 
 }
 
+function delet(event){//15/07
+    const idUsuario = sessionStorage.ID_USUARIO; //Usuário que esta logado
 
-document.addEventListener('DOMContentLoaded', obter); //event executa quando o documento HTML quando for carregado completamente e a função obter erá executada automaticamente quando esse evento ocorrer
+    const opcao = event.target.id; //15/07 Captura o ID do elemento clicado e armazena na constante "opcao" que é utilizada como parâmetro no fetch para identificar qual é o nome da refeição que o usuário deseja excluir. O event.target referencia o elemento (botão) que acionou o evento.
 
+    console.log("Opção clicada:", opcao); // Exibe no console para depuração
 
-
-
-
-
-
-
+  
 
 
+    fetch(`/usuarios/delet/${idUsuario}/${opcao}`, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }).then(function (resposta) {
+
+        if (resposta.ok) {
+            window.location = "/dashboard/dieta.html"
+        } else if (resposta.status == 404) {
+            window.alert("Deu 404!");
+        } else {
+            throw ("Houve um erro ao tentar ao excluir a refeição - Código da resposta: " + resposta.status);
+        }
+    }).catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+    });
+
+}
+
+document.addEventListener('DOMContentLoaded', obter); //event executa quando o documento HTML quando for carregado completamente e a função obter será executada automaticamente quando esse evento ocorrer
+  
