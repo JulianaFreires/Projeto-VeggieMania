@@ -74,7 +74,7 @@ function relatorio(idUsuario) { // 09/07 select que soma as informações nutric
     return database.executar(instrucaoSql);
 }
 
-function delet(idUsuario,opcao) { // Deleta a refeição selecionada pelo usuário com base no nome da refeição e no ID do usuário
+function delet(idUsuario,opcao) { //15/07 Deleta a refeição selecionada pelo usuário com base no nome da refeição e no ID do usuário
     // Criação da instrução SQL para deletar a refeição no banco de dados
     var instrucaoSql = `  DELETE FROM refeicao WHERE fk_usuario = ${idUsuario} AND nomeRefeicao =  "${opcao}";`
 

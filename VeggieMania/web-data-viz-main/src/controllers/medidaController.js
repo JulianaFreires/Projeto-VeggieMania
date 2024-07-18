@@ -58,8 +58,52 @@ function Ranking(req, res) { // 22/06
         );
 
 }
+
+function sexo(req, res) { // 17/07
+    // Chama a função sexoMural localizada no Model.js para obter os dados do banco de dados
+
+    medidaModel.sexo()
+        .then(
+         
+            function (resultado) {
+                res.status(200).json(resultado);
+            }
+        )
+        .catch(
+            function (erro) {
+             
+                console.log(erro);
+                console.log("Houve um erro ao realizar o post: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+
+}
+
+function idade(req, res) { // 17/07
+   
+
+    medidaModel.idade()
+        .then(
+            // Se bem-sucedido, envia os dados no formato JSON
+            function (resultado) {
+                res.status(200).json(resultado);
+            }
+        )
+        .catch(
+            function (erro) {
+                // Em caso de erro, registra no console e envia uma resposta de erro
+                console.log(erro);
+                console.log("Houve um erro ao realizar o post: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+
+}
 module.exports = {
     nomeMural,
     curtidasMural,
-    Ranking
+    Ranking,
+    sexo,
+    idade
 }

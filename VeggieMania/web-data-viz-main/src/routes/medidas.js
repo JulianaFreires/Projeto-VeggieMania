@@ -21,4 +21,11 @@ router.get("/Ranking", function (req, res) {
 }); // 22/06
 
 
+router.get("/sexo", function (req, res) {
+    medidaController.sexo(req, res);
+}); // 17/07
+
+router.get("/idade", function (req, res) {
+    medidaController.idade(req, res);
+}); // 17/07
 module.exports = router;

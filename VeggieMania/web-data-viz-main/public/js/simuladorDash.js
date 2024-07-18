@@ -238,7 +238,7 @@ function obter() { // 03/07 Funcão para  a criação das tabelas de forma dinâ
                 <h3>${opcao}</h3>
                 </div> 
             
-        <table>
+        <table id="table2">
               <thead>
                     <tr>  
                         <th>Alimento</th>  
@@ -260,21 +260,20 @@ function obter() { // 03/07 Funcão para  a criação das tabelas de forma dinâ
                  
                 <tr> 
                     <td>${item.nomeAlimento}</td>
-                    <td>${item.caloria}</td> 
-                    <td>${item.carboidrato}</td>
-                    <td>${item.lipideo}</td>
-                    <td>${item.fibra}</td>
-                    <td>${item.proteina}</td>
-                    <td>${item.ferro}</td>
-                    <td>${item.calcio}</td>
-                    <td>${item.zinco}</td>
+                    <td>${item.caloria} Kcal</td> 
+                    <td>${item.carboidrato} g</td>
+                    <td>${item.lipideo} g</td>
+                    <td>${item.fibra} g</td>
+                    <td>${item.proteina} g</td>
+                    <td>${item.ferro} g</td>
+                    <td>${item.calcio} g</td>
+                    <td>${item.zinco} g</td>
                 </tr>`;
 
                         tabela += linha;
                     });
                     //A tabela só pode ser fechada depois do loop, após todos os elementos terem sido inseridos nela 
-                    tabela += `  <button type="button"  id="${opcao}">Deletar</button>
-  </tbody>
+                    tabela += ` 
             </table>
             `
             document.getElementById(opcao).addEventListener("click", delet); //15/07 Seleciona o elemento HTML com o id ${opcao} e adiciona um evento para quando o elemento (botão) for clicado a função "delet" é executada
@@ -306,7 +305,7 @@ function obter() { // 03/07 Funcão para  a criação das tabelas de forma dinâ
 
                             refeicao.innerHTML +=
                                 `
-                        <table>
+                        <table id="table2">
                             <caption>Total</caption>
                             <thead>
                                 <tr>   
@@ -322,17 +321,19 @@ function obter() { // 03/07 Funcão para  a criação das tabelas de forma dinâ
                             </thead>
                             <tbody>
                             <tr> 
-                                <td>${data2[0].caloriat}</td>
-                                <td>${data2[0].carboidratot}</td>
-                                <td>${data2[0].lipideot}</td>
-                                <td>${data2[0].fibrat}</td>
-                                <td>${data2[0].proteinat}</td>
-                                <td>${data2[0].ferrot}</td>
-                                <td>${data2[0].calciot}</td>
-                                <td>${data2[0].zincot}</td>
+                                <td>${data2[0].caloriat} Kcal</td>
+                                <td>${data2[0].carboidratot} g</td>
+                                <td>${data2[0].lipideot} g</td>
+                                <td>${data2[0].fibrat} g</td>
+                                <td>${data2[0].proteinat} g</td>
+                                <td>${data2[0].ferrot} g</td>
+                                <td>${data2[0].calciot} g</td>
+                                <td>${data2[0].zincot} g</td>
                             </tr>
                              </tbody>
                     </table>
+                     <button type="button"  id="${opcao}">Deletar</button>
+  </tbody>
                   
                     `;
 
@@ -370,7 +371,7 @@ function obter() { // 03/07 Funcão para  a criação das tabelas de forma dinâ
 
 
                                     //09/07 a TAXA METABOLICA BASAL é calculada por meio de 2 fórmulas que são diferentes dependendo do sexo do usuário e que leva também em consideração o peso, altura, idade e nivel de atividade fisica do usuário. A TBM serve para calcularmos a quantidade recomendada de calorias que deve ser consumida em 1 dia.
-                                    if (data3[0].sexo == "feminino") {
+                                    if (data3[0].sexo == "Feminino") {
                                         var TMB = (655 + (9.6 * data3[0].peso) + (1.7 * ((data3[0].altura) * 100)) - (4.7 * data3[0].idade)) * nivel;
 
                                     } else {
@@ -414,6 +415,7 @@ function obter() { // 03/07 Funcão para  a criação das tabelas de forma dinâ
                                 <div class="qmaior">
 
                                     <label>Relatório da dieta</label>
+                                    <p>Resumo Nutricional Diário: Consumo de Macronutrientes e Micronutrientes</p>
 
                                     <div class="qcontainer">
 
@@ -432,14 +434,14 @@ function obter() { // 03/07 Funcão para  a criação das tabelas de forma dinâ
                             </thead>
                             <tbody>
                             <tr> 
-                                <td>${data3[0].caloria}</td>
-                                <td>${data3[0].carboidrato}</td>
-                                <td>${data3[0].lipideo}</td>
-                                <td>${data3[0].fibra}</td>
-                                <td>${data3[0].proteina}</td>
-                                <td>${data3[0].ferro}</td>
-                                <td>${data3[0].calcio}</td>
-                                <td>${data3[0].zinco}</td>
+                                <td>${data3[0].caloria} Kcal</td>
+                                <td>${data3[0].carboidrato} g</td>
+                                <td>${data3[0].lipideo} g</td>
+                                <td>${data3[0].fibra} g</td>
+                                <td>${data3[0].proteina} g</td>
+                                <td>${data3[0].ferro} g</td>
+                                <td>${data3[0].calcio} g</td>
+                                <td>${data3[0].zinco} g</td>
                             </tr>
                              </tbody>
                     </table>
@@ -452,32 +454,34 @@ function obter() { // 03/07 Funcão para  a criação das tabelas de forma dinâ
                                         <div class="qmenor">
                                             <span>Carboidrato:</span>
                                             <b>${carboidratoP}%</b>
-                                            <p>${carboidratoC} cal</p>
+                                            <p>${carboidratoC} Kcal</p>
 
                                         </div>
 
                                         <div class="qmenor">
                                              <span>Lipideo:</span>
                                             <b>${lipideoP}%</b>
-                                            <p>${lipideoC} cal</p>
+                                            <p>${lipideoC} Kcal</p>
                                         </div>
 
                                         <div class="qmenor">
                                                 <span>Proteina:</span>
                                             <b>${proteinaP}%</b>
-                                            <p>${proteinaC} cal</p>
+                                            <p>${proteinaC} Kcal</p>
                                         </div>
                                        
                                     </div>
-                                      <div class="qcontainer">
+                                       <p>Recomendações</p>
 
+                                      <div class="qcontainer">
+                                   
                                          <div class="qmenor">
                                             <span>Calorias recomendadas:</span>
-                                            <p>${TMB}</p>
+                                            <p>${TMB} Kcal</p>
                                         </div>
 
                                          <div class="qmenor">
-                                                <span>Fibra recomendade:</span>
+                                                <span>Fibra recomendadas:</span>
                                             <p>${fibraR} g</p>
                                         </div>
 
@@ -487,27 +491,27 @@ function obter() { // 03/07 Funcão para  a criação das tabelas de forma dinâ
 
                                         <div class="qmenor">
                                             <span>Carboidrato ideal de 45 a 65%:</span>
-                                            <b>${carboidratoI} a ${carboidratoI2} cal</b>
+                                            <b>${carboidratoI} a ${carboidratoI2} Kcal</b>
                                             <b>${carboidratoIG} a ${carboidratoIG2} g</b>
                                         </div>
 
                                         <div class="qmenor">
-                                            <span>Lipideo ieal de 20 a 35%:</span>
-                                            <b>${lipideoI} a ${lipideoI2} cal</b>
+                                            <span>Lipideo ideal de 20 a 35%:</span>
+                                            <b>${lipideoI} a ${lipideoI2} Kcal</b>
                                             <b>${lipideoIG} a ${lipideoIG2} g</b>
                                             
                                         </div>
 
                                         <div class="qmenor">
                                             <span>Proteina ideal de 10 a 35%:</span>
-                                            <b>${proteinaI} a ${proteinaI2} cal</b>
+                                            <b>${proteinaI} a ${proteinaI2} Kcal</b>
                                             <b>${proteinaIG} a ${proteinaIG2} g</b>
                                             
                                         </div>
-
-                                       
-
+                                        
                                     </div>
+                                     <p>A recomendação da quantidade de calorias foi baseada no cálculo da Taxa de Metabolismo Basal (TMB). As diretrizes para a ingestão de macronutrientes foram determinadas com base nas recomendações do Food and Nutrition Board dos Institutes of Medicine (IOM). É fundamental destacar que consultas médicas e nutricionais são essenciais para obter recomendações precisas sobre dieta, incluindo macronutrientes e micronutrientes. Esta página é criada apenas para fins educativos e simulação, não devendo ser utilizada para orientação real.
+                                     Referências:</p>
                                 </div>
                                 
 

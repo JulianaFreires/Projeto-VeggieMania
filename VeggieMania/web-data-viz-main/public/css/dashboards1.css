@@ -237,7 +237,6 @@ body {
   position: relative;
   top: 0;
   left: 25%;
-  height: 100vh;
   overflow: auto;
 }
 
@@ -429,14 +428,15 @@ body {
 /*css da pagina de tendências*/
 .tela {
   background-color: white;
-  border-radius: 20px 20px 0 0;
+  border-radius: 20px 20px 20px 20px;
   width: 100%;
-  height: 95%;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   margin-top: 35px;
+  margin-bottom: 20px;
 }
 
 .tela2 {
@@ -453,7 +453,6 @@ body {
 
 .telatendencia{
   width: 100%;
-  height: 12%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -471,7 +470,6 @@ body {
 
 .telat2 {
   width: 100%;
-  height: 10%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -556,8 +554,7 @@ body {
 }
 
 .janelagraf {
-  background-color: #FCDE34;
-  height: 100vh;
+  background-color: #eaef88;
   display: flex;
   flex-direction: column;
   background-size: cover;
@@ -569,8 +566,7 @@ body {
 /*22/06*/
 
 .janelagraf2 {
-  background-color: #FCDE34;
-  height: 100vh;
+  background-color: #eaef88;
   display: flex;
   flex-direction: column;
   background-size: cover;
@@ -594,8 +590,9 @@ h1 {
   text-align: center;
 }
 
-table {
-  width: 70%;
+#table {
+  font-size: Poppins;
+  width: 78%;
   margin: 20px auto;
   border-collapse: collapse;
   background-color: #e8f4e5;
@@ -603,15 +600,31 @@ table {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/*17/07 Tabela da página de dieta*/
+#table2 { 
+  font-size: Poppins;
+  width: 79%;
+  margin: 20px auto;
+  background-color: #ecefb2;
+  border-radius: 17px;
+  border: 1px solid #d2d2d2;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
 th,
 td {
-  padding: 10px;
+  padding: 8px;
   text-align: center;
   border-bottom: 1px solid rgb(167, 169, 164);
 }
 
 tr:hover {
   background-color: #dadada;
+}
+
+caption{
+  font-weight: 600;
+  font-size: 20px;
 }
 
 
@@ -1273,7 +1286,7 @@ button.like path {
 
 
 .janeladieta {
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   display: flex;
   background-repeat: no-repeat;
   background-size: cover;
@@ -1306,7 +1319,10 @@ button.like path {
   border-bottom: 2px solid black;
   font-size: 19px;
   margin-bottom: 5%;
+  font-weight: 600;
+  font-family: Poppins;
 }
+
 
 select {
   font-size: 18px;
@@ -1319,6 +1335,9 @@ select {
   background-repeat: no-repeat;
   background-position: right 10px center; /* Posiciona a imagem para a direita */
   padding-right: 31px; /* Espaçamento para acomodar a seta */
+  font-weight: 600;
+  font-family: Poppins;
+  background-color:#ffffff00;
 }
 
 select:focus {
@@ -1343,6 +1362,8 @@ h3{
   flex-direction: row;
   height: auto;
   margin-bottom: 20px;
+  margin-left: 3%;
+  margin-right: 3%;
 
 }
 
@@ -1362,6 +1383,7 @@ h3{
   align-items: center;
   background-size: cover;
   background-repeat: no-repeat;
+  margin-bottom: 6%;
 
 }
 
@@ -1381,18 +1403,19 @@ h3{
 }
 
 .telat {
-  width: 21%;
+  width: 30%;
+  height: 70px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: Poppins;
-  font-weight: 700;
   font-size: 20px;
   flex-direction: row;
   margin-bottom: 1%;
   margin-top: 4%;
-  background-color: #9ac09adb;
+  background-color: #e9f0a4db;
   border-radius: 15px 0 15px 0;
+  border-color: rgb(255, 255, 136);
 }
 
 
@@ -1611,12 +1634,14 @@ input[type="checkbox"] {
   position: relative;
   top: 0;
   left: 25%;
-  background-color: #35303028;
+  background-color: #b3dc99d0;
   margin-top: 5%;
+  border-radius: 20px;
 }
 
 .qmaior label{/* titulo*/
 color: #000000;
+margin-top: 5%;
 font-weight: 600;
 font-size: 23px;
 margin-bottom: 4%;
@@ -1635,7 +1660,7 @@ margin-bottom: 4%;
 }
 
 .qmenor{/*cards*/
-  background-color: #9fbe87;
+  background-color: #7cba56;
   width: 250px;
   height: 120px;
   border-radius: 15px;

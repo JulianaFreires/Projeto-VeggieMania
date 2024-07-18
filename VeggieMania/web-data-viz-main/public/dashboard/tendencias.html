@@ -13,19 +13,11 @@
 
     <script src="../js/sessao.js"></script>
 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-
     <!-- scripts do Chart.js - 2022-1 -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <!--FONT AWESOME-->
-    <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
-</head>
 
-<!-- <body onload=" atualizarFeed()"> -->
+    <!-- <body onload=" atualizarFeed()"> -->
 
 <body>
     <div class="janelagraf">
@@ -107,7 +99,6 @@
                     </div>
 
                 </div>
-
                 <div class="telag">
                     <div class="telapost">
                         <div id="grafico"></div>
@@ -116,33 +107,57 @@
                         <div id="grafico2"></div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <div class="janelagraf2">
-        <div class="dash-right">
-            <div class="ranking">
-                <div class="telatendencia">
-                    <h3>Ranking de Tipos de Alimentação</h3>
+                <div class="telat2"> <!--17/07-->
+                    <div class="telaesquerda">
+                        <p>Sexo biológico</p>
+                    </div>
+                    <div class="teladireita">
+                        <p>Faixa etária</p>
+                    </div>
                 </div>
-                <table id="table">
-                    <thead>
-                        <tr>  <!-- titulo do cabeçalho, primeira linha -->
-                            <th>Tipo de Alimentação</th>  <!-- cabeçalho da primeira coluna -->
-                            <th>Quantidade de Usuários</th> <!-- cabeçalho da segunda coluna -->
-                        </tr>
-                    </thead>
-                    <tbody id="ranking">
-                          <!--  corpo da tabela, ou seja, é a parte do ranking -->
-                        <!-- as linhas da tabela serão adicionadas dinamicamente pelo JavaScript -->
-                    </tbody>
-                </table>
+
+                <div class="telat3">
+                    <div class="telaesquerda">
+                        <label>Quantidade de usuário de determinado sexo</label>
+                    </div>
+                    <div class="teladireita">
+                        <label>Quantidade de usuários de determinada faixa etária</label>
+                    </div>
+
+                </div>
+                <div class="telag">
+                    <div class="telapost">
+                        <div id="grafico3"></div>
+                    </div>
+                    <div class="telacurtida">
+                        <div id="grafico4"></div>
+                    </div>
+                </div>
+                <div class="ranking">
+                    <div class="telatendencia">
+                        <h3>Ranking de Tipos de Alimentação</h3>
+                    </div>
+                    <table id="table">
+                        <thead>
+                            <tr> <!-- titulo do cabeçalho, primeira linha -->
+                                <th>Tipo de Alimentação</th> <!-- cabeçalho da primeira coluna -->
+                                <th>Quantidade de Usuários</th> <!-- cabeçalho da segunda coluna -->
+                            </tr>
+                        </thead>
+                        <tbody id="ranking">
+                            <!--  corpo da tabela, ou seja, é a parte do ranking -->
+                            <!-- as linhas da tabela serão adicionadas dinamicamente pelo JavaScript -->
+                        </tbody>
+                    </table>
+
+                </div>
+
+
 
             </div>
         </div>
-
-
     </div>
+
 
 
 </body>
@@ -163,7 +178,7 @@
             },
         })
             .then(response => {
-                 // Verifica
+                // Verifica
                 if (!response.ok) {
                     throw new Error('Erro ao obter os dados do ranking');
                 }
@@ -241,7 +256,7 @@
         window.location = "mural4.html"
     }
 
-    function dieta(){
+    function dieta() {
         window.location = "dieta.html"
     }
 
@@ -256,20 +271,28 @@
     function exibirPosts() {
         document.getElementById("grafico").innerHTML += `
     
-         <canvas id="myChartCanvas" style="position: relative; height:30vh; width:30vw"></canvas>
+         <canvas id="myChartCanvas" style="position: relative; height:30vh; width:30vw"></canvas>`
 
-
-    
-        `
         document.getElementById("grafico2").innerHTML += `
 
-        <canvas id="myChartCanvas2" style="position: relative; height:23vh; width:23vw"></canvas>
+        <canvas id="myChartCanvas2" style="position: relative; height:23vh; width:23vw"></canvas>`
 
-`
+        //17/07
+        document.getElementById("grafico3").innerHTML += `
+
+        <canvas id="myChartCanvas3" style="position: relative; height:23vh; width:23vw"></canvas>`
+        //17/07
+        document.getElementById("grafico4").innerHTML += `
+
+        <canvas id="myChartCanvas4" style="position: relative; height:23vh; width:23vw"></canvas>`
 
         obterDadosGrafico()
 
         curtidasMural()
+
+        sexo()//17/07
+
+        idade()//17/07
 
     }
 
@@ -282,8 +305,6 @@
     // para, quando carregar o gráfico da primeira vez, já trazer com vários dados.
     // A função *obterDadosGrafico* também invoca a função *plotarGrafico*
 
-    //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
-    //     Para ajustar o "select", ajuste o comando sql em src/models
 
     function obterDadosGrafico(idMural) {
 
@@ -318,6 +339,82 @@
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
 
                     plotarGrafico2(resposta);
+
+                });
+            } else {
+                console.error(`Nenhum dado encontrado`)
+            }
+
+
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+    }
+
+    function sexo() { //17/07
+        // função para plotar o grafico com a quantidade de curtidas em cada categoria. O fetch nesse caso está fazendo uma requisição para a rota de medidas/curtidasMural para poder retornar o dados para a criação do gráfico
+
+        fetch(`/medidas/sexo`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                    plotarGrafico3(resposta);
+
+                });
+            } else {
+                console.error(`Nenhum dado encontrado`)
+            }
+
+
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+    }
+
+    function idade() {//17/07
+        // função para plotar o grafico com a quantidade de curtidas em cada categoria. O fetch nesse caso está fazendo uma requisição para a rota de medidas/curtidasMural para poder retornar o dados para a criação do gráfico
+
+        fetch(`/medidas/idade`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                    // Agrupando os dados por faixa etária
+                    const faixas = {
+                        criança: [],
+                        adulto: [],
+                        adolescente: [],
+                        idoso: []
+                    };
+
+                    resposta.forEach(function (dado) {
+                        // Supondo que 'idade' seja uma propriedade de cada objeto em 'resposta'
+                        if (dado.idade <= 12) {
+                            faixas.criança.push(dado);
+                        } else if (dado.idade <= 17) {
+                            faixas.adolescente.push(dado);
+                        } else if (dado.idade <= 59) {
+                            faixas.adulto.push(dado);
+                        } else {
+                            faixas.idoso.push(dado);
+                        }
+                    });
+
+                    // Contando o número de pessoas em cada faixa etária
+                    var Qtd_Criancas = faixas.criança.length;
+                    var Qtd_Adolescentes = faixas.adolescente.length;
+                    var Qtd_Adultos = faixas.adulto.length;
+                    var Qtd_Idosos = faixas.idoso.length;
+
+
+
+                    // Chamando função para plotar o gráfico com os dados agrupados
+                    plotarGrafico4(faixas);
 
                 });
             } else {
@@ -448,8 +545,6 @@
             dados.datasets[0].data.push(registro.qtdCurtidas);
 
 
-            let backgroundColor;
-            let borderColor;
             if (registro.categoria === 'Restaurante') {
                 backgroundColor = 'rgba(248, 55, 104, 0.5)';
                 borderColor = 'rgba(248, 55, 104, 1)';
@@ -472,7 +567,6 @@
         }
 
 
-
         // Criando estrutura para plotar gráfico - config
         const config = {
             type: 'pie',
@@ -487,6 +581,144 @@
         );
 
     }
+
+
+    function plotarGrafico3(resposta) { //17/07
+
+        console.log(resposta);
+
+        // Criando estrutura para plotar gráfico - labels
+        let labels = [];
+
+        // Criando estrutura para plotar gráfico - dados
+        let dados = {
+            labels: labels,
+            datasets: [{
+                label: 'Quantidade de usuários',
+                data: [],
+                fill: false,
+                backgroundColor: [],
+                borderColor: [],
+                borderWidth: 1,
+                tension: 0.1
+            }]
+        };
+
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            labels.push(registro.sexo);
+            dados.datasets[0].data.push(registro.Qtd_Usuarios);
+
+
+            if (registro.sexo === 'Feminino') {
+                backgroundColor = 'rgba(248, 55, 104, 0.5)';
+                borderColor = 'rgba(248, 55, 104, 1)';
+
+            } else {
+                backgroundColor = 'rgba(57, 94, 175, 0.5)';
+                borderColor = 'rgba(57, 94, 175, 1)';
+
+            }
+            dados.datasets[0].backgroundColor.push(backgroundColor);
+            dados.datasets[0].borderColor.push(borderColor);
+
+        }
+
+
+        // Criando estrutura para plotar gráfico - config
+        const config = {
+            type: 'pie',
+            data: dados,
+
+        };
+
+        // Adicionando gráfico criado em div na tela
+        let myChart = new Chart(
+            document.getElementById(`myChartCanvas3`),
+            config
+        );
+
+    }
+
+
+
+
+    function plotarGrafico4(resposta) {//17/07 Plota o gráfico das feixas etárias
+        let labels = Object.keys(resposta); //  chaves do objeto(json) resposta (nomes das faixas etárias)
+        let dados = {
+            labels: labels,
+            datasets: [{
+                label: 'Número de usuários por faixa etária',
+                data: [],
+                backgroundColor: [
+                    'rgba(248, 55, 104, 0.5)',  // Criança
+                    'rgba(251, 196, 75, 0.5)',  // Adolescente
+                    'rgba(57, 94, 175, 0.5)',   // Adulto
+                    'rgba(63, 159, 167, 0.5)'   // Idoso
+                ],
+                borderColor: [
+                    'rgba(248, 55, 104, 1)',    // Criança
+                    'rgba(251, 196, 75, 1)',    // Adolescente
+                    'rgba(57, 94, 175, 1)',     // Adulto
+                    'rgba(63, 159, 167, 1)'     // Idoso
+                ],
+                borderWidth: 1,
+                tension: 0.1
+            }]
+        };
+
+        // Percorre as faixas etárias exibidas pelo labels = criança, adulto, adolescente e idoso
+        labels.forEach(function (faixa) {
+            dados.datasets[0].data.push(resposta[faixa].length); // Adiciona o número de pessoas na faixa etária, contando a quantidade de itens em cada chave 
+
+        });
+
+        console.log(dados);
+
+
+        const config = {
+            type: 'bar',
+            data: dados,
+            options: {
+                scales: {
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'idade'
+
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            usePointStyle: true,
+                            boxWidth: 0, // remove a caixa da legenda
+                            fontColor: 'transparent' 
+                        }
+                    }
+                }
+            }
+        };
+
+
+
+        // Adicionando gráfico criado em div na tela
+        let myChart = new Chart(
+            document.getElementById(`myChartCanvas4`),
+            config
+        );
+
+
+
+
+    }
+
+
+
+
 
 
 </script>
