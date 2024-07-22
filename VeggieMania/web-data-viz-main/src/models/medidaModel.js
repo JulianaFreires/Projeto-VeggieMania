@@ -42,9 +42,9 @@ function sexo() { // 17/07 consulta o banco de dados e retorna os sexos cadastra
     return database.executar(instrucaoSql);
 }
 
-function idade() { // 17/07 seleciona a idade dos usuários e a quantidade de usuários por idade cadastrada
+function idade() { // 17/07 seleciona a idade dos usuários cadastrados agrupando-os pela idade
 
-    var instrucaoSql = `SELECT Count(TIMESTAMPDIFF(YEAR, nascimento, CURDATE())) AS Qtd_Usuarios, TIMESTAMPDIFF(YEAR, nascimento, CURDATE()) AS idade FROM usuario GROUP BY idade;`
+    var instrucaoSql = `SELECT TIMESTAMPDIFF(YEAR, nascimento, CURDATE()) AS idade FROM usuario GROUP BY idade;`
 
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);

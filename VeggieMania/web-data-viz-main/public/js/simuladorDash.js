@@ -276,8 +276,7 @@ function obter() { // 03/07 Funcão para  a criação das tabelas de forma dinâ
                     tabela += ` 
             </table>
             `
-            document.getElementById(opcao).addEventListener("click", delet); //15/07 Seleciona o elemento HTML com o id ${opcao} e adiciona um evento para quando o elemento (botão) for clicado a função "delet" é executada
-
+          
                     refeicao.innerHTML += tabela
 
 
@@ -332,10 +331,12 @@ function obter() { // 03/07 Funcão para  a criação das tabelas de forma dinâ
                             </tr>
                              </tbody>
                     </table>
-                     <button type="button"  id="${opcao}">Deletar</button>
-  </tbody>
+                     <button type="button" class="delet" id="${opcao}">Deletar</button>
+                
                   
                     `;
+
+                    document.getElementById(opcao).addEventListener("click", delet); //15/07 Seleciona o elemento HTML com o id ${opcao} e adiciona um evento para quando o elemento (botão) for clicado a função "delet" é executada
 
 
                             fetch(`/usuarios/relatorio/${idUsuario}`, { //09/07 Fetch realiza uma requisição GET utilizando o usuário como parâmetro. Caso for bem-sucedido ele retorna as informações nutricionais da dieta (soma das informações nutricionais das refeições), além de retornar o sexo, peso, altura, idade e nivel de ativdade fisica do usuario
@@ -381,7 +382,7 @@ function obter() { // 03/07 Funcão para  a criação das tabelas de forma dinâ
 
                                     //09/07 Calcula o percentual de calorias provenientes de cada macronutriente (carboidrato, lipideo e proteina) levando em consideração todas as informações nutricionais da dieta cadastrada pelo usuário
 
-                                    var carboidratoC = data3[0].carboidrato * 4
+                                    var carboidratoC = (data3[0].carboidrato * 4).toFixed(2)
                                     var carboidratoP = ((carboidratoC / data3[0].caloria) * 100).toFixed(2)
                                     var carboidratoI = (data3[0].caloria * 0.20).toFixed(2) // 11/07 -  Calculo relacionado as diretrizes gerais para a distribuição de macronutrientes em uma dieta saudável =>  quantidade de calorias ideal min
                                     var carboidratoI2 = (data3[0].caloria * 0.35).toFixed(2)  // quantidade de calorias ideal mmax
@@ -389,7 +390,7 @@ function obter() { // 03/07 Funcão para  a criação das tabelas de forma dinâ
                                     var carboidratoIG2 = (carboidratoI2 / 4).toFixed(2) //gramatura ideal max
 
 
-                                    var lipideoC = data3[0].lipideo * 9
+                                    var lipideoC = (data3[0].lipideo * 9).toFixed(2)
                                     var lipideoP = ((lipideoC / data3[0].caloria) * 100).toFixed(2)
                                     var lipideoI = (data3[0].caloria * 0.20).toFixed(2) // 11/07 quantidade de calorias ideal min
                                     var lipideoI2 = (data3[0].caloria * 0.35).toFixed(2) // quantidade de calorias ideal mmax
@@ -397,7 +398,7 @@ function obter() { // 03/07 Funcão para  a criação das tabelas de forma dinâ
                                     var lipideoIG2 = (lipideoI2 / 9).toFixed(2) //gramatura ideal max
 
 
-                                    var proteinaC = data3[0].proteina * 9
+                                    var proteinaC = (data3[0].proteina * 9).toFixed(2)
                                     var proteinaP = ((proteinaC / data3[0].caloria) * 100).toFixed(2)
                                     var proteinaI = (data3[0].caloria * 0.10).toFixed(2) // 11/07 quantidade de calorias ideal min
                                     var proteinaI2 = (data3[0].caloria * 0.35).toFixed(2) // quantidade de calorias ideal mmax
@@ -414,12 +415,12 @@ function obter() { // 03/07 Funcão para  a criação das tabelas de forma dinâ
                                         `
                                 <div class="qmaior">
 
-                                    <label>Relatório da dieta</label>
-                                    <p>Resumo Nutricional Diário: Consumo de Macronutrientes e Micronutrientes</p>
+                                    <label>Relatório com base na sua dieta:</label>
+                                    <p id = "subtitulo">Resumo nutricional diário do seu consumo de macronutrientes e micronutrientes:</p>
 
                                     <div class="qcontainer">
 
-                                     <table>
+                                     <table id = "table3">
                             <thead>
                                 <tr>   
                                     <th>Calorias</th>
@@ -448,75 +449,87 @@ function obter() { // 03/07 Funcão para  a criação das tabelas de forma dinâ
                                     
                                        
                                     </div>
+
+                                     <p id = "subtitulo">O percentual e a quantidade de calorias derivadas de cada macronutriente:</p>
                                     
                                     <div class="qcontainer">
                                     
                                         <div class="qmenor">
                                             <span>Carboidrato:</span>
-                                            <b>${carboidratoP}%</b>
-                                            <p>${carboidratoC} Kcal</p>
+                                            <p>${carboidratoP}%</p>
+                                            <b>${carboidratoC} Kcal</b>
 
                                         </div>
 
                                         <div class="qmenor">
                                              <span>Lipideo:</span>
-                                            <b>${lipideoP}%</b>
-                                            <p>${lipideoC} Kcal</p>
+                                            <p>${lipideoP}%</p>
+                                            <b>${lipideoC} Kcal</b>
                                         </div>
 
                                         <div class="qmenor">
                                                 <span>Proteina:</span>
-                                            <b>${proteinaP}%</b>
-                                            <p>${proteinaC} Kcal</p>
+                                            <p>${proteinaP}%</p>
+                                            <b>${proteinaC} Kcal</b>
                                         </div>
                                        
                                     </div>
-                                       <p>Recomendações</p>
+                                    <div class= "rec">
+                                       <p>Recomendações com base no seu perfil:</p>
+                                    </div>
 
                                       <div class="qcontainer">
                                    
                                          <div class="qmenor">
                                             <span>Calorias recomendadas:</span>
-                                            <p>${TMB} Kcal</p>
+                                            <b>${TMB} Kcal</b>
                                         </div>
 
                                          <div class="qmenor">
                                                 <span>Fibra recomendadas:</span>
-                                            <p>${fibraR} g</p>
+                                            <b>${fibraR} g</b>
                                         </div>
 
                                     </div>
 
+                                    <p id= "subrec">Quantidade ideal de macronutrientes baseada na quantidade de calorias da sua dieta.</P>
+
                                      <div class="qcontainer">
 
                                         <div class="qmenor">
-                                            <span>Carboidrato ideal de 45 a 65%:</span>
+                                            <span>Carboidrato de 45 a 65%:</span>
                                             <b>${carboidratoI} a ${carboidratoI2} Kcal</b>
                                             <b>${carboidratoIG} a ${carboidratoIG2} g</b>
                                         </div>
 
                                         <div class="qmenor">
-                                            <span>Lipideo ideal de 20 a 35%:</span>
+                                            <span>Lipideo de 20 a 35%:</span>
                                             <b>${lipideoI} a ${lipideoI2} Kcal</b>
                                             <b>${lipideoIG} a ${lipideoIG2} g</b>
                                             
                                         </div>
 
                                         <div class="qmenor">
-                                            <span>Proteina ideal de 10 a 35%:</span>
+                                            <span>Proteina de 10 a 35%:</span>
                                             <b>${proteinaI} a ${proteinaI2} Kcal</b>
                                             <b>${proteinaIG} a ${proteinaIG2} g</b>
                                             
                                         </div>
                                         
                                     </div>
-                                     <p>A recomendação da quantidade de calorias foi baseada no cálculo da Taxa de Metabolismo Basal (TMB). As diretrizes para a ingestão de macronutrientes foram determinadas com base nas recomendações do Food and Nutrition Board dos Institutes of Medicine (IOM). É fundamental destacar que consultas médicas e nutricionais são essenciais para obter recomendações precisas sobre dieta, incluindo macronutrientes e micronutrientes. Esta página é criada apenas para fins educativos e simulação, não devendo ser utilizada para orientação real.
-                                     Referências:</p>
+                                    <div class = "divref">
+                                     <p id = "ref">A recomendação da quantidade de calorias foi baseada no cálculo da Taxa de Metabolismo Basal (TMB). As diretrizes para a ingestão de macronutrientes foram determinadas com base nas recomendações do Food and Nutrition Board dos Institutes of Medicine (IOM).<br>
+                                    É fundamental destacar que consultas médicas e nutricionais são essenciais para obter recomendações precisas sobre dieta, incluindo macronutrientes e micronutrientes. Esta página é criada apenas para fins educativos e simulação, não devendo ser utilizada para orientação real.<br><br>
+                                     <b>Referências:</b><br>
+                                    - Calculo da taxa metabólica basal:
+                                    <a href=" https://nutriciro.com.br/posts/variados/calculo_calorias.html"
+                                    target="_blank"> Clique aqui</a>.<br>
+                                        - Diretrizes para a ingestão de macronutrientes:
+                                    <a href=" https://pubmed.ncbi.nlm.nih.gov/16004827/ "> Clique aqui</a>.
+                          
+                                    </p>
+                                    </div>
                                 </div>
-                                
-
-                                
-
 
                                 `;
     
@@ -545,15 +558,13 @@ function obter() { // 03/07 Funcão para  a criação das tabelas de forma dinâ
 
 }
 
-function delet(event){//15/07
+function delet(event){/*15/07 
+    O event é utilizado como parâmetro para identificar o botão que foi clicado, assim a função delet sabe qual refeição deletar com base no ID do botão clicado.*/
     const idUsuario = sessionStorage.ID_USUARIO; //Usuário que esta logado
 
     const opcao = event.target.id; //15/07 Captura o ID do elemento clicado e armazena na constante "opcao" que é utilizada como parâmetro no fetch para identificar qual é o nome da refeição que o usuário deseja excluir. O event.target referencia o elemento (botão) que acionou o evento.
 
     console.log("Opção clicada:", opcao); // Exibe no console para depuração
-
-  
-
 
     fetch(`/usuarios/delet/${idUsuario}/${opcao}`, {
         method: "DELETE",

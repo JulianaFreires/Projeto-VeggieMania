@@ -108,29 +108,31 @@
                     </div>
                 </div>
                 <div class="telat2"> <!--17/07-->
-                    <div class="telaesquerda">
-                        <p>Sexo biológico</p>
-                    </div>
                     <div class="teladireita">
                         <p>Faixa etária</p>
                     </div>
+                    <div class="telaesquerda">
+                        <p>Sexo biológico</p>
+                    </div>
+                   
                 </div>
 
                 <div class="telat3">
-                    <div class="telaesquerda">
-                        <label>Quantidade de usuário de determinado sexo</label>
-                    </div>
                     <div class="teladireita">
-                        <label>Quantidade de usuários de determinada faixa etária</label>
+                        <label>Distribuição de usuários por faixa etária</label>
                     </div>
+                    <div class="telaesquerda">
+                        <label>Comparação de usuários por sexo biológico</label>
+                    </div>
+                   
 
                 </div>
                 <div class="telag">
                     <div class="telapost">
-                        <div id="grafico3"></div>
+                        <div id="grafico4"></div>
                     </div>
                     <div class="telacurtida">
-                        <div id="grafico4"></div>
+                        <div id="grafico3"></div>
                     </div>
                 </div>
                 <div class="ranking">
@@ -271,7 +273,7 @@
     function exibirPosts() {
         document.getElementById("grafico").innerHTML += `
     
-         <canvas id="myChartCanvas" style="position: relative; height:30vh; width:30vw"></canvas>`
+         <canvas id="myChartCanvas" style="position: relative; height:31vh; width:31vw"></canvas>`
 
         document.getElementById("grafico2").innerHTML += `
 
@@ -284,7 +286,7 @@
         //17/07
         document.getElementById("grafico4").innerHTML += `
 
-        <canvas id="myChartCanvas4" style="position: relative; height:23vh; width:23vw"></canvas>`
+        <canvas id="myChartCanvas4" style="position: relative; height:31vh; width:31"></canvas>`
 
         obterDadosGrafico()
 
@@ -376,44 +378,37 @@
 
     }
 
-    function idade() {//17/07
-        // função para plotar o grafico com a quantidade de curtidas em cada categoria. O fetch nesse caso está fazendo uma requisição para a rota de medidas/curtidasMural para poder retornar o dados para a criação do gráfico
+    function idade() {//17/07 responsável por categorizar as idades dos usuários em uma faixa etária
 
         fetch(`/medidas/idade`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+    
 
-                    // Agrupando os dados por faixa etária
+                    // Agrupando os dados por faixa etária em arrays
                     const faixas = {
-                        criança: [],
-                        adulto: [],
-                        adolescente: [],
-                        idoso: []
+                        Crianças: [],
+                        Adultos: [],
+                        Adolescentes: [],
+                        Idosos: []
                     };
 
-                    resposta.forEach(function (dado) {
-                        // Supondo que 'idade' seja uma propriedade de cada objeto em 'resposta'
+                    // A resposta é um lista (array) de objetos em JSON, o método for each é responsável por iterar sobre cada objeto na lista de resposta. O "dado" representa individualmente cada objeto da lista. O "if dado.idade" verifica em qual faixa etária a propriedade "idade" do objeto e enquadra e após isso o "dado" é adicionado a array correspondente 
+                    resposta.forEach(function (dado) {// verifica em qual faixa etária (lista) o usuário deverá ser adicionado
                         if (dado.idade <= 12) {
-                            faixas.criança.push(dado);
+                            faixas.Crianças.push(dado);
                         } else if (dado.idade <= 17) {
-                            faixas.adolescente.push(dado);
+                            faixas.Adolescentes.push(dado);
                         } else if (dado.idade <= 59) {
-                            faixas.adulto.push(dado);
+                            faixas.Adultos.push(dado);
                         } else {
-                            faixas.idoso.push(dado);
+                            faixas.Idosos.push(dado);
                         }
                     });
 
-                    // Contando o número de pessoas em cada faixa etária
-                    var Qtd_Criancas = faixas.criança.length;
-                    var Qtd_Adolescentes = faixas.adolescente.length;
-                    var Qtd_Adultos = faixas.adulto.length;
-                    var Qtd_Idosos = faixas.idoso.length;
 
-
-
-                    // Chamando função para plotar o gráfico com os dados agrupados
+                    // Chamando função para plotar o gráfico 
                     plotarGrafico4(faixas);
 
                 });
@@ -450,6 +445,7 @@
 
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
+
             labels.push(registro.categoria);
             dados.datasets[0].data.push(registro.qtdPost);
 
@@ -588,9 +584,10 @@
         console.log(resposta);
 
         // Criando estrutura para plotar gráfico - labels
-        let labels = [];
+        let labels = []; // rótulos do gráfico
 
-        // Criando estrutura para plotar gráfico - dados
+        /* Criando estrutura para plotar gráfico - dados
+        O objeto dados contém a propriedade datasets que é um array de objetos.A propriedade datasets é uma array que possui vários objetos com várias propriedades como backgroundcolor*/
         let dados = {
             labels: labels,
             datasets: [{
@@ -605,23 +602,25 @@
         };
 
 
-        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        // Iteração acontece de acordo com o tamanho da resposta. 
+
+       
         for (i = 0; i < resposta.length; i++) {
-            var registro = resposta[i];
-            labels.push(registro.sexo);
-            dados.datasets[0].data.push(registro.Qtd_Usuarios);
+            var registro = resposta[i];//A variável registro armazena individualmente os objetos da resposta (resposta é um array de objetos).
+            labels.push(registro.sexo);// Utiliza como rótulo dos gráficos a propriedade (sexo) dos objetos, nesse caso "feminino" e "masculino". É adicionado para a array “labels” os valores das propriedades contidas no array de objetos da resposta
+            dados.datasets[0].data.push(registro.Qtd_Usuarios);//Utiliza a quantidade de usuários do sexo feminino e masculino como dado no gráfico
 
 
-            if (registro.sexo === 'Feminino') {
+            if (registro.sexo === 'Feminino') {// caso a propriedade do objeto se chame "feminino" a cor a ser exibida será rosa
                 backgroundColor = 'rgba(248, 55, 104, 0.5)';
                 borderColor = 'rgba(248, 55, 104, 1)';
 
-            } else {
+            } else {// caso contrário (masculino), será azul
                 backgroundColor = 'rgba(57, 94, 175, 0.5)';
                 borderColor = 'rgba(57, 94, 175, 1)';
 
             }
-            dados.datasets[0].backgroundColor.push(backgroundColor);
+            dados.datasets[0].backgroundColor.push(backgroundColor); //As cores serão adicionadas a configuração do gráfico na propriedade backgroundcolor localizada dentro do array datasets que está localizada dentro do objeto dados
             dados.datasets[0].borderColor.push(borderColor);
 
         }
@@ -634,7 +633,7 @@
 
         };
 
-        // Adicionando gráfico criado em div na tela
+        // Adicionando gráfico criado em div na tela. Cria e exibie o gráfico utilizando a biblioteca Chart.js. O gráfico será renderizado no elemento HTML com o id chamado myChartCanvas3
         let myChart = new Chart(
             document.getElementById(`myChartCanvas3`),
             config
@@ -653,16 +652,16 @@
                 label: 'Número de usuários por faixa etária',
                 data: [],
                 backgroundColor: [
-                    'rgba(248, 55, 104, 0.5)',  // Criança
-                    'rgba(251, 196, 75, 0.5)',  // Adolescente
-                    'rgba(57, 94, 175, 0.5)',   // Adulto
-                    'rgba(63, 159, 167, 0.5)'   // Idoso
+                    'rgba(248, 55, 104, 0.5)',  
+                    'rgba(251, 196, 75, 0.5)',  
+                    'rgba(57, 94, 175, 0.5)',   
+                    'rgba(63, 159, 167, 0.5)'   
                 ],
                 borderColor: [
-                    'rgba(248, 55, 104, 1)',    // Criança
-                    'rgba(251, 196, 75, 1)',    // Adolescente
-                    'rgba(57, 94, 175, 1)',     // Adulto
-                    'rgba(63, 159, 167, 1)'     // Idoso
+                    'rgba(248, 55, 104, 1)',    
+                    'rgba(251, 196, 75, 1)',   
+                    'rgba(57, 94, 175, 1)',     
+                    'rgba(63, 159, 167, 1)'    
                 ],
                 borderWidth: 1,
                 tension: 0.1
@@ -670,12 +669,12 @@
         };
 
         // Percorre as faixas etárias exibidas pelo labels = criança, adulto, adolescente e idoso
-        labels.forEach(function (faixa) {
-            dados.datasets[0].data.push(resposta[faixa].length); // Adiciona o número de pessoas na faixa etária, contando a quantidade de itens em cada chave 
+        labels.forEach(function (faixas) {
+            dados.datasets[0].data.push(resposta[faixas].length); // Adiciona o número de pessoas na faixa etária, contando a quantidade de itens em cada chave 
 
         });
 
-        console.log(dados);
+        console.log(resposta["criança"]);
 
 
         const config = {
@@ -686,7 +685,7 @@
                     y: {
                         title: {
                             display: true,
-                            text: 'idade'
+                            text: 'Idade'
 
                         }
                     }

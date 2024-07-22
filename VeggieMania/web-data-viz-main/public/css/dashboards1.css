@@ -262,6 +262,17 @@ body {
 
 /*Pagina inicial do dashboard*/
 
+.dash-rightIni { /*Ajustando tela inicial do dashboard*/
+  display: flex;
+  width: 70%;
+  height: fit-content;
+  position: relative;
+  top: 0;
+  left: 25%;
+  height: 100vh;
+  overflow: auto;
+}
+
 .iniciot {
   width: 100%;
   height: 100%;
@@ -279,7 +290,7 @@ body {
   justify-content: center;
   font-family: Poppins;
   font-weight: bold;
-  font-size: 27px;
+  font-size: 26px;
   border-top: 2px solid black;
 
 }
@@ -296,7 +307,7 @@ body {
 .corpotexto {
   font-family: Poppins;
   font-size: 19px;
-  width: 100%;
+  width: 92%;
   height: 15%;
   display: flex;
   align-items: center;
@@ -463,6 +474,7 @@ body {
   margin-bottom: 3%;
   margin-top: 2%;
   border-bottom: 2px solid black;
+  
 
 }
 
@@ -487,6 +499,7 @@ body {
   font-family: Poppins;
   font-weight: bold;
   font-size: 26px;
+ 
 }
 
 .telag {
@@ -495,6 +508,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 8%;
 }
 
 .telapost {
@@ -547,14 +561,15 @@ body {
 
 .janelaini {
   display: flex;
-  background-image: url(img/fundoinid.png);
+  background-color: rgb(255, 255, 255);
   background-repeat: no-repeat;
   background-size: cover;
   font-family: Poppins;
+  width: 100%;
 }
 
 .janelagraf {
-  background-color: #eaef88;
+  background-color: #f2ec9f;/*22/07 Alterando a cor*/
   display: flex;
   flex-direction: column;
   background-size: cover;
@@ -605,11 +620,28 @@ h1 {
   font-size: Poppins;
   width: 79%;
   margin: 20px auto;
-  background-color: #ecefb2;
+  background-color:#EDE185;
   border-radius: 17px;
-  border: 1px solid #d2d2d2;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: white; /* Cor da letra */
+  font-weight: 400;
 }
+/*22/07 Personalizando a tabela do relatório da dieta*/
+#table3{ 
+  font-size: Poppins;
+  width: 82%;
+  margin: 17px auto;
+  background: linear-gradient(to right, #8ac05eda, #a5dd78da);/* fundo degradê */
+  border-radius: 17px;
+ 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: white; 
+  font-weight:500;
+  font-size: 20px;
+  border-radius: 10px;
+  border: 2px solid #d2d2d2;
+}
+
 
 th,
 td {
@@ -619,12 +651,13 @@ td {
 }
 
 tr:hover {
-  background-color: #dadada;
+  background-color: #dadada67;
 }
 
 caption{
-  font-weight: 600;
-  font-size: 20px;
+  font-weight: 700;
+  font-size: 26px;
+  color: #ede185;
 }
 
 
@@ -771,46 +804,56 @@ button.like path {
 
 
 /*Mural1 */
+.dash-right1 {
+  display: flex;
+  width: 70%;
+  height: fit-content;
+  position: relative;
+  top: 0;
+  left: 25%;
+  overflow: auto;
+  height: 100vh;
+}
 
-.dash-right .avisos {
+.dash-right1 .avisos {
   width: 100%;
   color: rgb(61, 56, 56);
   font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.dash-right .avisos .container {
+.dash-right1 .avisos .container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.dash-right .avisos .container .div-form {
+.dash-right1 .avisos .container .div-form {
   width: 90%;
 }
 
-.dash-right .avisos .container .div-form #form_postagem {
+.dash-right1 .avisos .container .div-form #form_postagem {
   width: 90%;
 }
 
-.dash-right .avisos .div-form label {
+.dash-right1 .avisos .div-form label {
   width: 90%;
 }
 
-.dash-right .avisos .div-form input {
+.dash-right1 .avisos .div-form input {
   width: 93%;
   border-radius: 5px;
   border: 3px solid rgba(248, 55, 104);
   padding: 1%;
 }
 
-.dash-right .avisos .div-form textarea {
+.dash-right1 .avisos .div-form textarea {
   width: 95%;
   border: 3px solid rgba(248, 55, 104);
   background-color: white;
   border-radius: 5px;
 }
 
-.dash-right .avisos .div-form button {
+.dash-right1 .avisos .div-form button {
   cursor: pointer;
   font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   border: 0;
@@ -1286,12 +1329,13 @@ button.like path {
 
 
 .janeladieta {
-  background-color: rgb(255, 255, 255);
+  background-color: #FCF5E3;/*22/07 Alterando a cor do fundo */
   display: flex;
   background-repeat: no-repeat;
   background-size: cover;
   font-family: Poppins;
   flex-direction: column;
+  color: white;
 }
 
 .dash-rightcalc {
@@ -1310,22 +1354,23 @@ button.like path {
 /* cadastro alimentos   01/07*/
 
 
-.escolher {
+.escolher {/* 22/07 Personalizando o tipo de refeição*/
   display: flex;
   align-items: center;
   justify-content: center;
   width: 75%;
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
-  font-size: 19px;
+  border-top: 2px solid #89c970;;
+  border-bottom: 2px solid #89c970;;
+  font-size: 23px;
   margin-bottom: 5%;
   font-weight: 600;
   font-family: Poppins;
+  color:#89c970;
 }
 
 
 select {
-  font-size: 18px;
+  font-size: 22px;
   border: none;
   padding: 10px;
   border-radius: 5px;
@@ -1338,6 +1383,7 @@ select {
   font-weight: 600;
   font-family: Poppins;
   background-color:#ffffff00;
+  color: #89c970;
 }
 
 select:focus {
@@ -1388,14 +1434,14 @@ h3{
 }
 
 .calcb button {
-  width: 100px;
-  padding: 10px;
+  width: 120px;/*22/07 Ajuste do botão de cadastrar (aumentando)*/
+  padding: 15px;
   background-color: #89c970;
   border-radius: 10px;
   border: 2px solid green;
   color: white;
-  font-weight: 600;
-  font-size: 16px;
+  font-weight: 700;
+  font-size: 19px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1413,9 +1459,8 @@ h3{
   flex-direction: row;
   margin-bottom: 1%;
   margin-top: 4%;
-  background-color: #e9f0a4db;
+  background: linear-gradient(135deg, #EDE185, #F8C471);/* 22/07Personalizando o titulo da refeição cadastrada pelo usuário */
   border-radius: 15px 0 15px 0;
-  border-color: rgb(255, 255, 136);
 }
 
 
@@ -1597,8 +1642,8 @@ input[type="checkbox"] {
   border: 0;
   font-weight: bold;
   cursor: pointer;
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   color: #FFF;
   background-color: #24242431;
 }
@@ -1634,20 +1679,28 @@ input[type="checkbox"] {
   position: relative;
   top: 0;
   left: 25%;
-  background-color: #b3dc99d0;
+  background-color: #93bf78d0;
   margin-top: 5%;
   border-radius: 20px;
 }
 
 .qmaior label{/* titulo*/
-color: #000000;
+color: white;
 margin-top: 5%;
 font-weight: 600;
-font-size: 23px;
+font-size: 27px;
 margin-bottom: 4%;
 
 }
 
+.qmaior p{/* titulo relátorio da dieta */
+  color: white;
+  margin-top: 4%;
+  font-weight: 600;
+  font-size: 21px;
+  margin-bottom: 4%;
+  
+  }
 
 .qcontainer{
   display: flex;
@@ -1656,11 +1709,29 @@ margin-bottom: 4%;
   justify-content: space-evenly;
   align-items: center;
   flex-direction: row;
-  margin-bottom: 5%;
+  margin-bottom: 3%;
 }
 
-.qmenor{/*cards*/
-  background-color: #7cba56;
+.qcontainer span{/* 22/07 titulo dos cards*/
+  color: white;
+  font-weight: 600;
+  font-size: 19px;
+  margin-bottom: 1%;
+}
+
+#subtitulo{/* 22/07 subtitulo */
+  font-size: 20px;
+ }
+
+.qcontainer b{/* 22/07 kcal */
+  color: white;
+  font-weight: 500;
+  font-size: 19px;
+}
+
+.qmenor{/*27/07 Personalizando os cards.*/
+  background: linear-gradient(to right, #bcda63d5, #8ac05eda);/* degradê dos cards */
+  color: white;
   width: 250px;
   height: 120px;
   border-radius: 15px;
@@ -1668,4 +1739,67 @@ margin-bottom: 4%;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  border:1px solid white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15), 0 4px 8px rgba(0, 0, 0, 0.1);/* 22/07 Sombreamento*/
 }
+
+.delet{/* 22/07 Botão de deletar a refeição com degradê amarelo e laranja suave*/
+  background: linear-gradient(135deg, #EDE185, #f8d6a4);
+  width: 100px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid #e6d558;
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2%;
+}
+
+.rec{/* 22/07 div do titulo das recomendações*/
+  margin: 5% 0 4% 0;
+  width: 100%;
+  margin: 2% 0 2% 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 2px solid white;
+  color: white; 
+}
+
+.rec p{/* 22/07 titulo das recomendações*/
+  font-size: 22px;
+}
+
+
+ #subrec{/* 22/07 subtitulo das recomendações*/
+  font-size: 20px;
+  color: white; 
+}
+ 
+.divref{/* 22/07 Caixa com as referências e explicações*/
+  margin: 4% 5% 4% 5%;
+}
+
+#tituloref{/* 22/07 titulo referências*/
+  font-size: 20px;
+  margin: 0 2% 2% 2%;
+  font-family: Poppins;
+  font-weight: 500;
+}
+
+
+#ref{/* 22/07 texto sobre as referências*/
+  font-size: 19px;
+  font-family: Poppins;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+ #ref a{/* 22/07 Perosnalização dos links "clique aqui" */
+  color: #80a73c ;
+  font-weight: 600;
+ }
+
