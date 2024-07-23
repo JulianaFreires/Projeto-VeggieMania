@@ -103,8 +103,6 @@ function cadastrarRefeicao() {
                 response.json().then(data => {
                     console.log('refeicao cadastrada com sucesso', data);
 
-                    var cont = 0 //08/07  conta a quantidade de vezes que o fetch cadastrou cada alimento
-
                     // Itera sobre todas as checkboxes usando um loop for e verifica se estão marcadas
                     for (let i = 0; i < selecionados.length; i++) {
 
@@ -149,8 +147,6 @@ function cadastrarRefeicao() {
                                     response2.json().then(data2 => {
                                         console.log('alimento cadastrado com sucesso', data2);
 
-                                        cont++ //08/07 soma no cont cada alimento que está sendo cadastrado
-
                                     })
                                 } else {
                                     response2.text().then(data => {
@@ -164,15 +160,9 @@ function cadastrarRefeicao() {
                                 console.error('Erro ao cadastrar dieta', error);
                             });
 
-
                     }
-
-                    const intervalo = setInterval(function () {
-                        if (selecionados.length == cont) { //08/07 Assim que todos os itens terminam de ser enviados pelo fetch ele chama a função obter -> compara a quantidade de alimentos que o usuário selecionou com a quantidade de vezes que o fetch realizou o cadastro de cada alimento
-                            obter() //chama a função obter
-                            clearInterval(intervalo) // Evita que a função continue sendo executada uma vez que a condição é atendida. Sem clearInterval, a função continuaria rodando a cada 0,5 s
-                        }
-                    }, 500)
+                            window.location.reload();//2207 Atualizar a página após o cadastro da refeição
+                   
 
                 })
             } else {

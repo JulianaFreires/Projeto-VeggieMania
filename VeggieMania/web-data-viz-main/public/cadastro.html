@@ -2,6 +2,7 @@
 <html lang="pt-br">
 
 <head>
+  <link rel="shortcut icon" href="../css/img/favicon-32x32.png" type="image/x-icon">
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -28,7 +29,7 @@
               <ul>
                 <li><a href="index.html">INICIO</a></li>
                 <li>|</li>
-                <li><a href="#simu">SIMULADOR</a></li>
+                <li><a href="index.html#simu">SIMULADOR</a></li>
                 <li>|</li>
                 <li><a href="login.html">LOGIN</a></li>
                 <li>|</li>
@@ -148,6 +149,7 @@
     event.preventDefault()
     aguardar();
 
+    console.log(altura_input.value)
 
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
@@ -239,7 +241,30 @@
       setTimeout(function () {
         sumirMensagem(); finalizarAguardar();
       }, 3000);
+
       return false;
+
+    } else if (alturaVar > 3) { // 22/07
+      cardErro2.style.display = "block";
+      mensagem_erro2.innerHTML =
+        "Insira uma altura válida em metros";
+      setTimeout(function () {
+        sumirMensagem(); finalizarAguardar();
+      }, 3000);
+
+      return false;
+
+    } else if (pesoVar > 700) { //22/07
+      cardErro2.style.display = "block";
+      mensagem_erro2.innerHTML =
+        "Insira um peso válido em kg";
+      setTimeout(function () {
+        sumirMensagem(); finalizarAguardar();
+      }, 3000);
+
+      return false;
+
+    
     } else {
   
       setInterval(sumirMensagem, 5000);

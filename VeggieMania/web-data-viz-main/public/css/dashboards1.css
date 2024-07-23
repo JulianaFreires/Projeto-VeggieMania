@@ -606,7 +606,7 @@ h1 {
 }
 
 #table {
-  font-size: Poppins;
+  font-family: Poppins;
   width: 78%;
   margin: 20px auto;
   border-collapse: collapse;
@@ -617,18 +617,19 @@ h1 {
 
 /*17/07 Tabela da página de dieta*/
 #table2 { 
-  font-size: Poppins;
-  width: 79%;
+  font-family: Poppins;
+  width: 84%;
   margin: 20px auto;
   background-color:#EDE185;
   border-radius: 17px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   color: white; /* Cor da letra */
   font-weight: 400;
+  font-size: 17px;
 }
 /*22/07 Personalizando a tabela do relatório da dieta*/
 #table3{ 
-  font-size: Poppins;
+  font-family: Poppins;
   width: 82%;
   margin: 17px auto;
   background: linear-gradient(to right, #8ac05eda, #a5dd78da);/* fundo degradê */
