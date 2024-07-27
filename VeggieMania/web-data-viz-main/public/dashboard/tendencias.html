@@ -34,6 +34,11 @@
                 <div class="nome">
                     <div class="hello">
                         <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+                        <div class="config" style="display: block;" id="config">
+                            <a href="config.html">
+                                <img src="../css/img/configuracoes (1).png" width="36px" style="cursor: pointer;" id="config">
+                            </a>
+                        </div>
                     </div>
                 </div>
 
@@ -115,7 +120,7 @@
                         <p>Faixa etária</p>
                     </div>
                     <div class="telaesquerda">
-                        <p>Sexo biológico</p>
+                        <p>Sexo dos usuários</p>
                     </div>
                    
                 </div>
@@ -125,7 +130,7 @@
                         <label>Distribuição de usuários por faixa etária</label>
                     </div>
                     <div class="telaesquerda">
-                        <label>Comparação de usuários por sexo biológico</label>
+                        <label>Comparação por sexo</label>
                     </div>
                    
 
@@ -231,12 +236,14 @@
     function exibir() {
 
         var botao = document.getElementById("cateinicial");
+        var config = document.getElementById("config");
         botao.id = "cate";
         botao.innerText = "Categorias:";
 
         if (cont == 0) {
 
             botoes.style.display = 'flex'
+            config.style.display = 'none'
             cont = 1;
         } else if (cont == 1) {
             botoes.style.display = 'none'
@@ -388,6 +395,7 @@
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
     
+                    console.log(resposta)
 
                     // Agrupando os dados por faixa etária em arrays
                     const faixas = {

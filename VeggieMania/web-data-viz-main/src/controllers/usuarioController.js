@@ -297,6 +297,46 @@ function delet(req, res) { // 15/07
 
 }
 
+function atualizar(req, res) { 
+    // 27/07  recupera os dados que foram inseridos pelo usuário
+    var idUsuario = req.body.idUsuario
+    var tipo = req.body.tipoServer;
+    var sexo = req.body.sexoServer;
+    var peso = req.body.pesoServer;
+    var nivel = req.body.nivelServer;
+
+
+    // Faça as validações dos valores
+   
+    if (tipo == undefined) {
+        res.status(400).send("Seu tipo de alimentação está undefined!");
+    } else if (sexo == undefined) {
+        res.status(400).send("Seu sexo está undefined!");
+    } else if (peso == undefined) {
+        res.status(400).send("Seu peso está undefined!");
+    } else if (nivel == undefined) {
+        res.status(400).send("Seu estilo de vida está undefined!");
+    } else {
+
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        usuarioModel.atualizar(idUsuario, tipo, sexo, peso, nivel)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
 
 module.exports = {
     autenticar,
@@ -306,6 +346,7 @@ module.exports = {
     obter,
     Total,
     relatorio,
-    delet
+    delet, 
+    atualizar
 
 }

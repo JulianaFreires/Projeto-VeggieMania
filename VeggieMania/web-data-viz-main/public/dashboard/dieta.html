@@ -28,6 +28,13 @@
                 <div class="nome">
                     <div class="hello">
                         <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+
+                        <div class="config" style="display: block;" id="config">
+                            <a href="config.html">
+                                <img src="../css/img/configuracoes (1).png" width="36px" style="cursor: pointer;" id="config">
+                            </a>
+                        </div>
+                       
                     </div>
                 </div>
 
@@ -391,9 +398,6 @@
                         </div>
                     </div>
 
-
-
-
                     <div class="carousel__actions">
                         <!-- Botões do Carrossel feitos para passar as listas dos alimentos 01/07-->
                         <button data-js="carousel__button--prev" aria-label="Slide anterior">
@@ -404,9 +408,6 @@
                                 </button>
                     </div>
                 </div>
-
-
-
 
                 <div class="calcb">
                     <button type="button" onclick="cadastrarRefeicao()">Cadastrar</button>
@@ -453,12 +454,14 @@
     function exibir() {
 
         var botao = document.getElementById("cateinicial");
+        var config = document.getElementById("config")
         botao.id = "cate";
         botao.innerText = "Categorias:";
 
         if (cont == 0) {
 
-            botoes.style.display = 'flex'
+            botoes.style.display = 'flex';
+            config.style.display = 'none';
             cont = 1;
         } else if (cont == 1) {
             botoes.style.display = 'none'
@@ -496,7 +499,7 @@
     //Código do carrossel 01/07
 
     // Seleciona todos os elementos de slide no HTML
-    const slides = document.querySelectorAll('[data-js="carousel__item"]'); //Constante que seleciona todos os elementos essa classe
+    const slides = document.querySelectorAll('[data-js="carousel__item"]'); //Constante que seleciona todos os elementos dessa classe
     const nextButton = document.querySelector('[data-js="carousel__button--next"]'); // Seleciona o botão de próximo slide 
     const prevButton = document.querySelector('[data-js="carousel__button--prev"]'); // botão de slide anterior
 
@@ -521,6 +524,7 @@
 
 
         slides[currentSlideIndex].classList.add('carousel__item--visible');  // adiciona a classe para tornar visível (block) apenas o slide atual com o currentSlideIndex
+        
     });
 
 
@@ -541,7 +545,7 @@
         });
 
         slides[currentSlideIndex].classList.add('carousel__item--visible');  // adiciona a classe para tornar visível (block) apenas o slide atual com o currentSlideIndex
-    });
 
+    });
 
 </script>

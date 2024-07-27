@@ -37,4 +37,10 @@ router.delete("/delet/:idUsuario/:opcao", function (req, res) { //15/07  Rota pa
 });
 
 
+router.post("/atualizar/:idUsuario", function (req, res) {//27/07 Rota para atualizar o cadastro do usuário
+    usuarioController.atualizar(req, res);
+})
+
+
+
 module.exports = router;

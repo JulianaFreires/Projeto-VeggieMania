@@ -84,6 +84,13 @@ function delet(idUsuario,opcao) { //15/07 Deleta a refeição selecionada pelo u
     return database.executar(instrucaoSql);
 }
 
+function atualizar(idUsuario, tipo, sexo, peso, nivel){//27/07 Realiza a instrução sql que atualiza os dados inseridos pelo usuário no banco de dados
+
+    var instrucaoSql = `UPDATE usuario SET tipoAlimentacao = "${tipo}", sexo = "${sexo}", peso = ${peso}, nivelAtividade = "${nivel}" where id = ${idUsuario};`
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
 
 module.exports = {
     autenticar,
@@ -93,5 +100,6 @@ module.exports = {
     obter,
     Total,
     relatorio,
-    delet
+    delet,
+    atualizar
 };
