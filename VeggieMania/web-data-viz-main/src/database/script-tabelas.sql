@@ -1,7 +1,7 @@
-drop database if exists juliana;
-create DATABASE juliana;
-
 USE juliana;
+
+
+select * from usuario;
 
 
 CREATE TABLE usuario (
@@ -14,7 +14,7 @@ CREATE TABLE usuario (
     nascimento DATE,
     sexo VARCHAR(50),
     altura DECIMAL(3,2),
-    peso DECIMAL(4,2),
+    peso DECIMAL(5,2),
     nivelAtividade VARCHAR(50)
 );
 
