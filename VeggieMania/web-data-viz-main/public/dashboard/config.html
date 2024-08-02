@@ -211,7 +211,7 @@
 
 
     if (
-      tipoVar == "" || // validação para caso o usúario não selecione nenhuma opção válida no select 20/06
+      tipoVar == "" || 
       sexoVar == "" ||
       pesoVar == 0 ||
       nivelVar == ""
@@ -222,7 +222,7 @@
       mensagem_erro2.innerHTML =
         "Preencha todos os campos";
       setTimeout(function () {
-        sumirMensagem(); finalizarAguardar();
+        sumirMensagem();
       }, 3000);
 
       return false;
@@ -232,7 +232,7 @@
       mensagem_erro2.innerHTML =
         "Insira um peso válido em kg";
       setTimeout(function () {
-        sumirMensagem(); finalizarAguardar();
+        sumirMensagem();
       }, 3000);
 
       return false;

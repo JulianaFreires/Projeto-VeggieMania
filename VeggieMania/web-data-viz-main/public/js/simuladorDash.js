@@ -26,7 +26,7 @@ window.onload = function () { // Executa quando a janela é carregada
     let checkboxes = document.querySelectorAll('.caixa');  // Seleciona todas as checkboxes com a classe 'caixa'
     checkboxes.forEach(checkbox => {
         checkbox.addEventListener('change', function () {  // Quando a checkbox muda sendo marcada ou desmarcada, o evento 'change' é disparado
-            criarInput(this); // Chama a função criarInput passando a checkbox atual como informação
+            criarInput(checkbox); // Chama a função criarInput passando a checkbox atual como informação
         });
     });
 };
@@ -46,9 +46,8 @@ function criarInput(checkbox) {// Função para criar ou remover um input de aco
     } else {
         // Remove o input correspondente se a checkbox for desmarcada
         var input = document.getElementById('input_' + checkbox.id); // Seleciona o input pelo seu id
-        if (input) {
+   
             checkbox.parentElement.removeChild(input);// remove um filho específico do pai ao qual ele pertence nesse caso o input da checkbox correspondente.
-        }
     }
 }
 
@@ -149,8 +148,8 @@ function cadastrarRefeicao() {
 
                                     })
                                 } else {
-                                    response2.text().then(data => {
-                                        console.log('erro:', data);
+                                    response2.text().then(data2 => {
+                                        console.log('erro:', data2);
 
                                     })
                                 }
@@ -363,10 +362,10 @@ function obter() { // 03/07 Funcão para  a criação das tabelas de forma dinâ
 
                                     //09/07 a TAXA METABOLICA BASAL é calculada por meio de 2 fórmulas que são diferentes dependendo do sexo do usuário e que leva também em consideração o peso, altura, idade e nivel de atividade fisica do usuário. A TBM serve para calcularmos a quantidade recomendada de calorias que deve ser consumida em 1 dia.
                                     if (data3[0].sexo == "Feminino") {
-                                        var TMB = (655 + (9.6 * data3[0].peso) + (1.7 * ((data3[0].altura) * 100)) - (4.7 * data3[0].idade)) * nivel;
+                                        var TMB = ((655 + (9.6 * data3[0].peso) + (1.7 * ((data3[0].altura) * 100)) - (4.7 * data3[0].idade)) * nivel).toFixed(2);
 
                                     } else {
-                                        var TMB = (66 + (13.7 * data3[0].peso) + (5 * ((data3[0].altura) * 100)) - (6.8 * data3[0].idade)) * nivel;
+                                        var TMB = ((66 + (13.7 * data3[0].peso) + (5 * ((data3[0].altura) * 100)) - (6.8 * data3[0].idade)) * nivel).toFixed(2);
 
                                     }
 
@@ -508,7 +507,7 @@ function obter() { // 03/07 Funcão para  a criação das tabelas de forma dinâ
                                         
                                     </div>
                                     <div class = "divref">
-                                     <p id = "ref">A recomendação da quantidade de calorias foi baseada no cálculo da Taxa de Metabolismo Basal (TMB). As diretrizes para a ingestão de macronutrientes foram determinadas com base nas recomendações do Food and Nutrition Board dos Institutes of Medicine (IOM).<br>
+                                     <p id = "ref">A recomendação da quantidade de calorias foi baseada no cálculo da Taxa de Metabolismo Basal (TMB). As diretrizes para a ingestão de macronutrientes foram determinadas com base nas recomendações do Food and Nutrition Board do Institutes of Medicine (IOM).<br>
                                     É fundamental destacar que consultas médicas e nutricionais são essenciais para obter recomendações precisas sobre dieta, incluindo macronutrientes e micronutrientes. Esta página é criada apenas para fins educativos e simulação, não devendo ser utilizada para orientação real.<br><br>
                                      <b>Referências:</b><br>
                                     - Calculo da taxa metabólica basal:

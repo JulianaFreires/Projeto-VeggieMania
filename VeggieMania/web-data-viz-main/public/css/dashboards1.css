@@ -1758,10 +1758,10 @@ margin-bottom: 4%;
   width: 100px;
   padding: 10px;
   border-radius: 10px;
-  border: 2px solid #e6d558;
+  border: 2px solid #e6c058; 
   color: white;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 17px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1842,6 +1842,11 @@ margin-bottom: 4%;
   padding: 20px 0;
 }
 
+.telaO{/*Tela para o formulário*/
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
 
 .caixaF span{/*titulo da input*/
   font-size: 15px;
@@ -1918,11 +1923,13 @@ margin-bottom: 4%;
 
 .alerta_erro2{
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 .card_erro2 {
   display: none;
+  justify-content: center;
+  align-items: center;
   background-color: #ffffffda;
   color: black;
   width: 220px;
@@ -1930,7 +1937,6 @@ margin-bottom: 4%;
   border-radius: 7px;
   border: #89C063 3px solid;
   padding: 9px;
-  margin-right: 8%;
   font-family: Poppins;
 }
 
@@ -1948,7 +1954,7 @@ margin-bottom: 4%;
   justify-content: center;
   font-family: Poppins;
   font-weight: bold;
-  font-size: 28px;
+  font-size: 29px;
   border-top:2px solid #71ac3d;
 }
 
@@ -1957,10 +1963,6 @@ margin-bottom: 4%;
 
 }
 
-.telaO{/*Tela para o formulário*/
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-}
+
 
 
