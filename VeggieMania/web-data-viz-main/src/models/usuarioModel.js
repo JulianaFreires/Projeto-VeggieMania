@@ -65,7 +65,8 @@ function Total(idUsuario,opcao) { // 03/07 select que soma as informações nutr
 }
 
 function relatorio(idUsuario) { // 09/07 select que soma as informações nutricionais de todos os alimentos que foram cadastrados pelo usuario e considera o sexo, altura, peso e nivel de atividade fisica do usuário
-    var instrucaoSql = `  select sum(caloria) as caloria, sum(carboidrato) as carboidrato, sum(lipideo) as lipideo, sum(fibra) as fibra, sum(proteina) as proteina, sum(ferro) as ferro, sum(calcio) as calcio, sum(zinco) as zinco, TIMESTAMPDIFF(YEAR, nascimento, CURDATE()) AS idade, sexo, altura, peso, nivelAtividade  from alimento
+    var instrucaoSql = `  select sum(caloria) as caloria, sum(carboidrato) as carboidrato, sum(lipideo) as lipideo, sum(fibra) as fibra, sum(proteina) as proteina, sum(ferro) as ferro, sum(calcio) as calcio, sum(zinco) as zinco, TIMESTAMPDIFF(YEAR, nascimento, CURDATE()) AS idade, sexo, altura, peso, nivelAtividade  
+    from alimento
 	join usuario on id = fk_usuario
 	join refeicao on idRefeicao = fk_refeicao
     where id = ${idUsuario} ;`

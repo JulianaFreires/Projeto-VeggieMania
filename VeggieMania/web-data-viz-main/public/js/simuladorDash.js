@@ -90,7 +90,7 @@ function cadastrarRefeicao() {
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({ // armazena no formato json todas as infromações necessarias para o cadastro da refeição do usuário
+        body: JSON.stringify({ // armazena no formato json todas as informações necessarias para o cadastro da refeição do usuário
             idUsuario: sessionStorage.ID_USUARIO,
             nome: nomeRefeicao,
 
@@ -373,8 +373,8 @@ function obter() { // 03/07 Funcão para  a criação das tabelas de forma dinâ
 
                                     var carboidratoC = (data3[0].carboidrato * 4).toFixed(2)
                                     var carboidratoP = ((carboidratoC / data3[0].caloria) * 100).toFixed(2)
-                                    var carboidratoI = (data3[0].caloria * 0.20).toFixed(2) // 11/07 -  Calculo relacionado as diretrizes gerais para a distribuição de macronutrientes em uma dieta saudável =>  quantidade de calorias ideal min
-                                    var carboidratoI2 = (data3[0].caloria * 0.35).toFixed(2)  // quantidade de calorias ideal mmax
+                                    var carboidratoI = (data3[0].caloria * 0.45).toFixed(2) // 11/07 -  Calculo relacionado as diretrizes gerais para a distribuição de macronutrientes em uma dieta saudável =>  quantidade de calorias ideal min
+                                    var carboidratoI2 = (data3[0].caloria * 0.65).toFixed(2)  // quantidade de calorias ideal mmax
                                     var carboidratoIG = (carboidratoI / 4).toFixed(2) //gramatura ideal min
                                     var carboidratoIG2 = (carboidratoI2 / 4).toFixed(2) //gramatura ideal max
 
@@ -575,5 +575,5 @@ function delet(event){/*15/07
 
 }
 
-document.addEventListener('DOMContentLoaded', obter); //event executa quando o documento HTML quando for carregado completamente e a função obter será executada automaticamente quando esse evento ocorrer
+document.addEventListener('DOMContentLoaded', obter); //event executa quando o documento HTML quando for carregado completamente e a função obter será executada automaticamente quando esse evento ocorrer 
   
