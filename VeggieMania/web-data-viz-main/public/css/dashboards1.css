@@ -350,7 +350,7 @@ body {
 
 .restaurante {
   width: 85%;
-  height: 43%;
+  height: 41%;
   display: inline-block;
   overflow: hidden;
   transition: transform 0.3s ease-in-out;
@@ -362,7 +362,7 @@ body {
 
 .receita {
   width: 85%;
-  height: 43%;
+  height: 41%;
   display: inline-block;
   overflow: hidden;
   transition: transform 0.3s ease-in-out;
@@ -374,7 +374,7 @@ body {
 
 .cosmetico {
   width: 85%;
-  height: 42%;
+  height: 40%;
   display: inline-block;
   overflow: hidden;
   transition: transform 0.3s ease-in-out;
@@ -386,7 +386,7 @@ body {
 
 .moda {
   width: 85%;
-  height: 43%;
+  height: 41%;
   display: inline-block;
   overflow: hidden;
   transition: transform 0.3s ease-in-out;
@@ -1339,13 +1339,13 @@ button.like path {
 
 
 .janeladieta {
-  background-color: #FCF5E3;/*22/07 Alterando a cor do fundo */
   display: flex;
   background-repeat: no-repeat;
   background-size: cover;
   font-family: Poppins;
   flex-direction: column;
   color: white;
+  height: 100vh;
 }
 
 .dash-rightcalc {

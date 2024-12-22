@@ -223,7 +223,7 @@ button {
 }
 
 .oquee {
-  height: 100vh;
+  height: 95vh;
   background-image: url(img/fundooq.png);
   display: flex;
   flex-direction: column;
@@ -324,7 +324,7 @@ button {
 
 
 .influencias {
-  height: 100vh;
+  height: 97vh;
   background-image: url("img/fundoFig.png");
   display: flex;
   flex-direction: column;
@@ -455,7 +455,7 @@ button {
 
 
 .saude {
-  height: 100vh;
+  height: 97vh;
   background-image: url(img/fundosaude.png);
   display: flex;
   justify-content: center;
